@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const Features = () => {
   return (
-    <div className="py-16 bg-gray-50">
+    <div className="py-16 bg-gray-50" id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -16,7 +16,7 @@ export const Features = () => {
         </div>
 
         <Tabs defaultValue="students" className="mt-12">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-4">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
             <TabsTrigger value="students">Students</TabsTrigger>
             <TabsTrigger value="partners">Fund Managers</TabsTrigger>
             <TabsTrigger value="api">API</TabsTrigger>
