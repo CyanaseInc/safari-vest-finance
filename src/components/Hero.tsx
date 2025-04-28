@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef } from "react"
-import { ArrowRight, Connection } from "lucide-react"
+import { ArrowRight, Network } from "lucide-react"
 
 export const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -114,7 +114,7 @@ export const Hero = () => {
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <Button variant="outline" className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-purple-700 border-purple-700 hover:bg-purple-50 md:py-4 md:text-lg md:px-10">
-                    Learn More <Connection className="ml-2 h-5 w-5" />
+                    Learn More <Network className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export const Hero = () => {
       {/* Network connection animation showing nodes connecting */}
       <div className="absolute bottom-0 right-0 transform translate-y-1/4 translate-x-1/4">
         <div className="animate-pulse opacity-50">
-          <Connection size={400} className="text-purple-200" />
+          <Network size={400} className="text-purple-200" />
         </div>
       </div>
     </div>
