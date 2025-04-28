@@ -14,7 +14,7 @@ export const Navigation = () => {
 
   const linkClass = (path: string) => 
     `text-gray-700 hover:text-[#252859] px-3 py-2 transition-colors ${
-      isActive(path) ? 'text-[#252859] font-semibold' : ''
+      isActive(path) ? 'text-[#252859] font-semibold border-b-2 border-[rgb(247,169,45)]' : ''
     }`
 
   return (
@@ -22,7 +22,9 @@ export const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-[#252859]">Cyanase</Link>
+            <Link to="/" className="flex items-center">
+              <img src="/logo.svg" alt="Cyanase" className="h-8 w-auto" />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -32,7 +34,7 @@ export const Navigation = () => {
             <Link to="/api" className={linkClass("/api")}>API</Link>
             <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
             <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
-            <Button variant="default" className="bg-[#252859] hover:bg-[#252859]/90">
+            <Button variant="default" className="bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
               Contact Us
             </Button>
           </div>
@@ -54,7 +56,7 @@ export const Navigation = () => {
               <Link to="/api" className={linkClass("/api")}>API</Link>
               <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
               <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
-              <Button variant="default" className="w-full mt-4 bg-[#252859] hover:bg-[#252859]/90">
+              <Button variant="default" className="w-full mt-4 bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
                 Contact Us
               </Button>
             </div>
