@@ -182,14 +182,28 @@ const GlobeAnimation = () => {
         containerRef.current.removeChild(renderer.domElement);
       }
       
-      // Clean up all THREE.js objects
+      // Clean up all THREE.js objects with proper type checking
       scene.children.forEach(child => {
-        if (child.geometry) child.geometry.dispose();
-        if (child.material) {
-          if (Array.isArray(child.material)) {
-            child.material.forEach(material => material.dispose());
-          } else {
-            child.material.dispose();
+        // Check if the child is a Mesh (which has geometry and material properties)
+        if (child instanceof THREE.Mesh) {
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach(material => material.dispose());
+            } else {
+              child.material.dispose();
+            }
+          }
+        }
+        // Check if the child is a Line (which has geometry and material properties)
+        else if (child instanceof THREE.Line) {
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach(material => material.dispose());
+            } else {
+              child.material.dispose();
+            }
           }
         }
       });
