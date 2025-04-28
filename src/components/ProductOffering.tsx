@@ -1,8 +1,29 @@
 
 import { Link } from "react-router-dom"
 import { ArrowRight, Briefcase, FileBarChart, PieChart, Users } from "lucide-react"
+import { useEffect, useRef } from "react"
 
 export const ProductOffering = () => {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    const elements = containerRef.current?.querySelectorAll('.animate-on-scroll')
+    elements?.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
   const products = [
     {
       icon: <PieChart className="h-12 w-12 text-[rgb(247,169,45)]" />,
@@ -47,18 +68,22 @@ export const ProductOffering = () => {
   ]
 
   return (
-    <div className="bg-gray-50 py-16">
+    <div className="bg-gray-50 py-16" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#252859] mb-4">Our Product Offering</h2>
-          <p className="text-xl text-gray-600">
+          <h2 className="text-3xl font-bold text-[#252859] mb-4 animate-on-scroll opacity-0">Our Product Offering</h2>
+          <p className="text-xl text-gray-600 animate-on-scroll opacity-0" style={{ animationDelay: '0.2s' }}>
             Discover smart, seamless investing with Cyanase—tailored solutions to grow your wealth effortlessly.
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
           {products.map((product, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div 
+              key={index} 
+              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 animate-on-scroll opacity-0"
+              style={{ animationDelay: `${(index + 1) * 0.2}s` }}
+            >
               <div className="mb-4">{product.icon}</div>
               <h3 className="text-xl font-semibold text-[#252859] mb-4">{product.title}</h3>
               <ul className="space-y-2 mb-6">
