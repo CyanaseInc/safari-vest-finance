@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom"
-import { Briefcase, FileBarChart, PieChart, Users } from "lucide-react"
+import { ArrowRight, Briefcase, FileBarChart, PieChart, Users } from "lucide-react"
 
 export const ProductOffering = () => {
   const products = [
