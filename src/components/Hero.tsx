@@ -7,15 +7,9 @@ export const Hero = () => {
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-          {/* Globe Animation Container */}
-          <div className="absolute left-0 w-1/2 h-full">
-            <div className="w-full h-full">
-              <GlobeAnimation />
-            </div>
-          </div>
-          
-          <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 lg:mt-16 lg:px-8 xl:mt-28">
+        <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 flex">
+          {/* Content on the left */}
+          <div className="mt-10 mx-auto px-4 sm:mt-12 sm:px-6 lg:mt-16 lg:px-8 xl:mt-28 w-full lg:w-1/2">
             <div className="sm:text-center lg:text-left">
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block">Digitizing Village</span>
@@ -37,7 +31,14 @@ export const Hero = () => {
                 </div>
               </div>
             </div>
-          </main>
+          </div>
+          
+          {/* Globe Animation Container on the right */}
+          <div className="hidden lg:block absolute top-0 right-0 w-1/2 h-full">
+            <div className="w-full h-full">
+              <GlobeAnimation />
+            </div>
+          </div>
         </div>
       </div>
     </div>

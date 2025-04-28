@@ -10,8 +10,10 @@ const GlobeAnimation = () => {
 
     // Scene setup
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color("#0a1929"); // Dark blue background like in the reference image
+    
     const camera = new THREE.PerspectiveCamera(45, containerRef.current.clientWidth / containerRef.current.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     
     renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
     containerRef.current.appendChild(renderer.domElement);
@@ -21,128 +23,140 @@ const GlobeAnimation = () => {
     const segments = 64;
     const geometry = new THREE.SphereGeometry(radius, segments, segments);
     const material = new THREE.MeshPhongMaterial({
-      color: '#9b87f5',
+      color: '#203354',  // Darker blue for the globe base
       transparent: true,
-      opacity: 0.2,
-      wireframe: true,
+      opacity: 0.6,
+      wireframe: false,
     });
     const globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
 
-    // Add points
-    const points: THREE.Mesh[] = [];
-    const continents = [
-      { lat: 9, lng: 19 },   // Africa
-      { lat: 40, lng: -95 }, // North America
-      { lat: -14, lng: -52 }, // South America
-      { lat: 35, lng: 105 }, // Asia
-      { lat: 54, lng: 15 },  // Europe
-      { lat: -25, lng: 135 } // Australia
+    // Add points to represent continents (dot pattern like in the image)
+    const continentsData = [
+      { lat: 9, lng: 19, points: 100 },   // Africa
+      { lat: 40, lng: -95, points: 80 },  // North America
+      { lat: -14, lng: -52, points: 70 }, // South America
+      { lat: 35, lng: 105, points: 120 }, // Asia
+      { lat: 54, lng: 15, points: 80 },   // Europe
+      { lat: -25, lng: 135, points: 60 }  // Australia
     ];
 
-    const pointGeometry = new THREE.SphereGeometry(0.05, 16, 16);
-    const pointMaterial = new THREE.MeshBasicMaterial({ color: '#D6BCFA' });
+    const pointGeometry = new THREE.SphereGeometry(0.02, 8, 8);
+    const pointMaterial = new THREE.MeshBasicMaterial({ color: '#5e9fff' }); // Light blue dots
 
-    continents.forEach(({ lat, lng }) => {
-      const point = new THREE.Mesh(pointGeometry, pointMaterial);
-      const phi = (90 - lat) * (Math.PI / 180);
-      const theta = (lng + 180) * (Math.PI / 180);
-      point.position.x = -(radius * Math.sin(phi) * Math.cos(theta));
-      point.position.z = (radius * Math.sin(phi) * Math.sin(theta));
-      point.position.y = (radius * Math.cos(phi));
-      points.push(point);
-      scene.add(point);
+    continentsData.forEach(({ lat, lng, points }) => {
+      // Create clusters of points for each continent
+      for (let i = 0; i < points; i++) {
+        const point = new THREE.Mesh(pointGeometry, pointMaterial);
+        // Add some random offset to create a continent shape
+        const offset = Math.random() * 0.2;
+        const phi = (90 - (lat + (Math.random() * 20 - 10))) * (Math.PI / 180);
+        const theta = (lng + (Math.random() * 40 - 20) + 180) * (Math.PI / 180);
+        
+        point.position.x = -(radius * Math.sin(phi) * Math.cos(theta));
+        point.position.z = (radius * Math.sin(phi) * Math.sin(theta));
+        point.position.y = (radius * Math.cos(phi));
+        
+        scene.add(point);
+      }
     });
 
     // Add ambient light
-    const ambientLight = new THREE.AmbientLight(0x404040);
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
     scene.add(ambientLight);
 
     // Add point light
-    const pointLight = new THREE.PointLight(0xffffff, 1);
+    const pointLight = new THREE.PointLight(0x7597de, 1);
     pointLight.position.set(5, 3, 5);
     scene.add(pointLight);
+
+    // Add connection lines (like in the reference)
+    const connectionLines = [];
+    const lineMaterial = new THREE.LineBasicMaterial({ 
+      color: '#ff4d88',  // Pink line color from the reference
+      transparent: true,
+      opacity: 0.7 
+    });
+
+    const createConnectionLine = () => {
+      // Generate random points on the globe
+      const createRandomPoint = () => {
+        const phi = Math.random() * Math.PI * 2;
+        const theta = Math.random() * Math.PI;
+        const x = -(radius * Math.sin(theta) * Math.cos(phi));
+        const z = (radius * Math.sin(theta) * Math.sin(phi));
+        const y = (radius * Math.cos(theta));
+        return new THREE.Vector3(x, y, z);
+      };
+
+      const start = createRandomPoint();
+      const end = createRandomPoint();
+      
+      // Create a curved path for the line
+      const curvePoints = [];
+      curvePoints.push(start);
+      
+      // Add a midpoint slightly above the surface
+      const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+      mid.normalize().multiplyScalar(radius * 1.3); // Slightly above surface
+      curvePoints.push(mid);
+      
+      curvePoints.push(end);
+      
+      const curve = new THREE.CatmullRomCurve3(curvePoints);
+      const points = curve.getPoints(50);
+      const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+      
+      const line = new THREE.Line(lineGeometry, lineMaterial);
+      scene.add(line);
+      
+      connectionLines.push({
+        line,
+        life: 0,
+        maxLife: 2 + Math.random() * 3 // 2-5 seconds lifespan
+      });
+    };
+
+    // Create initial connection lines
+    for (let i = 0; i < 5; i++) {
+      createConnectionLine();
+    }
 
     // Position camera
     camera.position.z = 6;
 
-    // Animation lines
-    const lines: THREE.Line[] = [];
-    const lineMaterial = new THREE.LineBasicMaterial({ 
-      color: '#9b87f5',
-      transparent: true,
-      opacity: 0.4 
-    });
-
-    // Create moving points between continents
-    const movingPoints: {
-      mesh: THREE.Mesh;
-      fromPoint: THREE.Vector3;
-      toPoint: THREE.Vector3;
-      progress: number;
-      speed: number;
-    }[] = [];
-
-    const createMovingPoint = () => {
-      const from = points[Math.floor(Math.random() * points.length)];
-      const to = points[Math.floor(Math.random() * points.length)];
-      if (from === to) return;
-
-      const movingPointGeo = new THREE.SphereGeometry(0.02, 8, 8);
-      const movingPointMat = new THREE.MeshBasicMaterial({ color: '#8B5CF6' });
-      const movingPoint = new THREE.Mesh(movingPointGeo, movingPointMat);
-      
-      movingPoints.push({
-        mesh: movingPoint,
-        fromPoint: from.position.clone(),
-        toPoint: to.position.clone(),
-        progress: 0,
-        speed: 0.002 + Math.random() * 0.003
-      });
-      
-      scene.add(movingPoint);
-    };
-
-    // Create initial moving points
-    for (let i = 0; i < 5; i++) {
-      createMovingPoint();
-    }
+    // Create connection line every few seconds
+    const lineInterval = setInterval(() => {
+      if (connectionLines.length < 10) {
+        createConnectionLine();
+      }
+    }, 2000);
 
     // Animation loop
+    const clock = new THREE.Clock();
     const animate = () => {
       requestAnimationFrame(animate);
+      
+      const delta = clock.getDelta();
 
-      // Rotate globe
-      globe.rotation.y += 0.002;
-
-      // Update moving points
-      movingPoints.forEach((point, index) => {
-        point.progress += point.speed;
+      // Slowly rotate the globe
+      globe.rotation.y += 0.05 * delta;
+      
+      // Update connection lines
+      connectionLines.forEach((connection, index) => {
+        connection.life += delta;
         
-        if (point.progress >= 1) {
-          scene.remove(point.mesh);
-          movingPoints.splice(index, 1);
-          createMovingPoint();
+        // Fade out the line as it reaches its lifespan
+        if (connection.life > connection.maxLife) {
+          scene.remove(connection.line);
+          connectionLines.splice(index, 1);
         } else {
-          // Calculate curved path
-          const midPoint = point.fromPoint.clone().add(point.toPoint).multiplyScalar(0.5);
-          midPoint.normalize().multiplyScalar(radius * 1.5);
-          
-          const p1 = point.fromPoint.clone();
-          const p2 = midPoint;
-          const p3 = point.toPoint.clone();
-          
-          point.mesh.position.x = Math.pow(1 - point.progress, 2) * p1.x + 
-                                 2 * (1 - point.progress) * point.progress * p2.x + 
-                                 Math.pow(point.progress, 2) * p3.x;
-          
-          point.mesh.position.y = Math.pow(1 - point.progress, 2) * p1.y + 
-                                 2 * (1 - point.progress) * point.progress * p2.y + 
-                                 Math.pow(point.progress, 2) * p3.y;
-          
-          point.mesh.position.z = Math.pow(1 - point.progress, 2) * p1.z + 
-                                 2 * (1 - point.progress) * point.progress * p2.z + 
-                                 Math.pow(point.progress, 2) * p3.z;
+          // Fade effect
+          const opacity = connection.life < connection.maxLife / 2 
+            ? connection.life / (connection.maxLife / 2) // Fade in
+            : 1 - ((connection.life - connection.maxLife / 2) / (connection.maxLife / 2)); // Fade out
+            
+          connection.line.material.opacity = opacity * 0.7;
         }
       });
 
@@ -163,9 +177,22 @@ const GlobeAnimation = () => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      clearInterval(lineInterval);
       if (containerRef.current) {
         containerRef.current.removeChild(renderer.domElement);
       }
+      
+      // Clean up all THREE.js objects
+      scene.children.forEach(child => {
+        if (child.geometry) child.geometry.dispose();
+        if (child.material) {
+          if (Array.isArray(child.material)) {
+            child.material.forEach(material => material.dispose());
+          } else {
+            child.material.dispose();
+          }
+        }
+      });
     };
   }, []);
 
