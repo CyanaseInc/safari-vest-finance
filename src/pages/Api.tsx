@@ -1,7 +1,7 @@
-
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
 import { Code, FileCode, ListChecks, Webhook } from "lucide-react"
+import { Footer } from "@/components/Footer"
 
 const Api = () => {
   return (
@@ -53,6 +53,7 @@ const Api = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )

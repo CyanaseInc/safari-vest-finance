@@ -1,7 +1,7 @@
-
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
 import { BadgeDollarSign, ChartLine, ListChecks, ShieldCheck } from "lucide-react"
+import { Footer } from "@/components/Footer"
 
 const FundManagers = () => {
   return (
@@ -53,6 +53,7 @@ const FundManagers = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )

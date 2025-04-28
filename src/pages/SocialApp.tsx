@@ -1,7 +1,7 @@
-
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
 import { MessageCircle, Share2, Users2, Wallet } from "lucide-react"
+import { Footer } from "@/components/Footer"
 
 const SocialApp = () => {
   return (
@@ -53,6 +53,7 @@ const SocialApp = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/Navigation"
 import { BookOpen, GraduationCap, PiggyBank, Target } from "lucide-react"
+import { Footer } from "@/components/Footer"
 
 const Students = () => {
   return (
@@ -52,6 +52,7 @@ const Students = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )

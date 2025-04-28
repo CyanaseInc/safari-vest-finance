@@ -2,27 +2,37 @@
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { Menu } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
+
+  const isActive = (path: string) => {
+    return location.pathname === path
+  }
+
+  const linkClass = (path: string) => 
+    `text-gray-700 hover:text-[#252859] px-3 py-2 transition-colors ${
+      isActive(path) ? 'text-[#252859] font-semibold' : ''
+    }`
 
   return (
     <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-purple-700">Cyanase</Link>
+            <Link to="/" className="text-2xl font-bold text-[#252859]">Cyanase</Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/students" className="text-gray-700 hover:text-purple-700 px-3 py-2 transition-colors">Students</Link>
-            <Link to="/fund-managers" className="text-gray-700 hover:text-purple-700 px-3 py-2 transition-colors">Fund Managers</Link>
-            <Link to="/api" className="text-gray-700 hover:text-purple-700 px-3 py-2 transition-colors">API</Link>
-            <Link to="/social-app" className="text-gray-700 hover:text-purple-700 px-3 py-2 transition-colors">Social App</Link>
-            <Link to="/goal-based-investing" className="text-gray-700 hover:text-purple-700 px-3 py-2 transition-colors">Goal-Based Investing</Link>
-            <Button variant="default" className="bg-purple-700 hover:bg-purple-800">
+            <Link to="/students" className={linkClass("/students")}>Students</Link>
+            <Link to="/fund-managers" className={linkClass("/fund-managers")}>Fund Managers</Link>
+            <Link to="/api" className={linkClass("/api")}>API</Link>
+            <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
+            <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
+            <Button variant="default" className="bg-[#252859] hover:bg-[#252859]/90">
               Contact Us
             </Button>
           </div>
@@ -39,12 +49,12 @@ export const Navigation = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link to="/students" className="block text-gray-700 hover:text-purple-700 px-3 py-2">Students</Link>
-              <Link to="/fund-managers" className="block text-gray-700 hover:text-purple-700 px-3 py-2">Fund Managers</Link>
-              <Link to="/api" className="block text-gray-700 hover:text-purple-700 px-3 py-2">API</Link>
-              <Link to="/social-app" className="block text-gray-700 hover:text-purple-700 px-3 py-2">Social App</Link>
-              <Link to="/goal-based-investing" className="block text-gray-700 hover:text-purple-700 px-3 py-2">Goal-Based Investing</Link>
-              <Button variant="default" className="w-full mt-4 bg-purple-700 hover:bg-purple-800">
+              <Link to="/students" className={linkClass("/students")}>Students</Link>
+              <Link to="/fund-managers" className={linkClass("/fund-managers")}>Fund Managers</Link>
+              <Link to="/api" className={linkClass("/api")}>API</Link>
+              <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
+              <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
+              <Button variant="default" className="w-full mt-4 bg-[#252859] hover:bg-[#252859]/90">
                 Contact Us
               </Button>
             </div>

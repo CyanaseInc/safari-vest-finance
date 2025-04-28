@@ -1,7 +1,7 @@
-
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
 import { LineChart, Target, TrendingUp, Trophy } from "lucide-react"
+import { Footer } from "@/components/Footer"
 
 const GoalBasedInvesting = () => {
   return (
@@ -53,6 +53,7 @@ const GoalBasedInvesting = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )
