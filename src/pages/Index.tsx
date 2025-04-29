@@ -11,6 +11,7 @@ import { InvestmentClasses } from "@/components/InvestmentClasses"
 import { Community } from "@/components/Community"
 import { InvestmentCalculator } from "@/components/InvestmentCalculator"
 import { WhatsAppButton } from "@/components/WhatsAppButton"
+import { FAQ } from "@/components/FAQ"
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
         <ProductOffering />
         <InvestmentClasses />
         <InvestmentCalculator />
+        <FAQ />
         <Community />
         <Features />
         <Footer />
