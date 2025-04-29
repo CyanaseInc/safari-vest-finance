@@ -12,6 +12,7 @@ import { Community } from "@/components/Community"
 import { InvestmentCalculator } from "@/components/InvestmentCalculator"
 import { WhatsAppButton } from "@/components/WhatsAppButton"
 import { FAQ } from "@/components/FAQ"
+import { DisclaimerModal } from "@/components/DisclaimerModal"
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
         <Features />
         <Footer />
         <WhatsAppButton />
+        <DisclaimerModal />
       </div>
     </div>
   )

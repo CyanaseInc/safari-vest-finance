@@ -13,28 +13,31 @@ import SocialApp from "./pages/SocialApp";
 import GoalBasedInvesting from "./pages/GoalBasedInvesting";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import { DisclaimerProvider } from "./contexts/DisclaimerContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/fund-managers" element={<FundManagers />} />
-          <Route path="/api" element={<Api />} />
-          <Route path="/social-app" element={<SocialApp />} />
-          <Route path="/goal-based-investing" element={<GoalBasedInvesting />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <DisclaimerProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/students" element={<Students />} />
+            <Route path="/fund-managers" element={<FundManagers />} />
+            <Route path="/api" element={<Api />} />
+            <Route path="/social-app" element={<SocialApp />} />
+            <Route path="/goal-based-investing" element={<GoalBasedInvesting />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </DisclaimerProvider>
   </QueryClientProvider>
 );
 
