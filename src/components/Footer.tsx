@@ -66,7 +66,13 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+        
         <div className="mt-8 pt-8 border-t border-gray-700">
+          <div className="text-center mb-4">
+            <p className="text-xs md:text-sm text-gray-400 bg-[#252859]/50 p-3 rounded-md inline-block">
+              Cyanase is a financial technology company, not a bank or an investment company. Investment services are provided by our partners, the licensed &amp; regulated fund managers.
+            </p>
+          </div>
           <p className="text-center text-gray-300">
             © {new Date().getFullYear()} Cyanase. All rights reserved.
           </p>
