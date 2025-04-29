@@ -34,9 +34,12 @@ export const Navigation = () => {
             <Link to="/api" className={linkClass("/api")}>API</Link>
             <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
             <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
-            <Button variant="default" className="bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
-              Contact Us
-            </Button>
+            <Link to="/blog" className={linkClass("/blog")}>Blog</Link>
+            <Link to="/contact">
+              <Button variant="default" className="bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
+                Contact Us
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -56,9 +59,12 @@ export const Navigation = () => {
               <Link to="/api" className={linkClass("/api")}>API</Link>
               <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
               <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
-              <Button variant="default" className="w-full mt-4 bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
-                Contact Us
-              </Button>
+              <Link to="/blog" className={linkClass("/blog")}>Blog</Link>
+              <Link to="/contact">
+                <Button variant="default" className="w-full mt-4 bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
         )}

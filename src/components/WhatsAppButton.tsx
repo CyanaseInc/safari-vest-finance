@@ -1,5 +1,5 @@
 
-import { Phone } from "lucide-react"
+import { MessageSquare } from "lucide-react"
 
 export const WhatsAppButton = () => {
   return (
@@ -10,7 +10,7 @@ export const WhatsAppButton = () => {
       className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 z-50 flex items-center justify-center"
       aria-label="Contact us on WhatsApp"
     >
-      <Phone className="h-6 w-6" />
+      <MessageSquare className="h-6 w-6" />
     </a>
   )
 }
