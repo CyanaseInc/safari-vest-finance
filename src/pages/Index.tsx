@@ -3,7 +3,6 @@ import { Navigation } from "@/components/Navigation"
 import { Hero } from "@/components/Hero"
 import { Stats } from "@/components/Stats"
 import { Features } from "@/components/Features"
-import { ContactForm } from "@/components/ContactForm"
 import { Footer } from "@/components/Footer"
 import { FeaturedIn } from "@/components/FeaturedIn"
 import { WhatWeDo } from "@/components/WhatWeDo"
@@ -11,6 +10,7 @@ import { ProductOffering } from "@/components/ProductOffering"
 import { InvestmentClasses } from "@/components/InvestmentClasses"
 import { Community } from "@/components/Community"
 import { InvestmentCalculator } from "@/components/InvestmentCalculator"
+import { WhatsAppButton } from "@/components/WhatsAppButton"
 
 const Index = () => {
   return (
@@ -26,8 +26,8 @@ const Index = () => {
         <InvestmentCalculator />
         <Community />
         <Features />
-        <ContactForm />
         <Footer />
+        <WhatsAppButton />
       </div>
     </div>
   )

@@ -11,6 +11,7 @@ import FundManagers from "./pages/FundManagers";
 import Api from "./pages/Api";
 import SocialApp from "./pages/SocialApp";
 import GoalBasedInvesting from "./pages/GoalBasedInvesting";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/api" element={<Api />} />
           <Route path="/social-app" element={<SocialApp />} />
           <Route path="/goal-based-investing" element={<GoalBasedInvesting />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

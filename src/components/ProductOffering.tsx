@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom"
-import { ArrowRight, Briefcase, FileBarChart, PieChart, Users } from "lucide-react"
+import { ArrowRight, Briefcase, FileBarChart, PieChart, Users, Coins } from "lucide-react"
 
 export const ProductOffering = () => {
   const products = [
@@ -43,6 +43,16 @@ export const ProductOffering = () => {
         "Benefit from active monitoring to maximize returns."
       ],
       link: "/fund-managers"
+    },
+    {
+      icon: <Coins className="h-12 w-12 text-[rgb(247,169,45)]" />,
+      title: "Scila Savings",
+      description: [
+        "Save regularly with flexible terms and competitive rates.",
+        "Automate your savings with smart schedules and goals.",
+        "Access funds when needed with no hidden penalties."
+      ],
+      link: "/scila-savings"
     }
   ]
 
@@ -56,9 +66,14 @@ export const ProductOffering = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div 
+              key={index} 
+              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
               <div className="mb-4">{product.icon}</div>
               <h3 className="text-xl font-semibold text-[#252859] mb-4">{product.title}</h3>
               <ul className="space-y-2 mb-6">
