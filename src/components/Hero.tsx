@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
 import { ArrowRight, Network, ShieldCheck, CreditCard, Wallet, TrendingUp, DollarSign } from "lucide-react"
@@ -9,6 +8,8 @@ export const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [visibleCardIndex, setVisibleCardIndex] = useState(0);
+  const [imageCenter, setImageCenter] = useState({ x: 0, y: 0 });
+  const imageRef = useRef<HTMLDivElement>(null);
 
   // Array of cards with different messages
   const cardMessages = [
@@ -19,6 +20,23 @@ export const Hero = () => {
     { icon: <DollarSign size={24} className="text-purple-500" />, title: "Financial Freedom", color: "bg-purple-50" },
   ];
 
+  // Calculate the center of the image for card animations
+  useEffect(() => {
+    const updateImageCenter = () => {
+      if (imageRef.current) {
+        const rect = imageRef.current.getBoundingClientRect();
+        setImageCenter({
+          x: rect.width / 2,
+          y: rect.height / 2,
+        });
+      }
+    };
+
+    updateImageCenter();
+    window.addEventListener('resize', updateImageCenter);
+    return () => window.removeEventListener('resize', updateImageCenter);
+  }, [isImageLoaded]);
+
   // Rotate through the cards
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,6 +46,7 @@ export const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Canvas animation effect
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -164,7 +183,7 @@ export const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="lg:w-1/2 mt-12 lg:mt-0 relative"
               >
-                <div className="relative">
+                <div className="relative" ref={imageRef}>
                   {/* Animated Mobile Banking App Image */}
                   <div className="relative w-full rounded-lg shadow-2xl overflow-hidden" style={{ height: "400px" }}>
                     {/* Floating elements */}
@@ -257,15 +276,29 @@ export const Hero = () => {
                       <motion.div 
                         key={index}
                         className="absolute"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        style={{ 
+                          left: `${imageCenter.x}px`,
+                          top: `${imageCenter.y}px`
+                        }}
+                        initial={{ 
+                          opacity: 0, 
+                          scale: 0.5,
+                          x: 0,
+                          y: 0
+                        }}
                         animate={{ 
                           opacity: visibleCardIndex === index ? 1 : 0,
-                          scale: visibleCardIndex === index ? 1 : 0.8,
-                          x: getCardPosition(index, "x"),
-                          y: getCardPosition(index, "y")
+                          scale: visibleCardIndex === index ? 1 : 0.5,
+                          x: visibleCardIndex === index ? getCardFinalPosition(index, "x") : 0,
+                          y: visibleCardIndex === index ? getCardFinalPosition(index, "y") : 0
                         }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.5 }}
+                        exit={{ 
+                          opacity: 0, 
+                          scale: 0.5,
+                          x: 0,
+                          y: 0
+                        }}
+                        transition={{ duration: 0.8 }}
                       >
                         <Card className={`shadow-lg ${card.color} border-0`}>
                           <CardContent className="p-3">
@@ -323,15 +356,15 @@ export const Hero = () => {
   )
 }
 
-// Helper function to position cards around the main image
-function getCardPosition(index: number, axis: "x" | "y") {
-  // Define positions for each card
+// Helper function to get final positions for card animations
+function getCardFinalPosition(index: number, axis: "x" | "y") {
+  // Define final positions for each card from the center
   const positions = [
-    { x: "-120px", y: "-80px" },   // Top left
-    { x: "50%", y: "-50px" },      // Top center
-    { x: "calc(100% - 80px)", y: "30px" },  // Top right
-    { x: "-100px", y: "50%" },     // Middle left
-    { x: "calc(100% - 100px)", y: "70%" }, // Middle right
+    { x: -150, y: -120 },   // Top left
+    { x: 0, y: -150 },      // Top center
+    { x: 150, y: -80 },     // Top right
+    { x: -180, y: 0 },      // Middle left
+    { x: 180, y: 80 },      // Middle right
   ];
   
   return positions[index % positions.length][axis];
