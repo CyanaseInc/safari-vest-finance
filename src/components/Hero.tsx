@@ -1,11 +1,12 @@
 
 import { Button } from "@/components/ui/button"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ArrowRight, Network } from "lucide-react"
 import { motion } from "framer-motion"
 
 export const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -144,21 +145,125 @@ export const Hero = () => {
                 className="lg:w-1/2 mt-12 lg:mt-0"
               >
                 <div className="relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" 
-                    alt="Mobile banking app" 
-                    className="w-full rounded-lg shadow-2xl transform lg:scale-110 lg:translate-x-10 object-cover"
-                    style={{ height: "400px" }}
-                  />
-                  <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
+                  {/* Animated Mobile Banking App Image */}
+                  <div className="relative w-full rounded-lg shadow-2xl overflow-hidden" style={{ height: "400px" }}>
+                    {/* Floating elements */}
+                    <motion.div 
+                      className="absolute z-10 top-10 right-16 bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white"
+                      animate={{ 
+                        y: [0, -15, 0], 
+                        rotate: [0, 10, 0]
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z" />
+                        <path fillRule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" clipRule="evenodd" />
+                      </svg>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="absolute z-10 bottom-20 left-10 bg-green-500 rounded-full w-10 h-10 flex items-center justify-center text-white"
+                      animate={{ 
+                        y: [0, 15, 0], 
+                        rotate: [0, -15, 0] 
+                      }}
+                      transition={{ 
+                        duration: 4, 
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 1
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 01-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004zM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 01-.921.42z" />
+                        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v.816a3.836 3.836 0 00-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 01-.921-.421l-.879-.66a.75.75 0 00-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 001.5 0v-.81a3.833 3.833 0 001.719-.756c.712-.566 1.112-1.35 1.112-2.178 0-.829-.4-1.612-1.113-2.178a3.833 3.833 0 00-1.718-.756V8.334c.29.082.559.213.786.393l.415.33a.75.75 0 00.933-1.175l-.415-.33a3.836 3.836 0 00-1.719-.755V6z" clipRule="evenodd" />
+                      </svg>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="absolute z-10 top-24 left-16 bg-blue-500 rounded-full w-8 h-8 flex items-center justify-center text-white"
+                      animate={{ 
+                        x: [0, 15, 0],
+                        scale: [1, 1.2, 1]
+                      }}
+                      transition={{ 
+                        duration: 5, 
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 0.5
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                        <path d="M18 1.5c2.9 0 5.25 2.35 5.25 5.25v3.75a.75.75 0 01-1.5 0V6.75a3.75 3.75 0 10-7.5 0v3a3 3 0 013 3v6.75a3 3 0 01-3 3H3.75a3 3 0 01-3-3v-6.75a3 3 0 013-3h9v-3c0-2.9 2.35-5.25 5.25-5.25z" />
+                      </svg>
+                    </motion.div>
+                    
+                    {/* Main mobile app image */}
+                    <img 
+                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" 
+                      alt="Mobile banking app" 
+                      className="w-full h-full object-cover"
+                      onLoad={() => setIsImageLoaded(true)}
+                    />
+                    
+                    {/* Animated overlays */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-tr from-purple-700/30 to-transparent"
+                      animate={{ opacity: [0.4, 0.2, 0.4] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                    
+                    {/* Animated progress bar */}
+                    <motion.div 
+                      className="absolute bottom-0 left-0 h-2 bg-gradient-to-r from-purple-600 via-blue-500 to-green-400"
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ 
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatType: "reverse" 
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Notification badges */}
+                  <motion.div 
+                    className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg"
+                    animate={{ 
+                      y: [0, -5, 0],
+                      boxShadow: [
+                        "0 4px 6px -1px rgba(0,0,0,0.1)", 
+                        "0 10px 15px -3px rgba(0,0,0,0.1)", 
+                        "0 4px 6px -1px rgba(0,0,0,0.1)"
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                       <span className="text-sm font-semibold">Secure Transactions</span>
                     </div>
-                  </div>
-                  <div className="absolute -top-4 -right-4 bg-purple-100 p-3 rounded-full shadow-md">
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="absolute -top-4 -right-4 bg-purple-100 p-3 rounded-full shadow-md"
+                    whileHover={{ rotate: 360 }}
+                    animate={{ 
+                      rotate: [0, 10, 0, -10, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 5, repeat: Infinity },
+                      scale: { duration: 2, repeat: Infinity }
+                    }}
+                  >
                     <Network size={28} className="text-purple-700" />
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>

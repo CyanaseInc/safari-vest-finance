@@ -13,10 +13,12 @@ import { InvestmentCalculator } from "@/components/InvestmentCalculator"
 import { WhatsAppButton } from "@/components/WhatsAppButton"
 import { FAQ } from "@/components/FAQ"
 import { DisclaimerModal } from "@/components/DisclaimerModal"
+import { Preloader } from "@/components/Preloader"
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
+      <Preloader />
       <Navigation />
       <div className="pt-16">
         <Hero />
