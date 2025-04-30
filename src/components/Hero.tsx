@@ -1,12 +1,32 @@
 
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
-import { ArrowRight, Network } from "lucide-react"
-import { motion } from "framer-motion"
+import { ArrowRight, Network, ShieldCheck, CreditCard, Wallet, TrendingUp, DollarSign } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
 
 export const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [visibleCardIndex, setVisibleCardIndex] = useState(0);
+
+  // Array of cards with different messages
+  const cardMessages = [
+    { icon: <ShieldCheck size={24} className="text-purple-700" />, title: "Secure Transactions", color: "bg-white" },
+    { icon: <Wallet size={24} className="text-green-500" />, title: "Easy Savings", color: "bg-green-50" },
+    { icon: <CreditCard size={24} className="text-blue-500" />, title: "Digital Payments", color: "bg-blue-50" },
+    { icon: <TrendingUp size={24} className="text-orange-500" />, title: "Grow Your Money", color: "bg-orange-50" },
+    { icon: <DollarSign size={24} className="text-purple-500" />, title: "Financial Freedom", color: "bg-purple-50" },
+  ];
+
+  // Rotate through the cards
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleCardIndex(prevIndex => (prevIndex + 1) % cardMessages.length);
+    }, 3000); // Change card every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -142,7 +162,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="lg:w-1/2 mt-12 lg:mt-0"
+                className="lg:w-1/2 mt-12 lg:mt-0 relative"
               >
                 <div className="relative">
                   {/* Animated Mobile Banking App Image */}
@@ -231,7 +251,35 @@ export const Hero = () => {
                     />
                   </div>
                   
-                  {/* Notification badges */}
+                  {/* Animated notification cards */}
+                  <AnimatePresence>
+                    {cardMessages.map((card, index) => (
+                      <motion.div 
+                        key={index}
+                        className="absolute"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ 
+                          opacity: visibleCardIndex === index ? 1 : 0,
+                          scale: visibleCardIndex === index ? 1 : 0.8,
+                          x: getCardPosition(index, "x"),
+                          y: getCardPosition(index, "y")
+                        }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Card className={`shadow-lg ${card.color} border-0`}>
+                          <CardContent className="p-3">
+                            <div className="flex items-center space-x-2">
+                              {card.icon}
+                              <span className="text-sm font-semibold">{card.title}</span>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                  
+                  {/* Static notification badge (at bottom left) */}
                   <motion.div 
                     className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg"
                     animate={{ 
@@ -250,6 +298,7 @@ export const Hero = () => {
                     </div>
                   </motion.div>
                   
+                  {/* Purple icon at top right */}
                   <motion.div 
                     className="absolute -top-4 -right-4 bg-purple-100 p-3 rounded-full shadow-md"
                     whileHover={{ rotate: 360 }}
@@ -272,4 +321,18 @@ export const Hero = () => {
       </div>
     </div>
   )
+}
+
+// Helper function to position cards around the main image
+function getCardPosition(index: number, axis: "x" | "y") {
+  // Define positions for each card
+  const positions = [
+    { x: "-120px", y: "-80px" },   // Top left
+    { x: "50%", y: "-50px" },      // Top center
+    { x: "calc(100% - 80px)", y: "30px" },  // Top right
+    { x: "-100px", y: "50%" },     // Middle left
+    { x: "calc(100% - 100px)", y: "70%" }, // Middle right
+  ];
+  
+  return positions[index % positions.length][axis];
 }
