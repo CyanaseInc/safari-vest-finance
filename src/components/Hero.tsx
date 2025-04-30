@@ -1,6 +1,7 @@
+
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
-import { ArrowRight, Network, ShieldCheck, CreditCard, Wallet, TrendingUp, DollarSign } from "lucide-react"
+import { ArrowRight, Network, ShieldCheck, CreditCard, Wallet, TrendingUp, DollarSign, PiggyBank, LineChart } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -11,13 +12,16 @@ export const Hero = () => {
   const [imageCenter, setImageCenter] = useState({ x: 0, y: 0 });
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // Array of cards with different messages
+  // Array of cards with different messages (increased to 8)
   const cardMessages = [
     { icon: <ShieldCheck size={24} className="text-purple-700" />, title: "Secure Transactions", color: "bg-white" },
     { icon: <Wallet size={24} className="text-green-500" />, title: "Easy Savings", color: "bg-green-50" },
     { icon: <CreditCard size={24} className="text-blue-500" />, title: "Digital Payments", color: "bg-blue-50" },
     { icon: <TrendingUp size={24} className="text-orange-500" />, title: "Grow Your Money", color: "bg-orange-50" },
     { icon: <DollarSign size={24} className="text-purple-500" />, title: "Financial Freedom", color: "bg-purple-50" },
+    { icon: <PiggyBank size={24} className="text-red-500" />, title: "Smart Investing", color: "bg-red-50" },
+    { icon: <LineChart size={24} className="text-indigo-500" />, title: "Wealth Analytics", color: "bg-indigo-50" },
+    { icon: <Network size={24} className="text-yellow-500" />, title: "Group Savings", color: "bg-yellow-50" },
   ];
 
   // Calculate the center of the image for card animations
@@ -41,10 +45,10 @@ export const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleCardIndex(prevIndex => (prevIndex + 1) % cardMessages.length);
-    }, 3000); // Change card every 3 seconds
+    }, 2500); // Changed to 2.5 seconds to cycle through all 8 cards in reasonable time
 
     return () => clearInterval(interval);
-  }, []);
+  }, [cardMessages.length]);
 
   // Canvas animation effect
   useEffect(() => {
@@ -184,90 +188,160 @@ export const Hero = () => {
                 className="lg:w-1/2 mt-12 lg:mt-0 relative"
               >
                 <div className="relative" ref={imageRef}>
-                  {/* Animated Mobile Banking App Image */}
-                  <div className="relative w-full rounded-lg shadow-2xl overflow-hidden" style={{ height: "400px" }}>
-                    {/* Floating elements */}
-                    <motion.div 
-                      className="absolute z-10 top-10 right-16 bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white"
-                      animate={{ 
-                        y: [0, -15, 0], 
-                        rotate: [0, 10, 0]
-                      }}
-                      transition={{ 
-                        duration: 3, 
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                        <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z" />
-                        <path fillRule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" clipRule="evenodd" />
-                      </svg>
-                    </motion.div>
+                  {/* Mobile Phone App Mockup */}
+                  <div className="relative mx-auto" style={{ maxWidth: "280px" }}>
+                    {/* Phone frame */}
+                    <div className="relative rounded-[3rem] overflow-hidden border-8 border-black bg-black shadow-2xl" style={{ height: "550px" }}>
+                      {/* Phone status bar */}
+                      <div className="absolute top-0 left-0 w-full bg-black text-white z-10 flex justify-between items-center px-6 py-2 text-xs">
+                        <span>9:41</span>
+                        <div className="flex items-center space-x-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h8m-8 5h8m-8 5h8" />
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.926 2c.644 0 1.167.522 1.167 1.167v17.666c0 .645-.523 1.167-1.167 1.167h-7.002C13.281 22 13 21.719 13 21.075V2.925c0-.644.281-.925.924-.925h7.002z" />
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      {/* Phone content */}
+                      <div className="relative w-full h-full pt-8 bg-gradient-to-b from-purple-800 to-purple-600">
+                        {/* App header */}
+                        <div className="flex justify-between items-center px-5 py-2 text-white">
+                          <div>
+                            <h3 className="font-bold text-lg">Hello, Sarah</h3>
+                            <p className="text-xs opacity-80">Welcome back</p>
+                          </div>
+                          <div className="bg-white rounded-full h-8 w-8 flex items-center justify-center">
+                            <span className="text-purple-700 font-bold text-sm">S</span>
+                          </div>
+                        </div>
+                        
+                        {/* Main balance card */}
+                        <motion.div 
+                          className="mx-4 my-4 bg-white rounded-xl p-4 shadow-lg"
+                          animate={{ y: [2, -2, 2] }}
+                          transition={{ duration: 4, repeat: Infinity }}
+                        >
+                          <p className="text-xs text-gray-500">Total Balance</p>
+                          <h2 className="text-2xl font-bold">$2,748.00</h2>
+                          <div className="flex items-center mt-1 text-green-500 text-xs">
+                            <TrendingUp size={14} />
+                            <span className="ml-1">+15% this month</span>
+                          </div>
+                          
+                          <div className="flex justify-between mt-4">
+                            <motion.button 
+                              whileTap={{ scale: 0.95 }}
+                              className="bg-purple-100 rounded-lg px-3 py-2 text-purple-700 text-xs font-medium flex items-center"
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                              </svg>
+                              Add Money
+                            </motion.button>
+                            <motion.button 
+                              whileTap={{ scale: 0.95 }}
+                              className="bg-purple-100 rounded-lg px-3 py-2 text-purple-700 text-xs font-medium flex items-center"
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                              </svg>
+                              More
+                            </motion.button>
+                          </div>
+                        </motion.div>
+                        
+                        {/* Quick actions */}
+                        <div className="mx-4 my-4 bg-white/10 backdrop-blur-md rounded-xl p-4">
+                          <p className="text-xs text-white mb-3">Quick Actions</p>
+                          <div className="flex justify-between">
+                            <motion.div 
+                              whileHover={{ y: -5 }}
+                              className="flex flex-col items-center"
+                            >
+                              <div className="bg-white/20 rounded-full h-10 w-10 flex items-center justify-center mb-1">
+                                <CreditCard size={18} className="text-white" />
+                              </div>
+                              <span className="text-white text-xs">Send</span>
+                            </motion.div>
+                            <motion.div 
+                              whileHover={{ y: -5 }}
+                              className="flex flex-col items-center"
+                            >
+                              <div className="bg-white/20 rounded-full h-10 w-10 flex items-center justify-center mb-1">
+                                <Wallet size={18} className="text-white" />
+                              </div>
+                              <span className="text-white text-xs">Request</span>
+                            </motion.div>
+                            <motion.div 
+                              whileHover={{ y: -5 }}
+                              className="flex flex-col items-center"
+                            >
+                              <div className="bg-white/20 rounded-full h-10 w-10 flex items-center justify-center mb-1">
+                                <PiggyBank size={18} className="text-white" />
+                              </div>
+                              <span className="text-white text-xs">Save</span>
+                            </motion.div>
+                            <motion.div 
+                              whileHover={{ y: -5 }}
+                              className="flex flex-col items-center"
+                            >
+                              <div className="bg-white/20 rounded-full h-10 w-10 flex items-center justify-center mb-1">
+                                <LineChart size={18} className="text-white" />
+                              </div>
+                              <span className="text-white text-xs">Invest</span>
+                            </motion.div>
+                          </div>
+                        </div>
+                        
+                        {/* Recent Transactions */}
+                        <div className="mx-4 mt-4 bg-white rounded-t-xl p-4">
+                          <div className="flex justify-between items-center mb-4">
+                            <p className="font-medium">Recent Transactions</p>
+                            <span className="text-purple-700 text-xs">View All</span>
+                          </div>
+                          <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                            <div className="flex items-center">
+                              <div className="bg-blue-100 rounded-full h-8 w-8 flex items-center justify-center mr-3">
+                                <CreditCard size={16} className="text-blue-500" />
+                              </div>
+                              <div>
+                                <p className="text-sm font-medium">Amazon</p>
+                                <p className="text-xs text-gray-500">May 30</p>
+                              </div>
+                            </div>
+                            <span className="text-sm">-$28.90</span>
+                          </div>
+                          <div className="flex items-center justify-between py-2">
+                            <div className="flex items-center">
+                              <div className="bg-green-100 rounded-full h-8 w-8 flex items-center justify-center mr-3">
+                                <DollarSign size={16} className="text-green-500" />
+                              </div>
+                              <div>
+                                <p className="text-sm font-medium">Salary</p>
+                                <p className="text-xs text-gray-500">May 28</p>
+                              </div>
+                            </div>
+                            <span className="text-sm text-green-500">+$1,200.00</span>
+                          </div>
+                        </div>
+                      
+                        {/* Bottom app bar with home indicator */}
+                        <div className="absolute bottom-0 left-0 right-0">
+                          <div className="flex justify-center">
+                            <div className="bg-white h-1 w-1/3 rounded-full mb-1"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     
-                    <motion.div 
-                      className="absolute z-10 bottom-20 left-10 bg-green-500 rounded-full w-10 h-10 flex items-center justify-center text-white"
-                      animate={{ 
-                        y: [0, 15, 0], 
-                        rotate: [0, -15, 0] 
-                      }}
-                      transition={{ 
-                        duration: 4, 
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 1
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                        <path d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 01-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004zM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 01-.921.42z" />
-                        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v.816a3.836 3.836 0 00-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 01-.921-.421l-.879-.66a.75.75 0 00-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 001.5 0v-.81a3.833 3.833 0 001.719-.756c.712-.566 1.112-1.35 1.112-2.178 0-.829-.4-1.612-1.113-2.178a3.833 3.833 0 00-1.718-.756V8.334c.29.082.559.213.786.393l.415.33a.75.75 0 00.933-1.175l-.415-.33a3.836 3.836 0 00-1.719-.755V6z" clipRule="evenodd" />
-                      </svg>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="absolute z-10 top-24 left-16 bg-blue-500 rounded-full w-8 h-8 flex items-center justify-center text-white"
-                      animate={{ 
-                        x: [0, 15, 0],
-                        scale: [1, 1.2, 1]
-                      }}
-                      transition={{ 
-                        duration: 5, 
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 0.5
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                        <path d="M18 1.5c2.9 0 5.25 2.35 5.25 5.25v3.75a.75.75 0 01-1.5 0V6.75a3.75 3.75 0 10-7.5 0v3a3 3 0 013 3v6.75a3 3 0 01-3 3H3.75a3 3 0 01-3-3v-6.75a3 3 0 013-3h9v-3c0-2.9 2.35-5.25 5.25-5.25z" />
-                      </svg>
-                    </motion.div>
-                    
-                    {/* Main mobile app image */}
-                    <img 
-                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" 
-                      alt="Mobile banking app" 
-                      className="w-full h-full object-cover"
-                      onLoad={() => setIsImageLoaded(true)}
-                    />
-                    
-                    {/* Animated overlays */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-tr from-purple-700/30 to-transparent"
-                      animate={{ opacity: [0.4, 0.2, 0.4] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    />
-                    
-                    {/* Animated progress bar */}
-                    <motion.div 
-                      className="absolute bottom-0 left-0 h-2 bg-gradient-to-r from-purple-600 via-blue-500 to-green-400"
-                      initial={{ width: "0%" }}
-                      animate={{ width: "100%" }}
-                      transition={{ 
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "reverse" 
-                      }}
-                    />
+                    {/* Phone notch */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-7 bg-black rounded-b-3xl"></div>
                   </div>
                   
                   {/* Animated notification cards */}
@@ -312,26 +386,7 @@ export const Hero = () => {
                     ))}
                   </AnimatePresence>
                   
-                  {/* Static notification badge (at bottom left) */}
-                  <motion.div 
-                    className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg"
-                    animate={{ 
-                      y: [0, -5, 0],
-                      boxShadow: [
-                        "0 4px 6px -1px rgba(0,0,0,0.1)", 
-                        "0 10px 15px -3px rgba(0,0,0,0.1)", 
-                        "0 4px 6px -1px rgba(0,0,0,0.1)"
-                      ]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                      <span className="text-sm font-semibold">Secure Transactions</span>
-                    </div>
-                  </motion.div>
-                  
-                  {/* Purple icon at top right */}
+                  {/* Network icon at top right */}
                   <motion.div 
                     className="absolute -top-4 -right-4 bg-purple-100 p-3 rounded-full shadow-md"
                     whileHover={{ rotate: 360 }}
@@ -358,13 +413,16 @@ export const Hero = () => {
 
 // Helper function to get final positions for card animations
 function getCardFinalPosition(index: number, axis: "x" | "y") {
-  // Define final positions for each card from the center
+  // Define final positions for each card from the center (adapted for 8 cards)
   const positions = [
     { x: -150, y: -120 },   // Top left
-    { x: 0, y: -150 },      // Top center
-    { x: 150, y: -80 },     // Top right
+    { x: -50, y: -170 },    // Top left-center
+    { x: 50, y: -170 },     // Top right-center
+    { x: 150, y: -120 },    // Top right
     { x: -180, y: 0 },      // Middle left
-    { x: 180, y: 80 },      // Middle right
+    { x: 180, y: 0 },       // Middle right
+    { x: -120, y: 120 },    // Bottom left
+    { x: 120, y: 120 },     // Bottom right
   ];
   
   return positions[index % positions.length][axis];
