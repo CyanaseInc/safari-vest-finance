@@ -1,7 +1,7 @@
 
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
-import { Code, FileCode, ListChecks, Webhook } from "lucide-react"
+import { Code, FileCode, ListChecks, Webhook, Check, ShieldCheck, BarChart3 } from "lucide-react"
 import { Footer } from "@/components/Footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { useState } from "react"
@@ -14,8 +14,17 @@ const Api = () => {
       <Navigation />
       <div className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">API Integration</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Cyanase API</h1>
+          <h2 className="text-2xl text-gray-700 mb-8">Powering Embedded Investing Across Africa</h2>
           
+          <div className="mb-12">
+            <p className="text-lg text-gray-600">
+              The Cyanase API allows any fintech, e-commerce platform, or social network to embed investing 
+              and savings features into their own app or platform — without building financial infrastructure 
+              from scratch or dealing with regulatory complexity.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Integrate Investment Services</h2>
@@ -58,6 +67,212 @@ const Api = () => {
             </div>
           </div>
           
+          {/* How It Works Section */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-8 flex items-center gap-2">
+              <span className="text-[#252859]">⚙️</span> How It Works
+            </h2>
+            
+            <div className="space-y-10">
+              {/* Authentication */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">1</span>
+                  Authentication
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Partners get secure API keys to authenticate and access services.</p>
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>OAuth2 or token-based authentication ensures secure access to customer and transaction endpoints.</p>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Account Creation & KYC */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">2</span>
+                  Account Creation & KYC
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Create investment accounts for users via a single API call.</p>
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Built-in eKYC support: the API supports uploading documents or using mobile money KYC for identity verification.</p>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Deposits & Withdrawals */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">3</span>
+                  Deposits & Withdrawals
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>API endpoints allow users to deposit into their investment wallet using mobile money (MTN, Airtel, etc.).</p>
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Withdrawals can be initiated through the API, routed back to mobile money accounts.</p>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Investment Products */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">4</span>
+                  Investment Products
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Access a range of unit trust products, fixed income products, or savings goals via API.</p>
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Developers can offer these products natively in their own apps by pulling product metadata and pricing.</p>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Transactions & Returns */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">5</span>
+                  Transactions & Returns
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Track transactions (deposits, returns, redemptions) for each user account.</p>
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Pull real-time balances, historical returns, and interest earned per product.</p>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Group Investing Support */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">6</span>
+                  Group Investing Support
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>The API supports creation of groups, contribution tracking, goal management, and loan workflows.</p>
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Ideal for social saving platforms or fintechs with SACCO-like features.</p>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Webhooks */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="bg-[#252859] text-white w-7 h-7 rounded-full flex items-center justify-center mr-3">7</span>
+                  Webhooks
+                </h3>
+                <ul className="space-y-3 pl-10">
+                  <li className="flex gap-2">
+                    <Check className="text-[#252859] flex-shrink-0 mt-1" size={18} />
+                    <p>Integrate webhooks to get notified in real time when:</p>
+                    <ul className="space-y-2 mt-2">
+                      <li>- A deposit is successful</li>
+                      <li>- A withdrawal is initiated</li>
+                      <li>- KYC is approved or declined</li>
+                      <li>- A group hits a milestone</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          {/* Regulatory & Compliance Section */}
+          <div className="mt-16 bg-[#252859]/5 p-8 rounded-xl">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+              <span>🏦</span> Regulatory & Compliance Built In
+            </h2>
+            <p className="text-lg mb-6">Cyanase handles:</p>
+            <ul className="space-y-4 mb-6">
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="text-[#252859] mt-1 flex-shrink-0" />
+                <span>Fund custody with licensed fund managers</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="text-[#252859] mt-1 flex-shrink-0" />
+                <span>Anti-Money Laundering (AML) rules</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="text-[#252859] mt-1 flex-shrink-0" />
+                <span>Reporting for tax and compliance</span>
+              </li>
+            </ul>
+            <p className="text-gray-700">
+              This means platforms using the API don't need to register as investment firms — Cyanase handles the backend risk and regulation.
+            </p>
+          </div>
+          
+          {/* Example Use Cases */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-8 flex items-center gap-2">
+              <span>🔗</span> Example Use Cases
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="border border-gray-200">
+                <CardContent className="pt-6">
+                  <div className="bg-[#252859]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                    <BarChart3 className="text-[#252859]" />
+                  </div>
+                  <h3 className="font-semibold mb-3">Mobile Wallet Integration</h3>
+                  <p className="text-gray-600">
+                    A mobile wallet wants to offer an "Invest" button → uses Cyanase API to let users invest directly.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-gray-200">
+                <CardContent className="pt-6">
+                  <div className="bg-[#252859]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                    <BarChart3 className="text-[#252859]" />
+                  </div>
+                  <h3 className="font-semibold mb-3">E-commerce Savings</h3>
+                  <p className="text-gray-600">
+                    An e-commerce site wants to give users a "Save for Later" wallet → backed by Cyanase interest-earning products.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-gray-200">
+                <CardContent className="pt-6">
+                  <div className="bg-[#252859]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                    <BarChart3 className="text-[#252859]" />
+                  </div>
+                  <h3 className="font-semibold mb-3">Social Savings Groups</h3>
+                  <p className="text-gray-600">
+                    A social platform wants to let users form saving groups → connects to Cyanase group endpoints and payment rails.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
           {/* API Code Examples Section */}
           <div className="mt-16">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">API Code Examples</h2>
