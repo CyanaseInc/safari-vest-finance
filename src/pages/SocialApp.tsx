@@ -22,7 +22,7 @@ const SocialApp = () => {
       <Navigation />
       <div className="pt-16">
         {/* Hero Section - removed gradient */}
-        <div className={`bg-${primaryColor} text-white`} style={{ backgroundColor: primaryColor }}>
+        <div className="bg-white text-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <motion.div 
@@ -30,16 +30,16 @@ const SocialApp = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">Community-Powered Finance</h1>
-                <p className="text-xl mb-8 text-white">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Community-Powered Finance</h1>
+                <p className="text-xl mb-8 text-gray-700">
                   Digitizing village savings groups for the mobile generation. Save, invest, 
                   and grow together through technology designed for African communities.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button className="bg-white text-[#7E69AB] hover:bg-gray-100 hover:text-[#9b87f5] font-medium">
+                  <Button className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white font-medium">
                     Download App <Share2 className="ml-2 h-4 w-4" />
                   </Button>
-                  <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-[#9b87f5]">
+                  <Button variant="outline" className="border-[#9b87f5] text-[#9b87f5] hover:bg-[#9b87f5]/10">
                     Learn More
                   </Button>
                 </div>
@@ -50,19 +50,151 @@ const SocialApp = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
+                {/* Social Finance App Mockup */}
                 <div className="relative mx-auto" style={{ maxWidth: "280px" }}>
                   {/* Phone Frame */}
                   <div className="relative rounded-[2rem] overflow-hidden border-8 border-black shadow-2xl">
-                    <img 
-                      src="/social-app-screenshot.jpg" 
-                      alt="Social Savings App" 
-                      className="w-full"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "https://placehold.co/300x600/9b87f5/ffffff?text=Cyanase+Social+App";
-                      }}
-                    />
+                    {/* App UI - Social Finance Design */}
+                    <div className="bg-white h-[600px] overflow-hidden">
+                      {/* App Header */}
+                      <div className="bg-[#9b87f5] px-4 py-5 text-white">
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="font-bold text-lg">Village Savings</h3>
+                          <div className="bg-white rounded-full h-8 w-8 flex items-center justify-center">
+                            <span className="text-[#9b87f5] font-bold">JD</span>
+                          </div>
+                        </div>
+                        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-sm opacity-90">Community Balance</span>
+                            <span className="text-xs bg-white/30 px-2 py-1 rounded-full">Group</span>
+                          </div>
+                          <div className="text-2xl font-bold mb-1">UGX 5,280,000</div>
+                          <div className="flex justify-between items-center text-xs">
+                            <div className="flex items-center">
+                              <TrendingUp size={12} className="mr-1" />
+                              <span>+15.4% this month</span>
+                            </div>
+                            <span>23 members</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Group Activities */}
+                      <div className="px-4 py-5">
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="font-medium text-gray-900">Recent Activity</h3>
+                          <span className="text-[#9b87f5] text-xs font-medium">View All</span>
+                        </div>
+                        
+                        {/* Activity Cards */}
+                        <div className="space-y-3">
+                          {/* Activity 1 */}
+                          <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="bg-green-100 rounded-full p-1 mr-2">
+                                  <Wallet size={14} className="text-green-600" />
+                                </div>
+                                <span className="font-medium text-sm">Sarah deposited</span>
+                              </div>
+                              <span className="text-xs text-gray-500">2h ago</span>
+                            </div>
+                            <div className="text-green-600 font-medium">+ UGX 250,000</div>
+                          </div>
+                          
+                          {/* Activity 2 */}
+                          <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="bg-blue-100 rounded-full p-1 mr-2">
+                                  <MessageCircle size={14} className="text-blue-600" />
+                                </div>
+                                <span className="font-medium text-sm">Group Discussion</span>
+                              </div>
+                              <span className="text-xs text-gray-500">4h ago</span>
+                            </div>
+                            <div className="text-gray-600 text-sm">Land purchase planning meeting this Saturday</div>
+                          </div>
+                          
+                          {/* Activity 3 */}
+                          <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="bg-orange-100 rounded-full p-1 mr-2">
+                                  <Users2 size={14} className="text-orange-600" />
+                                </div>
+                                <span className="font-medium text-sm">New Member</span>
+                              </div>
+                              <span className="text-xs text-gray-500">1d ago</span>
+                            </div>
+                            <div className="text-gray-600 text-sm">John joined the group</div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Quick Actions */}
+                      <div className="px-4 pb-6">
+                        <h3 className="font-medium text-gray-900 mb-3">Quick Actions</h3>
+                        <div className="grid grid-cols-4 gap-3">
+                          <div className="flex flex-col items-center">
+                            <div className="bg-[#9b87f5]/10 rounded-full p-3 mb-1">
+                              <Wallet size={18} className="text-[#9b87f5]" />
+                            </div>
+                            <span className="text-xs text-gray-700">Deposit</span>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-[#9b87f5]/10 rounded-full p-3 mb-1">
+                              <PiggyBank size={18} className="text-[#9b87f5]" />
+                            </div>
+                            <span className="text-xs text-gray-700">Save</span>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-[#9b87f5]/10 rounded-full p-3 mb-1">
+                              <Users2 size={18} className="text-[#9b87f5]" />
+                            </div>
+                            <span className="text-xs text-gray-700">Group</span>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-[#9b87f5]/10 rounded-full p-3 mb-1">
+                              <TrendingUp size={18} className="text-[#9b87f5]" />
+                            </div>
+                            <span className="text-xs text-gray-700">Invest</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Bottom Navigation */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3">
+                        <div className="flex justify-between items-center">
+                          <div className="flex flex-col items-center text-[#9b87f5]">
+                            <PiggyBank size={20} />
+                            <span className="text-xs mt-1">Save</span>
+                          </div>
+                          <div className="flex flex-col items-center text-gray-400">
+                            <Users2 size={20} />
+                            <span className="text-xs mt-1">Groups</span>
+                          </div>
+                          <div className="flex flex-col items-center text-gray-400">
+                            <TrendingUp size={20} />
+                            <span className="text-xs mt-1">Invest</span>
+                          </div>
+                          <div className="flex flex-col items-center text-gray-400">
+                            <MessageCircle size={20} />
+                            <span className="text-xs mt-1">Chat</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                
+                {/* Decorative elements around the phone */}
+                <div className="absolute -top-6 -right-6 bg-[#9b87f5]/10 p-3 rounded-full">
+                  <Users2 size={24} className="text-[#9b87f5]" />
+                </div>
+                <div className="absolute -bottom-6 -left-6 bg-[#9b87f5]/10 p-3 rounded-full">
+                  <PiggyBank size={24} className="text-[#9b87f5]" />
                 </div>
               </motion.div>
             </div>
