@@ -17,7 +17,16 @@ export const WhatWeDo = () => {
             </Button>
           </div>
           <div className="mt-10 lg:mt-0">
-            <img src="/investment-platform.svg" alt="Investment Platform" className="rounded-lg shadow-xl" />
+            <img 
+              src="/stock-market-mockup.svg" 
+              alt="Stock Market Platform" 
+              className="rounded-lg shadow-xl" 
+              style={{ 
+                maxWidth: "100%", 
+                height: "auto",
+                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+            />
           </div>
         </div>
       </div>
