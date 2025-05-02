@@ -1,10 +1,11 @@
+
+import React, { useEffect, useState, useRef } from "react"
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
 import { Check, MessageCircle, Share2, Users2, Wallet, PiggyBank, BookOpen, TrendingUp, Coins, ArrowUp, ArrowDown } from "lucide-react"
 import { Footer } from "@/components/Footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
-import { useEffect, useState, useRef } from "react"
 
 const SocialApp = () => {
   const fadeInUp = {
