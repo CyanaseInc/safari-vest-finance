@@ -2,28 +2,8 @@
 import React from "react"
 import { Navigation } from "@/components/Navigation"
 import { Footer } from "@/components/Footer"
-import { 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger 
-} from "@/components/ui/tabs"
-import { 
-  Card,
-  CardContent, 
-  CardDescription, 
-  CardHeader, 
-  CardTitle 
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from "@/components/ui/table"
 import { 
   Building, 
   Banknote,
@@ -31,8 +11,14 @@ import {
   Users,
   Hospital,
   GraduationCap,
-  ChartBar
+  ChartBar,
+  ChevronDown
 } from "lucide-react"
+import { 
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from "@/components/ui/collapsible"
 
 const FundManagers = () => {
   const sectors = [
@@ -104,157 +90,170 @@ const FundManagers = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <div className="pt-16 pb-16">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-b from-purple-50 to-white py-12 mb-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">Partner Sectors</h1>
-              <p className="text-lg text-gray-600 mb-8">
-                Cyanase partners with multiple sectors to enable investing and financial inclusion in Africa, especially in underserved and developing markets.
-              </p>
-              <div className="flex flex-wrap justify-center gap-2 mb-6">
-                {sectors.map((sector) => (
-                  <Badge key={sector.id} variant="outline" className="text-purple-700 bg-purple-50 border-purple-200 px-3 py-1">
-                    {sector.emoji} {sector.name}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Main Content */}
+      
+      {/* Hero Section with Gradient Background */}
+      <div className="pt-24 pb-12 bg-gradient-to-b from-purple-100 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Interactive Tabs Section */}
-          <Tabs defaultValue="visual" className="w-full mb-16">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="visual">Visual Overview</TabsTrigger>
-              <TabsTrigger value="detail">Detailed View</TabsTrigger>
-              <TabsTrigger value="table">Summary Table</TabsTrigger>
-            </TabsList>
-
-            {/* Visual Cards View */}
-            <TabsContent value="visual" className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {sectors.map((sector) => (
-                  <Card key={sector.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <CardHeader className="bg-purple-50 flex flex-row items-center gap-4">
-                      {sector.icon}
-                      <div>
-                        <CardTitle>{sector.emoji} {sector.name}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="pt-6">
-                      <p className="text-gray-600 mb-4">{sector.description}</p>
-                      <div>
-                        <h4 className="font-semibold text-purple-700">Use Case:</h4>
-                        <p className="text-gray-700">{sector.value}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            {/* Detailed Accordion View */}
-            <TabsContent value="detail">
-              <div className="space-y-6">
-                {sectors.map((sector) => (
-                  <div key={sector.id} className="border border-gray-200 rounded-lg overflow-hidden">
-                    <div className="flex items-center gap-4 bg-purple-50 p-6">
-                      {sector.icon}
-                      <h3 className="text-xl font-bold">{sector.emoji} {sector.name}</h3>
-                    </div>
-                    <div className="p-6 space-y-4">
-                      <p className="text-gray-700">{sector.description}</p>
-                      
-                      {sector.examples && (
-                        <div>
-                          <h4 className="text-purple-700 font-medium">Examples:</h4>
-                          <p className="text-gray-600">{sector.examples}</p>
-                        </div>
-                      )}
-                      
-                      <div>
-                        <h4 className="text-purple-700 font-medium">Value Proposition:</h4>
-                        <p className="text-gray-600">{sector.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </TabsContent>
-
-            {/* Summary Table View */}
-            <TabsContent value="table">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Sector Value Proposition Summary</CardTitle>
-                  <CardDescription>
-                    How Cyanase brings value to different sectors
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="w-[100px]">Sector</TableHead>
-                        <TableHead>Cyanase Value Proposition</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-medium">Fintechs</TableCell>
-                        <TableCell>Embedded investing APIs</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">E-commerce</TableCell>
-                        <TableCell>Reward-based investing</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Social networks</TableCell>
-                        <TableCell>Group savings and goals</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">SACCOs & Healthcare</TableCell>
-                        <TableCell>Secure digital investment tools</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Education & NGOs</TableCell>
-                        <TableCell>Financial literacy & inclusion</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Village groups</TableCell>
-                        <TableCell>Digitized community investing</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Fund managers</TableCell>
-                        <TableCell>Access to new retail markets</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-          
-          {/* Call to Action */}
-          <div className="bg-purple-50 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-purple-900 mb-4">Become a Partner</h2>
-            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Join our ecosystem and leverage Cyanase's investment infrastructure to bring financial inclusion to your customers.
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Partner Sectors
+            </h1>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Cyanase partners with multiple sectors to enable investing and financial inclusion in Africa, 
+              especially in underserved and developing markets.
             </p>
-            <a 
-              href="/contact" 
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg-purple-700 text-white hover:bg-purple-800 h-10 px-6 py-2"
-            >
-              Contact Our Partnership Team
-            </a>
+          </div>
+
+          {/* Floating Badge Cloud */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in">
+            {sectors.map((sector) => (
+              <Badge 
+                key={sector.id} 
+                variant="outline" 
+                className="text-purple-700 bg-purple-50 border-purple-200 px-3 py-1.5 text-sm mb-2 hover:bg-purple-100 transition-colors"
+              >
+                {sector.emoji} {sector.name}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>
+      
+      {/* Main Content - Visually Separated Sections */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Sector Showcase */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {sectors.slice(0, 2).map((sector) => (
+            <Card key={sector.id} className="overflow-hidden border-0 shadow-lg bg-gradient-to-br from-purple-50 to-white">
+              <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                <div className="p-3 rounded-full bg-purple-100">
+                  {sector.icon}
+                </div>
+                <CardTitle className="text-2xl">
+                  {sector.emoji} {sector.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">{sector.description}</p>
+                {sector.examples && (
+                  <div className="mb-2">
+                    <span className="font-semibold text-purple-700">Examples:</span> {sector.examples}
+                  </div>
+                )}
+                <div>
+                  <span className="font-semibold text-purple-700">Use Case:</span> {sector.value}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Expandable Sectors */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional Partner Sectors</h2>
+          
+          <div className="space-y-4">
+            {sectors.slice(2).map((sector) => (
+              <Collapsible key={sector.id} className="border border-gray-200 rounded-lg overflow-hidden">
+                <CollapsibleTrigger className="flex w-full items-center justify-between p-4 bg-white hover:bg-purple-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-purple-100">
+                      {sector.icon}
+                    </div>
+                    <h3 className="text-xl font-medium">
+                      {sector.emoji} {sector.name}
+                    </h3>
+                  </div>
+                  <div className="text-purple-500">
+                    <ChevronDown className="h-5 w-5" />
+                  </div>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="p-4 border-t border-gray-200 bg-white">
+                  <p className="text-gray-600 mb-4">{sector.description}</p>
+                  {sector.examples && (
+                    <div className="mb-2">
+                      <span className="font-semibold text-purple-700">Examples:</span> {sector.examples}
+                    </div>
+                  )}
+                  <div>
+                    <span className="font-semibold text-purple-700">Use Case:</span> {sector.value}
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            ))}
+          </div>
+        </div>
+
+        {/* Value Proposition Summary */}
+        <div className="bg-purple-50 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-purple-900 mb-6 text-center">How Cyanase Brings Value</h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Banknote className="h-6 w-6 text-purple-500 mr-2" />
+                <h3 className="font-semibold">Fintechs</h3>
+              </div>
+              <p className="text-gray-600">Embedded investing APIs for seamless integration</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Briefcase className="h-6 w-6 text-purple-500 mr-2" />
+                <h3 className="font-semibold">E-commerce</h3>
+              </div>
+              <p className="text-gray-600">Reward-based investing through purchases</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Users className="h-6 w-6 text-purple-500 mr-2" />
+                <h3 className="font-semibold">Social networks</h3>
+              </div>
+              <p className="text-gray-600">Group savings and collaborative investment goals</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Hospital className="h-6 w-6 text-purple-500 mr-2" />
+                <h3 className="font-semibold">SACCOs & Healthcare</h3>
+              </div>
+              <p className="text-gray-600">Secure digital investment tools for cooperatives</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <GraduationCap className="h-6 w-6 text-purple-500 mr-2" />
+                <h3 className="font-semibold">Education & NGOs</h3>
+              </div>
+              <p className="text-gray-600">Financial literacy & inclusion programs</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Building className="h-6 w-6 text-purple-500 mr-2" />
+                <h3 className="font-semibold">Village groups</h3>
+              </div>
+              <p className="text-gray-600">Digitized community investing platforms</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-16 text-center">
+          <h2 className="text-2xl font-bold text-purple-900 mb-4">Become a Partner</h2>
+          <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+            Join our ecosystem and leverage Cyanase's investment infrastructure to bring financial inclusion to your customers.
+          </p>
+          <a 
+            href="/contact" 
+            className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium bg-purple-700 text-white hover:bg-purple-800 h-10 px-6 py-2 transition-colors"
+          >
+            Contact Our Partnership Team
+          </a>
+        </div>
+      </div>
+      
       <Footer />
     </div>
   )

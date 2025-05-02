@@ -30,7 +30,7 @@ export const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/students" className={linkClass("/students")}>Students</Link>
-            <Link to="/fund-managers" className={linkClass("/fund-managers")}>Fund Managers</Link>
+            <Link to="/fund-managers" className={linkClass("/fund-managers")}>Sectors</Link>
             <Link to="/api" className={linkClass("/api")}>API</Link>
             <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
             <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
@@ -55,7 +55,7 @@ export const Navigation = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link to="/students" className={linkClass("/students")}>Students</Link>
-              <Link to="/fund-managers" className={linkClass("/fund-managers")}>Fund Managers</Link>
+              <Link to="/fund-managers" className={linkClass("/fund-managers")}>Sectors</Link>
               <Link to="/api" className={linkClass("/api")}>API</Link>
               <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
               <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>

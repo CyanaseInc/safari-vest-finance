@@ -31,6 +31,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/students" element={<Students />} />
               <Route path="/fund-managers" element={<FundManagers />} />
+              <Route path="/sectors" element={<FundManagers />} /> {/* Added alias route */}
               <Route path="/api" element={<Api />} />
               <Route path="/social-app" element={<SocialApp />} />
               <Route path="/goal-based-investing" element={<GoalBasedInvesting />} />
