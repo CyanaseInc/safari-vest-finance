@@ -299,7 +299,7 @@ const Api = () => {
                       transition={{ duration: 0.5, delay: 1.0 }}
                       className="text-cyanase-secondary"
                     >
-                      const cyanase = new CyanaseAPI({
+                      const cyanase = new CyanaseAPI({`{`}
                     </motion.div>
                     
                     <motion.div 
@@ -308,7 +308,7 @@ const Api = () => {
                       transition={{ duration: 0.5, delay: 1.2 }}
                       className="pl-6 text-white/90"
                     >
-                      apiKey: '<span className="text-cyanase-secondary">YOUR_API_KEY</span>',
+                      apiKey: &apos;<span className="text-cyanase-secondary">YOUR_API_KEY</span>&apos;,
                     </motion.div>
                     
                     <motion.div 
@@ -317,7 +317,7 @@ const Api = () => {
                       transition={{ duration: 0.5, delay: 1.4 }}
                       className="pl-6 text-white/90"
                     >
-                      environment: '<span className="text-cyanase-secondary">production</span>'
+                      environment: &apos;<span className="text-cyanase-secondary">production</span>&apos;
                     </motion.div>
                     
                     <motion.div 
@@ -326,7 +326,7 @@ const Api = () => {
                       transition={{ duration: 0.5, delay: 1.6 }}
                       className="text-cyanase-secondary"
                     >
-                      });
+                      {`});`}
                     </motion.div>
                     
                     <div className="mt-4">
@@ -345,7 +345,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 2.0 }}
                         className="text-white"
                       >
-                        async function createInvestment() {'{'}
+                        async function createInvestment() {`{`}
                       </motion.div>
                       
                       <motion.div 
@@ -354,7 +354,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 2.2 }}
                         className="pl-6 text-white/90"
                       >
-                        try {'{'}
+                        try {`{`}
                       </motion.div>
                       
                       <motion.div 
@@ -363,7 +363,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 2.4 }}
                         className="pl-12 text-white/90"
                       >
-                        const response = await cyanase.investments.<span className="text-cyanase-secondary">create</span>({'{'}
+                        const response = await cyanase.investments.<span className="text-cyanase-secondary">create</span>({`{`}
                       </motion.div>
                       
                       <motion.div 
@@ -372,7 +372,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 2.6 }}
                         className="pl-16 text-white/90"
                       >
-                        userId: '<span className="text-green-400">user_123456</span>',
+                        userId: &apos;<span className="text-green-400">user_123456</span>&apos;,
                       </motion.div>
                       
                       <motion.div 
@@ -390,7 +390,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 3.0 }}
                         className="pl-16 text-white/90"
                       >
-                        currency: '<span className="text-cyanase-secondary">UGX</span>',
+                        currency: &apos;<span className="text-cyanase-secondary">UGX</span>&apos;,
                       </motion.div>
                       
                       <motion.div 
@@ -399,7 +399,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 3.2 }}
                         className="pl-16 text-white/90"
                       >
-                        type: '<span className="text-cyanase-secondary">fixed_income</span>'
+                        type: &apos;<span className="text-cyanase-secondary">fixed_income</span>&apos;
                       </motion.div>
                       
                       <motion.div 
@@ -408,7 +408,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 3.4 }}
                         className="pl-12 text-white/90"
                       >
-                        {'});'}
+                        {`});`}
                       </motion.div>
                       
                       <motion.div 
@@ -426,7 +426,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 3.8 }}
                         className="pl-6 text-white/90"
                       >
-                        {'} catch (error) {'}
+                        {`} catch (error) {`}
                       </motion.div>
                       
                       <motion.div 
@@ -444,7 +444,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 4.2 }}
                         className="pl-6 text-white/90"
                       >
-                        {'}'}
+                        {`}`}
                       </motion.div>
                       
                       <motion.div 
@@ -453,7 +453,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 4.4 }}
                         className="text-white"
                       >
-                        {'}'}
+                        {`}`}
                       </motion.div>
                     </div>
                   </div>
