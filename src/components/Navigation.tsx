@@ -35,7 +35,7 @@ export const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/students" className={linkClass("/students")}>Students</Link>
+            <Link to="/investment-products" className={linkClass("/investment-products")}>Investment Products</Link>
             <Link to="/fund-managers" className={linkClass("/fund-managers")}>Sectors</Link>
             <Link to="/api" className={linkClass("/api")}>API</Link>
             <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
@@ -65,11 +65,11 @@ export const Navigation = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
               <Link 
-                to="/students" 
-                className={`${linkClass("/students")} block py-2`}
+                to="/investment-products" 
+                className={`${linkClass("/investment-products")} block py-2`}
                 onClick={toggleMenu}
               >
-                Students
+                Investment Products
               </Link>
               <Link 
                 to="/fund-managers" 

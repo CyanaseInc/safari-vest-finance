@@ -94,3 +94,101 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Responsive adjustments */
+@layer utilities {
+  /* Improved spacing for mobile */
+  .responsive-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Responsive text sizes */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl;
+  }
+  
+  .text-responsive-3xl {
+    @apply text-3xl sm:text-4xl;
+  }
+  
+  /* Gap responsive helpers */
+  .gap-responsive-sm {
+    @apply gap-2 sm:gap-4;
+  }
+  
+  .gap-responsive-md {
+    @apply gap-4 sm:gap-6;
+  }
+  
+  .gap-responsive-lg {
+    @apply gap-6 sm:gap-8;
+  }
+  
+  /* Padding responsive helpers */
+  .p-responsive-sm {
+    @apply p-3 sm:p-4;
+  }
+  
+  .p-responsive-md {
+    @apply p-4 sm:p-6;
+  }
+  
+  .p-responsive-lg {
+    @apply p-6 sm:p-8;
+  }
+}
+
+/* Improved mobile spacing */
+@media (max-width: 640px) {
+  h1, h2, h3 {
+    word-wrap: break-word;
+  }
+  
+  .card-content {
+    padding: 1rem !important;
+  }
+  
+  .grid {
+    gap: 1rem !important;
+  }
+}
+
+/* Custom styles for scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+

@@ -15,23 +15,23 @@ export const Features = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="students" className="mt-12">
+        <Tabs defaultValue="products" className="mt-12">
           <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
-            <TabsTrigger value="students">Students</TabsTrigger>
+            <TabsTrigger value="products">Investment Products</TabsTrigger>
             <TabsTrigger value="partners">Fund Managers</TabsTrigger>
             <TabsTrigger value="api">API</TabsTrigger>
             <TabsTrigger value="app">Social App</TabsTrigger>
             <TabsTrigger value="investing">Goal-Based</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="students" className="mt-8">
+          <TabsContent value="products" className="mt-8">
             <Card>
               <CardHeader>
-                <CardTitle>Student Investments</CardTitle>
-                <CardDescription>Secure your future with smart investments</CardDescription>
+                <CardTitle>Investment Products</CardTitle>
+                <CardDescription>Diverse portfolio offerings to grow your wealth</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">Start investing early with as little as $1. Learn financial literacy while building your wealth through diversified investment options tailored for students.</p>
+                <p className="text-gray-600">Explore a variety of investment products including equities, fixed income, real estate, commodities, mutual funds, ETFs, and alternative investments tailored to your financial goals.</p>
               </CardContent>
             </Card>
           </TabsContent>

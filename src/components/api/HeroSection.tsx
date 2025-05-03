@@ -89,7 +89,7 @@ export const HeroSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.8 }}
       >
-        <Button className="bg-cyanase-primary hover:bg-cyanase-primary-dark text-white px-5 md:px-8 py-4 md:py-6 rounded-md shadow-lg group relative overflow-hidden">
+        <Button className="bg-cyanase-primary hover:bg-cyanase-primary-dark text-white px-5 md:px-8 py-2 md:py-6 rounded-md shadow-lg group relative overflow-hidden">
           <motion.div 
             className="absolute inset-0 bg-cyanase-secondary opacity-0 group-hover:opacity-20"
             animate={{ 
