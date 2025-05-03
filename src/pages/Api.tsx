@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react"
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
@@ -742,3 +743,208 @@ const Api = () => {
           {/* Regulatory & Compliance Section */}
           <motion.div 
             className="mt-16 bg-cyanase-primary/5 p-8 rounded-xl border border-cyanase-primary/20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <h2 className="text-2xl font-semibold text-cyanase-primary mb-6 flex items-center gap-2">
+              <span>🏦</span> Regulatory & Compliance Built In
+            </h2>
+            <p className="text-lg mb-6">Cyanase handles:</p>
+            <ul className="space-y-4 mb-6">
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="text-cyanase-secondary mt-1 flex-shrink-0" />
+                <span>Fund custody with licensed fund managers</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="text-cyanase-secondary mt-1 flex-shrink-0" />
+                <span>Anti-Money Laundering (AML) rules</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="text-cyanase-secondary mt-1 flex-shrink-0" />
+                <span>Reporting for tax and compliance</span>
+              </li>
+            </ul>
+            <p className="text-gray-700">
+              This means platforms using the API don't need to register as investment firms — Cyanase handles the backend risk and regulation.
+            </p>
+          </motion.div>
+          
+          {/* Example Use Cases */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold text-cyanase-primary mb-8 flex items-center gap-2">
+              <span>🔗</span> Example Use Cases
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ 
+                  y: -5,
+                  boxShadow: "0 10px 30px -15px rgba(37, 40, 89, 0.3)"
+                }}
+              >
+                <Card className="border border-gray-200 h-full">
+                  <CardContent className="pt-6">
+                    <div className="bg-cyanase-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                      <BarChart3 className="text-cyanase-primary" />
+                    </div>
+                    <h3 className="font-semibold mb-3 text-cyanase-primary">Mobile Wallet Integration</h3>
+                    <p className="text-gray-600">
+                      A mobile wallet wants to offer an "Invest" button → uses Cyanase API to let users invest directly.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ 
+                  y: -5,
+                  boxShadow: "0 10px 30px -15px rgba(37, 40, 89, 0.3)"
+                }}
+              >
+                <Card className="border border-gray-200 h-full">
+                  <CardContent className="pt-6">
+                    <div className="bg-cyanase-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                      <BarChart3 className="text-cyanase-secondary" />
+                    </div>
+                    <h3 className="font-semibold mb-3 text-cyanase-primary">E-commerce Savings</h3>
+                    <p className="text-gray-600">
+                      An e-commerce site wants to give users a "Save for Later" wallet → backed by Cyanase interest-earning products.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ 
+                  y: -5,
+                  boxShadow: "0 10px 30px -15px rgba(37, 40, 89, 0.3)"
+                }}
+              >
+                <Card className="border border-gray-200 h-full">
+                  <CardContent className="pt-6">
+                    <div className="bg-cyanase-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                      <BarChart3 className="text-cyanase-primary" />
+                    </div>
+                    <h3 className="font-semibold mb-3 text-cyanase-primary">Social Savings Groups</h3>
+                    <p className="text-gray-600">
+                      A social platform wants to let users form saving groups → connects to Cyanase group endpoints and payment rails.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* API Code Examples Section */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold text-cyanase-primary mb-4">API Code Examples</h2>
+            <p className="text-gray-600 mb-8">
+              Our API is designed to be developer-friendly. Here are some code snippets to help you get started.
+            </p>
+            
+            <div className="mb-6 border-b">
+              <div className="flex space-x-4">
+                <button 
+                  onClick={() => setActiveTab('authentication')}
+                  className={`py-2 px-4 font-medium ${activeTab === 'authentication' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
+                >
+                  Authentication
+                </button>
+                <button 
+                  onClick={() => setActiveTab('investments')}
+                  className={`py-2 px-4 font-medium ${activeTab === 'investments' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
+                >
+                  Investments
+                </button>
+                <button 
+                  onClick={() => setActiveTab('users')}
+                  className={`py-2 px-4 font-medium ${activeTab === 'users' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
+                >
+                  Users
+                </button>
+              </div>
+            </div>
+            
+            <Card className="overflow-hidden animate-fade-in border border-gray-200">
+              <CardContent className="p-0">
+                {/* Tab content with syntax highlighting colors matching our theme */}
+                <AnimatePresence mode="wait">
+                  {activeTab === 'authentication' && (
+                    <motion.div
+                      key="auth"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
+                        <code>
+                          {`// Authentication Example\nconst authenticate = async () => {\n  const response = await fetch('https://api.cyanase.com/v1/auth/token', {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify({\n      client_id: 'YOUR_CLIENT_ID',\n      client_secret: 'YOUR_CLIENT_SECRET',\n    }),\n  });\n\n  const data = await response.json();\n  // Store token securely\n  localStorage.setItem('apiToken', data.access_token);\n  return data.access_token;\n}\n\n// Usage\nauthenticate().then(token => {\n  console.log('Authenticated with token:', token);\n});`}
+                        </code>
+                      </pre>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'investments' && (
+                    <motion.div
+                      key="investments"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
+                        <code>
+                          {`// Creating an Investment\nconst createInvestment = async (token, investmentData) => {\n  const response = await fetch('https://api.cyanase.com/v1/investments', {\n    method: 'POST',\n    headers: {\n      'Authorization': \\`Bearer \\${token}\\`,\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify(investmentData),\n  });\n\n  return await response.json();\n}\n\n// Example usage\nconst investmentData = {\n  amount: 1000,\n  currency: 'USD',\n  investment_type: 'fixed_income',\n  tenure: 12, // months\n  expected_return_rate: 8.5,\n  user_id: 'user-123',\n};\n\ncreateInvestment(token, investmentData).then(result => {\n  console.log('Investment created:', result);\n});`}
+                        </code>
+                      </pre>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'users' && (
+                    <motion.div
+                      key="users"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
+                        <code>
+                          {`// Create a new user\nconst createUser = async (token, userData) => {\n  const response = await fetch('https://api.cyanase.com/v1/users', {\n    method: 'POST',\n    headers: {\n      'Authorization': \\`Bearer \\${token}\\`,\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify(userData),\n  });\n\n  return await response.json();\n}\n\n// Get user's investments\nconst getUserInvestments = async (token, userId) => {\n  const response = await fetch(\\`https://api.cyanase.com/v1/users/\\${userId}/investments\\`, {\n    headers: {\n      'Authorization': \\`Bearer \\${token}\\`,\n    },\n  });\n\n  return await response.json();\n}\n\n// Example usage\nconst userData = {\n  name: 'Jane Doe',\n  email: 'jane@example.com',\n  phone: '+256701234567',\n  country: 'Uganda',\n};\n\ncreateUser(token, userData).then(user => {\n  console.log('User created:', user);\n  return getUserInvestments(token, user.id);\n}).then(investments => {\n  console.log('User investments:', investments);\n});`}
+                        </code>
+                      </pre>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </CardContent>
+            </Card>
+            
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-500">
+                This is a preview of our API. For full documentation, please refer to our 
+                <a href="#" className="text-cyanase-primary hover:underline ml-1">Developer Portal</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default Api;
