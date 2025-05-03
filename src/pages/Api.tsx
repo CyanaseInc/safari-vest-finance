@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react"
 import { Navigation } from "@/components/Navigation"
 import { Button } from "@/components/ui/button"
@@ -300,7 +299,7 @@ const Api = () => {
                       transition={{ duration: 0.5, delay: 1.0 }}
                       className="text-cyanase-secondary"
                     >
-                      const cyanase = new CyanaseAPI({`{`}
+                      const cyanase = new CyanaseAPI{`({`}
                     </motion.div>
                     
                     <motion.div 
@@ -364,7 +363,7 @@ const Api = () => {
                         transition={{ duration: 0.5, delay: 2.4 }}
                         className="pl-12 text-white/90"
                       >
-                        const response = await cyanase.investments.<span className="text-cyanase-secondary">create</span>({`{`}
+                        const response = await cyanase.investments.<span className="text-cyanase-secondary">create</span>{`({`}
                       </motion.div>
                       
                       <motion.div 
@@ -892,7 +891,29 @@ const Api = () => {
                     >
                       <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
                         <code>
-                          {`// Authentication Example\nconst authenticate = async () => {\n  const response = await fetch('https://api.cyanase.com/v1/auth/token', {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify({\n      client_id: 'YOUR_CLIENT_ID',\n      client_secret: 'YOUR_CLIENT_SECRET',\n    }),\n  });\n\n  const data = await response.json();\n  // Store token securely\n  localStorage.setItem('apiToken', data.access_token);\n  return data.access_token;\n}\n\n// Usage\nauthenticate().then(token => {\n  console.log('Authenticated with token:', token);\n});`}
+                          {`// Authentication Example
+const authenticate = async () => {
+  const response = await fetch('https://api.cyanase.com/v1/auth/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      client_id: 'YOUR_CLIENT_ID',
+      client_secret: 'YOUR_CLIENT_SECRET',
+    }),
+  });
+
+  const data = await response.json();
+  // Store token securely
+  localStorage.setItem('apiToken', data.access_token);
+  return data.access_token;
+}
+
+// Usage
+authenticate().then(token => {
+  console.log('Authenticated with token:', token);
+});`}
                         </code>
                       </pre>
                     </motion.div>
@@ -908,7 +929,33 @@ const Api = () => {
                     >
                       <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
                         <code>
-                          {`// Creating an Investment\nconst createInvestment = async (token, investmentData) => {\n  const response = await fetch('https://api.cyanase.com/v1/investments', {\n    method: 'POST',\n    headers: {\n      'Authorization': \\`Bearer \\${token}\\`,\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify(investmentData),\n  });\n\n  return await response.json();\n}\n\n// Example usage\nconst investmentData = {\n  amount: 1000,\n  currency: 'USD',\n  investment_type: 'fixed_income',\n  tenure: 12, // months\n  expected_return_rate: 8.5,\n  user_id: 'user-123',\n};\n\ncreateInvestment(token, investmentData).then(result => {\n  console.log('Investment created:', result);\n});`}
+                          {`// Creating an Investment
+const createInvestment = async (token, investmentData) => {
+  const response = await fetch('https://api.cyanase.com/v1/investments', {
+    method: 'POST',
+    headers: {
+      'Authorization': \`Bearer \${token}\`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(investmentData),
+  });
+
+  return await response.json();
+}
+
+// Example usage
+const investmentData = {
+  amount: 1000,
+  currency: 'USD',
+  investment_type: 'fixed_income',
+  tenure: 12, // months
+  expected_return_rate: 8.5,
+  user_id: 'user-123',
+};
+
+createInvestment(token, investmentData).then(result => {
+  console.log('Investment created:', result);
+});`}
                         </code>
                       </pre>
                     </motion.div>
@@ -924,7 +971,45 @@ const Api = () => {
                     >
                       <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
                         <code>
-                          {`// Create a new user\nconst createUser = async (token, userData) => {\n  const response = await fetch('https://api.cyanase.com/v1/users', {\n    method: 'POST',\n    headers: {\n      'Authorization': \\`Bearer \\${token}\\`,\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify(userData),\n  });\n\n  return await response.json();\n}\n\n// Get user's investments\nconst getUserInvestments = async (token, userId) => {\n  const response = await fetch(\\`https://api.cyanase.com/v1/users/\\${userId}/investments\\`, {\n    headers: {\n      'Authorization': \\`Bearer \\${token}\\`,\n    },\n  });\n\n  return await response.json();\n}\n\n// Example usage\nconst userData = {\n  name: 'Jane Doe',\n  email: 'jane@example.com',\n  phone: '+256701234567',\n  country: 'Uganda',\n};\n\ncreateUser(token, userData).then(user => {\n  console.log('User created:', user);\n  return getUserInvestments(token, user.id);\n}).then(investments => {\n  console.log('User investments:', investments);\n});`}
+                          {`// Create a new user
+const createUser = async (token, userData) => {
+  const response = await fetch('https://api.cyanase.com/v1/users', {
+    method: 'POST',
+    headers: {
+      'Authorization': \`Bearer \${token}\`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
+
+  return await response.json();
+}
+
+// Get user's investments
+const getUserInvestments = async (token, userId) => {
+  const response = await fetch(\`https://api.cyanase.com/v1/users/\${userId}/investments\`, {
+    headers: {
+      'Authorization': \`Bearer \${token}\`,
+    },
+  });
+
+  return await response.json();
+}
+
+// Example usage
+const userData = {
+  name: 'Jane Doe',
+  email: 'jane@example.com',
+  phone: '+256701234567',
+  country: 'Uganda',
+};
+
+createUser(token, userData).then(user => {
+  console.log('User created:', user);
+  return getUserInvestments(token, user.id);
+}).then(investments => {
+  console.log('User investments:', investments);
+});`}
                         </code>
                       </pre>
                     </motion.div>
