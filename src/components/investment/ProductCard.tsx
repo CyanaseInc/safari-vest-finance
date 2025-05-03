@@ -19,15 +19,26 @@ export const ProductCard = ({ title, description, callToAction, delay = 0 }: Pro
       viewport={{ once: true, margin: "-50px" }}
       className="w-full"
     >
-      <Card className="border border-gray-200 h-full hover:shadow-md transition-shadow">
+      <Card className="border border-gray-200 h-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
         <CardContent className="p-6">
-          <h3 className="font-semibold mb-3 text-cyanase-primary text-xl">{title}</h3>
+          <motion.h3 
+            className="font-semibold mb-3 text-cyanase-primary text-xl"
+            whileHover={{ x: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            {title}
+          </motion.h3>
           <p className="text-gray-600 mb-6">
             {description}
           </p>
-          <Button className="bg-cyanase-secondary hover:bg-cyanase-primary text-cyanase-primary hover:text-white font-medium">
-            {callToAction}
-          </Button>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button className="bg-cyanase-secondary hover:bg-cyanase-primary text-cyanase-primary hover:text-white font-medium">
+              {callToAction}
+            </Button>
+          </motion.div>
         </CardContent>
       </Card>
     </motion.div>

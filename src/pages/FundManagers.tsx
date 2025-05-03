@@ -1,5 +1,6 @@
 
 import React from "react"
+import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation"
 import { Footer } from "@/components/Footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,19 +13,23 @@ import {
   Hospital,
   GraduationCap,
   ChartBar,
-  ChevronDown
+  ChevronDown,
+  Globe
 } from "lucide-react"
 import { 
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
 } from "@/components/ui/collapsible"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const FundManagers = () => {
+  const isMobile = useIsMobile();
+  
   const sectors = [
     {
       id: "fintech",
-      icon: <Banknote className="h-10 w-10 text-purple-500" />,
+      icon: <Banknote className="h-10 w-10 text-cyanase-primary" />,
       emoji: "🏦",
       name: "Fintech Companies",
       description: "Companies that integrate Cyanase's investment APIs to allow their users to invest directly from mobile wallets or payment apps.",
@@ -87,35 +92,177 @@ const FundManagers = () => {
     }
   ]
 
+  // Animation variants for staggered animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section with Gradient Background */}
-      <div className="pt-24 pb-12 bg-gradient-to-b from-purple-100 to-white">
+      {/* Hero Section with Gradient Background - Changed to Left-text, Right-animation format */}
+      <div className="pt-24 pb-12 bg-gradient-to-b from-cyanase-primary/5 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Partner Sectors
-            </h1>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Cyanase partners with multiple sectors to enable investing and financial inclusion in Africa, 
-              especially in underserved and developing markets.
-            </p>
-          </div>
-
-          {/* Floating Badge Cloud */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in">
-            {sectors.map((sector) => (
-              <Badge 
-                key={sector.id} 
-                variant="outline" 
-                className="text-purple-700 bg-purple-50 border-purple-200 px-3 py-1.5 text-sm mb-2 hover:bg-purple-100 transition-colors"
+          <div className="grid md:grid-cols-2 items-center gap-8">
+            <div className={`${isMobile ? "order-2" : "order-1"} text-left`}>
+              <motion.h1 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl md:text-5xl font-bold text-cyanase-primary mb-4"
               >
-                {sector.emoji} {sector.name}
-              </Badge>
-            ))}
+                Partner Sectors
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="text-lg text-gray-600"
+              >
+                Cyanase partners with multiple sectors to enable investing and financial inclusion in Africa, 
+                especially in underserved and developing markets.
+              </motion.p>
+              
+              {/* Floating Badge Cloud for mobile view */}
+              {isMobile && (
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="flex flex-wrap gap-2 mt-6"
+                >
+                  {sectors.slice(0, 4).map((sector) => (
+                    <motion.div key={sector.id} variants={itemVariants}>
+                      <Badge 
+                        variant="outline" 
+                        className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2"
+                      >
+                        {sector.emoji} {sector.name}
+                      </Badge>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+            
+            <div className={`${isMobile ? "order-1 mb-8" : "order-2"} relative h-[350px]`}>
+              {/* Interactive globe with connected sectors */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                className="relative h-full w-full flex items-center justify-center"
+              >
+                <motion.div
+                  animate={{ rotateY: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  className="relative"
+                >
+                  <Globe className="h-32 w-32 text-cyanase-primary/30" />
+                </motion.div>
+                
+                {/* Circular orbiting sectors */}
+                {sectors.slice(0, 7).map((sector, index) => {
+                  const angle = (index * (360 / 7)) * (Math.PI / 180);
+                  const radius = 120;
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
+                  
+                  return (
+                    <motion.div
+                      key={sector.id}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ 
+                        opacity: 1, 
+                        scale: 1,
+                        x: x,
+                        y: y
+                      }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: 0.3 + (index * 0.1),
+                        type: "spring",
+                      }}
+                      style={{ position: "absolute", left: "50%", top: "50%", marginLeft: "-20px", marginTop: "-20px" }}
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.2 }}
+                        className="w-10 h-10 rounded-full bg-cyanase-primary/10 flex items-center justify-center"
+                      >
+                        <div className="text-lg">{sector.emoji}</div>
+                      </motion.div>
+                    </motion.div>
+                  );
+                })}
+                
+                {/* Connection lines */}
+                <svg className="absolute inset-0" style={{ zIndex: -1 }}>
+                  {sectors.slice(0, 7).map((sector, index) => {
+                    const angle = (index * (360 / 7)) * (Math.PI / 180);
+                    const radius = 120;
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+                    
+                    return (
+                      <motion.path
+                        key={`line-${index}`}
+                        d={`M0 0 L${x} ${y}`}
+                        stroke="rgba(37, 40, 89, 0.2)"
+                        strokeWidth="2"
+                        strokeDasharray="4 4"
+                        fill="none"
+                        style={{ transform: "translate(50%, 50%)" }}
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
+                      />
+                    );
+                  })}
+                </svg>
+                
+                {/* Pulse animation in the center */}
+                <motion.div 
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanase-primary/20"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0.2, 0.7] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ width: 60, height: 60 }}
+                />
+              </motion.div>
+            </div>
           </div>
+          
+          {/* Floating Badge Cloud for desktop */}
+          {!isMobile && (
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
+              className="flex flex-wrap justify-center gap-3 mt-12"
+            >
+              {sectors.map((sector) => (
+                <motion.div key={sector.id} variants={itemVariants}>
+                  <Badge 
+                    variant="outline" 
+                    className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 hover:bg-cyanase-primary/10 transition-colors cursor-default"
+                  >
+                    {sector.emoji} {sector.name}
+                  </Badge>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
       
