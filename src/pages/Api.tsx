@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -10,6 +11,7 @@ import { HowItWorksSection } from "@/components/api/HowItWorksSection";
 import { ComplianceSection } from "@/components/api/ComplianceSection";
 import { UseCasesSection } from "@/components/api/UseCasesSection";
 import { CodeExamplesSection } from "@/components/api/CodeExamplesSection";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type AnimatedDot = {
   x: number;
@@ -22,10 +24,14 @@ const Api = () => {
   const [animatedDots, setAnimatedDots] = useState<AnimatedDot[]>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isInView, setIsInView] = useState(false);
+  const isMobile = useIsMobile();
   
   // Initialize animated dots
   useEffect(() => {
-    const newDots = Array.from({ length: 50 }, () => ({
+    // Use fewer dots on mobile for better performance
+    const dotCount = isMobile ? 25 : 50;
+    
+    const newDots = Array.from({ length: dotCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * 600, // Hero section approximate height
       color: Math.random() > 0.7 
@@ -35,7 +41,7 @@ const Api = () => {
     }));
     setAnimatedDots(newDots);
     setIsInView(true);
-  }, []);
+  }, [isMobile]);
   
   // Handle mouse movement for interactive effects
   useEffect(() => {
@@ -64,7 +70,7 @@ const Api = () => {
           />
           
           {/* Hero Section */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative z-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <HeroSection />
               <ApiCodeBlock />

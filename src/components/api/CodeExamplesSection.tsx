@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type TabType = 'authentication' | 'investments' | 'users';
 
@@ -11,24 +12,26 @@ interface CodeExampleTabProps {
 }
 
 const CodeExampleTabs: React.FC<CodeExampleTabProps> = ({ activeTab, setActiveTab }) => {
+  const isMobile = useIsMobile();
+  
   return (
-    <div className="mb-6 border-b">
-      <div className="flex space-x-4">
+    <div className="mb-6 border-b overflow-x-auto">
+      <div className={`flex ${isMobile ? 'space-x-2' : 'space-x-4'}`}>
         <button 
           onClick={() => setActiveTab('authentication')}
-          className={`py-2 px-4 font-medium ${activeTab === 'authentication' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
+          className={`py-2 px-3 md:px-4 font-medium whitespace-nowrap ${activeTab === 'authentication' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
         >
           Authentication
         </button>
         <button 
           onClick={() => setActiveTab('investments')}
-          className={`py-2 px-4 font-medium ${activeTab === 'investments' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
+          className={`py-2 px-3 md:px-4 font-medium whitespace-nowrap ${activeTab === 'investments' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
         >
           Investments
         </button>
         <button 
           onClick={() => setActiveTab('users')}
-          className={`py-2 px-4 font-medium ${activeTab === 'users' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
+          className={`py-2 px-3 md:px-4 font-medium whitespace-nowrap ${activeTab === 'users' ? 'border-b-2 border-cyanase-secondary text-cyanase-primary' : 'text-gray-500'}`}
         >
           Users
         </button>
@@ -148,7 +151,7 @@ createUser(token, userData).then(user => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
+              <pre className="p-4 md:p-6 bg-gray-900 text-white overflow-x-auto text-sm md:text-base rounded-lg">
                 <code>
                   {codeExamples.authentication}
                 </code>
@@ -164,7 +167,7 @@ createUser(token, userData).then(user => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
+              <pre className="p-4 md:p-6 bg-gray-900 text-white overflow-x-auto text-sm md:text-base rounded-lg">
                 <code>
                   {codeExamples.investments}
                 </code>
@@ -180,7 +183,7 @@ createUser(token, userData).then(user => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <pre className="p-6 bg-gray-900 text-white overflow-x-auto rounded-lg">
+              <pre className="p-4 md:p-6 bg-gray-900 text-white overflow-x-auto text-sm md:text-base rounded-lg">
                 <code>
                   {codeExamples.users}
                 </code>
@@ -197,7 +200,7 @@ export const CodeExamplesSection = () => {
   const [activeTab, setActiveTab] = useState<TabType>('authentication');
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 mb-16">
       <h2 className="text-2xl font-semibold text-cyanase-primary mb-4">API Code Examples</h2>
       <p className="text-gray-600 mb-8">
         Our API is designed to be developer-friendly. Here are some code snippets to help you get started.

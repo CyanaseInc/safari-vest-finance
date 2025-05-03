@@ -22,6 +22,7 @@ const UseCase: React.FC<UseCaseProps> = ({ title, description, icon, delay }) =>
         y: -5,
         boxShadow: "0 10px 30px -15px rgba(37, 40, 89, 0.3)"
       }}
+      className="w-full"
     >
       <Card className="border border-gray-200 h-full">
         <CardContent className="pt-6">
@@ -66,7 +67,7 @@ export const UseCasesSection = () => {
       <h2 className="text-2xl font-semibold text-cyanase-primary mb-8 flex items-center gap-2">
         <span>🔗</span> Example Use Cases
       </h2>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
         {useCases.map((useCase, index) => (
           <UseCase
             key={index}

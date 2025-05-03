@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface WorkflowStepProps {
   number: number;
@@ -30,7 +31,7 @@ const WorkflowStep: React.FC<WorkflowStepProps> = ({ number, title, items, delay
         </span>
         {title}
       </h3>
-      <ul className="space-y-3 pl-10">
+      <ul className="space-y-3 pl-5 md:pl-10">
         {items.map((item, index) => (
           <li key={index} className="flex gap-2">
             <Check className={`${textColor} flex-shrink-0 mt-1`} size={18} />
@@ -43,6 +44,8 @@ const WorkflowStep: React.FC<WorkflowStepProps> = ({ number, title, items, delay
 };
 
 export const HowItWorksSection = () => {
+  const isMobile = useIsMobile();
+  
   const steps = [
     {
       number: 1,
@@ -114,14 +117,14 @@ export const HowItWorksSection = () => {
         <span className="text-cyanase-secondary">⚙️</span> How It Works
       </h2>
       
-      <div className="space-y-10">
+      <div className="space-y-6 md:space-y-10">
         {steps.map((step, index) => (
           <WorkflowStep
             key={index}
             number={step.number}
             title={step.title}
             items={step.items}
-            delay={index * 0.1}
+            delay={index * (isMobile ? 0.05 : 0.1)}
             isPrimary={step.isPrimary}
           />
         ))}
