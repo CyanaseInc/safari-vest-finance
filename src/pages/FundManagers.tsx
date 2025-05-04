@@ -112,10 +112,10 @@ const FundManagers = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Enhanced Hero Section with Advanced Globe Animation */}
-      <div className="pt-24 pb-16 bg-gradient-to-b from-cyanase-primary/5 to-white overflow-hidden">
+      {/* Hero Section with Gradient Background - Changed to Left-text, Right-animation format */}
+      <div className="pt-24 pb-12 bg-gradient-to-b from-cyanase-primary/5 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 items-center gap-8 md:gap-12">
+          <div className="grid md:grid-cols-2 items-center gap-8">
             <div className={`${isMobile ? "order-2" : "order-1"} text-left`}>
               <motion.h1 
                 initial={{ opacity: 0, y: -20 }}
@@ -129,13 +129,13 @@ const FundManagers = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-lg text-gray-600 mb-6"
+                className="text-lg text-gray-600"
               >
                 Cyanase partners with multiple sectors to enable investing and financial inclusion in Africa, 
                 especially in underserved and developing markets.
               </motion.p>
               
-              {/* Enhanced Badge Cloud for mobile view */}
+              {/* Floating Badge Cloud for mobile view */}
               {isMobile && (
                 <motion.div 
                   variants={containerVariants}
@@ -145,125 +145,38 @@ const FundManagers = () => {
                 >
                   {sectors.slice(0, 4).map((sector) => (
                     <motion.div key={sector.id} variants={itemVariants}>
-                      <motion.div
-                        whileHover={{ y: -5, scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 400 }}
+                      <Badge 
+                        variant="outline" 
+                        className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2"
                       >
-                        <Badge 
-                          variant="outline" 
-                          className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2"
-                        >
-                          {sector.emoji} {sector.name}
-                        </Badge>
-                      </motion.div>
+                        {sector.emoji} {sector.name}
+                      </Badge>
                     </motion.div>
                   ))}
                 </motion.div>
               )}
             </div>
             
-            <div className={`${isMobile ? "order-1 mb-8" : "order-2"} relative h-[400px]`}>
-              {/* Enhanced Interactive globe with connected sectors */}
+            <div className={`${isMobile ? "order-1 mb-8" : "order-2"} relative h-[350px]`}>
+              {/* Interactive globe with connected sectors */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
                 className="relative h-full w-full flex items-center justify-center"
               >
-                {/* Globe with glow effect */}
-                <div className="relative">
-                  <motion.div
-                    animate={{ rotateY: 360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="relative"
-                  >
-                    {/* Outer glow */}
-                    <motion.div 
-                      className="absolute -inset-8 rounded-full"
-                      animate={{ 
-                        scale: [1, 1.2, 1], 
-                        opacity: [0.2, 0.4, 0.2]
-                      }}
-                      transition={{ 
-                        duration: 8, 
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                      }}
-                      style={{ 
-                        background: "radial-gradient(circle, rgba(80,102,252,0.3) 0%, rgba(37,40,89,0) 70%)",
-                        filter: "blur(10px)" 
-                      }}
-                    />
-                    
-                    {/* Main globe with grid lines */}
-                    <div className="relative">
-                      <Globe className="h-40 w-40 text-cyanase-primary" strokeWidth={1} />
-                      
-                      {/* Grid lines for globe */}
-                      <svg className="absolute inset-0" viewBox="0 0 100 100">
-                        <motion.circle 
-                          cx="50" cy="50" r="35" 
-                          fill="none" 
-                          stroke="rgba(80,102,252,0.2)" 
-                          strokeWidth="0.5"
-                          strokeDasharray="2,2"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 2, delay: 0.5 }}
-                        />
-                        <motion.circle 
-                          cx="50" cy="50" r="42" 
-                          fill="none" 
-                          stroke="rgba(80,102,252,0.15)" 
-                          strokeWidth="0.5"
-                          strokeDasharray="2,3"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 2, delay: 0.7 }}
-                        />
-                        <motion.ellipse 
-                          cx="50" cy="50" rx="35" ry="15" 
-                          fill="none" 
-                          stroke="rgba(80,102,252,0.2)" 
-                          strokeWidth="0.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 1.5, delay: 0.9 }}
-                        />
-                        <motion.ellipse 
-                          cx="50" cy="50" rx="15" ry="35" 
-                          fill="none" 
-                          stroke="rgba(80,102,252,0.2)" 
-                          strokeWidth="0.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 1.5, delay: 1.1 }}
-                        />
-                      </svg>
-                    </div>
-                  </motion.div>
-                  
-                  {/* Inner pulse animation */}
-                  <motion.div 
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanase-primary/30"
-                    initial={{ scale: 0.6, opacity: 0.7 }}
-                    animate={{ 
-                      scale: [0.6, 0.9, 0.6], 
-                      opacity: [0.7, 0.2, 0.7] 
-                    }}
-                    transition={{ 
-                      duration: 4, 
-                      repeat: Infinity, 
-                      ease: "easeInOut" 
-                    }}
-                    style={{ width: 70, height: 70, filter: 'blur(8px)' }}
-                  />
-                </div>
+                <motion.div
+                  animate={{ rotateY: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  className="relative"
+                >
+                  <Globe className="h-32 w-32 text-cyanase-primary/30" />
+                </motion.div>
                 
-                {/* Enhanced orbiting sector icons */}
+                {/* Circular orbiting sectors */}
                 {sectors.slice(0, 7).map((sector, index) => {
                   const angle = (index * (360 / 7)) * (Math.PI / 180);
-                  const radius = 140;
+                  const radius = 120;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
                   
@@ -278,52 +191,27 @@ const FundManagers = () => {
                         y: y
                       }}
                       transition={{ 
-                        duration: 1.2, 
-                        delay: 0.3 + (index * 0.15),
+                        duration: 0.8, 
+                        delay: 0.3 + (index * 0.1),
                         type: "spring",
-                        stiffness: 100
                       }}
-                      style={{ position: "absolute", left: "50%", top: "50%", marginLeft: "-25px", marginTop: "-25px" }}
+                      style={{ position: "absolute", left: "50%", top: "50%", marginLeft: "-20px", marginTop: "-20px" }}
                     >
                       <motion.div
-                        whileHover={{ scale: 1.25, boxShadow: "0 10px 25px rgba(80, 102, 252, 0.3)" }}
-                        className="w-[50px] h-[50px] rounded-full bg-gradient-to-br from-white to-cyanase-primary/5 flex items-center justify-center shadow-md border border-cyanase-primary/10"
-                        transition={{ type: "spring", stiffness: 300 }}
+                        whileHover={{ scale: 1.2 }}
+                        className="w-10 h-10 rounded-full bg-cyanase-primary/10 flex items-center justify-center"
                       >
-                        <motion.div 
-                          className="text-2xl"
-                          animate={{ 
-                            scale: [1, 1.1, 1],
-                            rotate: [-5, 5, -5, 0]
-                          }}
-                          transition={{ 
-                            duration: 4, 
-                            repeat: Infinity, 
-                            delay: index * 0.5,
-                            repeatType: "reverse"
-                          }}
-                        >
-                          {sector.emoji}
-                        </motion.div>
-                      </motion.div>
-                      
-                      {/* Floating label on hover */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        className="absolute left-1/2 transform -translate-x-1/2 mt-2 whitespace-nowrap px-2 py-1 bg-white rounded shadow-md text-xs text-cyanase-primary font-medium"
-                      >
-                        {sector.name}
+                        <div className="text-lg">{sector.emoji}</div>
                       </motion.div>
                     </motion.div>
                   );
                 })}
                 
-                {/* Enhanced connection lines with animated dashes */}
+                {/* Connection lines */}
                 <svg className="absolute inset-0" style={{ zIndex: -1 }}>
                   {sectors.slice(0, 7).map((sector, index) => {
                     const angle = (index * (360 / 7)) * (Math.PI / 180);
-                    const radius = 140;
+                    const radius = 120;
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;
                     
@@ -331,75 +219,31 @@ const FundManagers = () => {
                       <motion.path
                         key={`line-${index}`}
                         d={`M0 0 L${x} ${y}`}
-                        stroke="rgba(80, 102, 252, 0.2)"
-                        strokeWidth="1.5"
+                        stroke="rgba(37, 40, 89, 0.2)"
+                        strokeWidth="2"
                         strokeDasharray="4 4"
                         fill="none"
                         style={{ transform: "translate(50%, 50%)" }}
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 0.8 + (index * 0.1) }}
-                      >
-                        <animate 
-                          attributeName="stroke-dashoffset" 
-                          from="0" 
-                          to="16" 
-                          dur="3s" 
-                          repeatCount="indefinite" 
-                        />
-                      </motion.path>
+                        transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
+                      />
                     );
                   })}
                 </svg>
                 
-                {/* Enhanced central pulse animation */}
+                {/* Pulse animation in the center */}
                 <motion.div 
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full"
-                  animate={{ 
-                    scale: [1, 2, 1], 
-                    opacity: [0.5, 0, 0.5] 
-                  }}
-                  transition={{ 
-                    duration: 5, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
-                  style={{ 
-                    width: 60, 
-                    height: 60, 
-                    background: "radial-gradient(circle, rgba(80,102,252,0.4) 0%, rgba(80,102,252,0) 70%)" 
-                  }}
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanase-primary/20"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0.2, 0.7] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ width: 60, height: 60 }}
                 />
-                
-                {/* Floating particles around the globe */}
-                {[...Array(12)].map((_, i) => (
-                  <motion.div
-                    key={`particle-${i}`}
-                    className="absolute rounded-full bg-cyanase-primary/60"
-                    style={{
-                      width: Math.random() * 4 + 2,
-                      height: Math.random() * 4 + 2,
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -40, 0],
-                      x: [0, Math.random() * 30 - 15, 0],
-                      opacity: [0, 0.8, 0],
-                      scale: [0, 1, 0]
-                    }}
-                    transition={{
-                      duration: Math.random() * 5 + 5,
-                      repeat: Infinity,
-                      delay: Math.random() * 5
-                    }}
-                  />
-                ))}
               </motion.div>
             </div>
           </div>
           
-          {/* Enhanced Floating Badge Cloud for desktop */}
+          {/* Floating Badge Cloud for desktop */}
           {!isMobile && (
             <motion.div 
               variants={containerVariants}
@@ -409,18 +253,12 @@ const FundManagers = () => {
             >
               {sectors.map((sector) => (
                 <motion.div key={sector.id} variants={itemVariants}>
-                  <motion.div
-                    whileHover={{ y: -5, scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className="transform-gpu"
+                  <Badge 
+                    variant="outline" 
+                    className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 hover:bg-cyanase-primary/10 transition-colors cursor-default"
                   >
-                    <Badge 
-                      variant="outline" 
-                      className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 hover:bg-cyanase-primary/10 transition-colors cursor-default"
-                    >
-                      {sector.emoji} {sector.name}
-                    </Badge>
-                  </motion.div>
+                    {sector.emoji} {sector.name}
+                  </Badge>
                 </motion.div>
               ))}
             </motion.div>
@@ -565,7 +403,7 @@ const FundManagers = () => {
       
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default FundManagers;
+export default FundManagers
