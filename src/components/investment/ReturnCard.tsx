@@ -50,7 +50,7 @@ export const ReturnCard = ({ percentage, title, description, delay = 0 }: Return
               className="text-2xl font-bold text-cyanase-secondary mr-2"
               whileHover={{ scale: 1.05 }}
               animate={{ 
-                y: [0, -3, 0],
+                y: [0, -3, 0]
               }}
               transition={{ 
                 y: {
