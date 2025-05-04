@@ -22,7 +22,7 @@ export const ReturnCard = ({ percentage, title, description, delay = 0 }: Return
       <Card className="border border-gray-200 hover:shadow-md transition-all duration-300 h-full relative overflow-hidden">
         {/* Enhanced background effects */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyanase-secondary/5 to-transparent pointer-events-none"
+          className="absolute inset-0 bg-cyanase-primary/5 pointer-events-none"
           animate={{ 
             backgroundPosition: ["0% 0%", "100% 100%"],
           }}
@@ -49,14 +49,16 @@ export const ReturnCard = ({ percentage, title, description, delay = 0 }: Return
             <motion.div 
               className="text-2xl font-bold text-cyanase-secondary mr-2"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
               animate={{ 
                 y: [0, -3, 0],
               }}
               transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                ease: "easeInOut" 
+                y: {
+                  duration: 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut" 
+                },
+                scale: { type: "spring", stiffness: 300 }
               }}
             >
               {percentage}

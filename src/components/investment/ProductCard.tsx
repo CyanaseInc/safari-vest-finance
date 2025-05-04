@@ -20,24 +20,19 @@ export const ProductCard = ({ title, description, callToAction, delay = 0 }: Pro
       className="w-full"
     >
       <Card className="border border-gray-200 h-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden relative">
-        {/* Animated gradient overlay */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyanase-secondary/5 to-transparent pointer-events-none"
-          animate={{ 
-            backgroundPosition: ["0% 0%", "100% 100%"],
-            opacity: [0, 0.3, 0]
-          }}
-          transition={{ 
-            duration: 5, 
-            ease: "easeInOut", 
-            repeat: Infinity, 
-            repeatType: "reverse" 
-          }}
-        />
+        {/* Fintech circuit board background pattern */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.03]" viewBox="0 0 100 100">
+          <pattern id={`circuit-${title.replace(/\s+/g, '-')}`} patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+            <line x1="10" y1="0" x2="10" y2="10" stroke="currentColor" strokeWidth="0.5" />
+            <line x1="0" y1="10" x2="10" y2="10" stroke="currentColor" strokeWidth="0.5" />
+            <circle cx="10" cy="10" r="1.5" fill="currentColor" />
+          </pattern>
+          <rect x="0" y="0" width="100%" height="100%" fill={`url(#circuit-${title.replace(/\s+/g, '-')})`} />
+        </svg>
         
-        {/* Low opacity animated line */}
+        {/* Animated line */}
         <motion.div 
-          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyanase-primary/40 to-cyanase-secondary/40"
+          className="absolute bottom-0 left-0 h-1 bg-cyanase-primary/40"
           style={{ width: "0%" }}
           animate={{ 
             width: ["0%", "100%", "0%"]
@@ -74,7 +69,7 @@ export const ProductCard = ({ title, description, callToAction, delay = 0 }: Pro
           >
             <Button className="bg-cyanase-secondary hover:bg-cyanase-primary text-cyanase-primary hover:text-white font-medium relative overflow-hidden group">
               <motion.span 
-                className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyanase-primary/0 via-white/20 to-cyanase-primary/0 opacity-0 group-hover:opacity-100 pointer-events-none"
+                className="absolute inset-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-100 pointer-events-none"
                 animate={{ 
                   x: ["-100%", "100%"], 
                 }}
@@ -87,6 +82,24 @@ export const ProductCard = ({ title, description, callToAction, delay = 0 }: Pro
               {callToAction}
             </Button>
           </motion.div>
+          
+          {/* Digital data points in corners */}
+          <div className="absolute top-3 right-3 flex space-x-1">
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={`dot-${i}`}
+                className="w-1 h-1 rounded-full bg-cyanase-primary/40"
+                animate={{ 
+                  opacity: [0.3, 1, 0.3]
+                }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity,
+                  delay: i * 0.3
+                }}
+              />
+            ))}
+          </div>
         </CardContent>
       </Card>
     </motion.div>
