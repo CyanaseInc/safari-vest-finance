@@ -38,7 +38,7 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
     <div className="relative h-[350px] w-full">
       <div className="relative h-full w-full flex items-center justify-center">
         {/* Core globe element */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-cyanase-primary flex items-center justify-center z-10"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -46,21 +46,21 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
         >
           <Globe className="h-24 w-24 text-cyanase-primary" strokeWidth={0.8} />
         </motion.div>
-        
+
         {/* Orbits */}
         <motion.div
           className="absolute top-1/2 left-1/2 w-72 h-72 -translate-x-1/2 -translate-y-1/2"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Main orbital path */}
-          <motion.div 
+          <motion.div
             className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyanase-primary/20"
             animate={{ rotateZ: 360 }}
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
           />
 
           {/* Secondary orbital path */}
-          <motion.div 
+          <motion.div
             className="absolute top-1/2 left-1/2 w-52 h-52 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyanase-primary/10"
             animate={{ rotateZ: -360 }}
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
@@ -71,12 +71,12 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
             <motion.div
               key={`data-stream-${i}`}
               className="absolute top-1/2 left-1/2 w-full h-[1px] -translate-x-1/2 -translate-y-1/2 opacity-40"
-              style={{ 
+              style={{
                 background: `linear-gradient(90deg, transparent 0%, rgba(155, 135, 245, ${Math.random() * 0.5 + 0.2}) ${50 + Math.random() * 20}%, transparent 100%)`,
                 transform: `translate(-50%, -50%) rotate(${i * 45}deg)`
               }}
             >
-              <motion.div 
+              <motion.div
                 className="absolute top-0 left-0 w-2 h-2 rounded-full bg-cyanase-primary"
                 animate={{
                   left: ["0%", "100%"],
@@ -92,13 +92,13 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
             </motion.div>
           ))}
         </motion.div>
-        
+
         {/* Orbital sectors */}
         {sectors.map((sector, index) => {
           // Calculate angles for circular distribution
           const orbitRadius = 130;
           const angle = (index * (360 / sectors.length)) * (Math.PI / 180);
-          
+
           // Calculate positions on the circle
           const x = Math.cos(angle) * orbitRadius;
           const y = Math.sin(angle) * orbitRadius;
@@ -108,18 +108,18 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
               {/* Sector node in orbit */}
               <motion.div
                 initial={{ opacity: 0, x: 0, y: 0 }}
-                animate={{ 
+                animate={{
                   opacity: 1,
                   x: x,
                   y: y,
                 }}
-                transition={{ 
+                transition={{
                   type: "spring",
                   stiffness: 50,
                   damping: 15,
                   delay: 0.1 * index
                 }}
-                style={{ 
+                style={{
                   position: "absolute",
                   left: "50%",
                   top: "50%",
@@ -127,7 +127,7 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
                 }}
                 onClick={() => setActiveSector(activeSector === sector.id ? null : sector.id)}
                 onMouseEnter={() => setActiveSector(sector.id)}
-                onMouseLeave={() => 
+                onMouseLeave={() =>
                   // Only clear if it's not the auto-selected sector
                   sectors[autoRotateSector].id !== sector.id && setActiveSector(null)
                 }
@@ -137,33 +137,33 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
                   whileHover={{ scale: 1.2 }}
                 >
                   {/* Sector icon with digital pulse effect */}
-                  <motion.div 
+                  <motion.div
                     className="relative w-10 h-10 rounded-full bg-white shadow-md border border-cyanase-primary/20 flex items-center justify-center"
-                    animate={{ 
-                      boxShadow: activeSector === sector.id 
-                        ? ["0 0 0 0 rgba(155, 135, 245, 0)", "0 0 0 10px rgba(155, 135, 245, 0.2)", "0 0 0 0 rgba(155, 135, 245, 0)"]
+                    animate={{
+                      boxShadow: activeSector === sector.id
+                        ? ["0 0 0 0 rgba(rgb(252,236,212))", "0 0 0 10px rgba(155, 135, 245, 0.2)", "0 0 0 0 rgba(rgb(252,236,212))"]
                         : "none"
                     }}
                     transition={{ duration: 2, repeat: activeSector === sector.id ? Infinity : 0 }}
                   >
                     {/* Digital circle animation */}
-                    <motion.div 
-                      className="absolute inset-0 rounded-full border border-cyanase-primary/20"
-                      animate={{ 
+                    <motion.div
+                      className="absolute inset-0 rounded-full border border-secondary/20"
+                      animate={{
                         scale: [1, 1.4, 1],
                         opacity: [0.2, 0, 0.2]
                       }}
-                      transition={{ 
-                        duration: 3, 
+                      transition={{
+                        duration: 3,
                         repeat: Infinity,
                         delay: index * 0.3
                       }}
                     />
-                    
+
                     {/* Main icon */}
                     <span className="text-lg">{sector.emoji}</span>
                   </motion.div>
-                  
+
                   {/* Small label */}
                   <motion.div
                     className="mt-1 bg-white px-2 py-0.5 rounded-full shadow-sm text-xs font-medium text-cyanase-primary whitespace-nowrap"
@@ -179,9 +179,9 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
               {/* Connection line to center */}
               <motion.div
                 className="absolute top-1/2 left-1/2 h-[1px] -translate-x-[1px] -translate-y-[1px] origin-left bg-gradient-to-r from-cyanase-primary/70 to-cyanase-primary/10"
-                style={{ 
+                style={{
                   width: orbitRadius,
-                  transform: `translate(0, 0) rotate(${angle * (180/Math.PI)}deg)`,
+                  transform: `translate(0, 0) rotate(${angle * (180 / Math.PI)}deg)`,
                   zIndex: 5
                 }}
                 initial={{ opacity: 0, scaleX: 0 }}
@@ -203,14 +203,14 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
                   }}
                 />
               </motion.div>
-              
+
               {/* Digital binary markers */}
               {[0.3, 0.7].map((position, i) => (
                 <motion.div
                   key={`binary-${sector.id}-${i}`}
                   className="absolute text-[8px] font-mono text-cyanase-primary/50 select-none"
-                  style={{ 
-                    left: `calc(50% + ${x * position}px)`, 
+                  style={{
+                    left: `calc(50% + ${x * position}px)`,
                     top: `calc(50% + ${y * position}px)`,
                     zIndex: 5
                   }}
@@ -243,27 +243,27 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
                     {sectors.find(s => s.id === activeSector)?.emoji}
                   </span>
                 </div>
-                
+
                 {/* Card content */}
                 <div>
-                  <h4 className="font-medium text-sm text-cyanase-primary">
+                  <h4 className="font-medium text-sm text-primary">
                     {sectors.find(s => s.id === activeSector)?.name}
                   </h4>
                   <p className="text-xs text-gray-600 mt-1">
-                    {sectors.find(s => s.id === activeSector)?.description || 
-                     "We partner with leading institutions in this sector to deliver innovative financial solutions."}
+                    {sectors.find(s => s.id === activeSector)?.description ||
+                      "We partner with leading institutions in this sector to deliver innovative financial solutions."}
                   </p>
                 </div>
               </div>
-              
+
               {/* Digital line accent */}
-              <motion.div 
+              <motion.div
                 className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyanase-primary/80 via-cyanase-primary to-cyanase-primary/20"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 1.5 }}
               />
-              
+
               {/* Digital corner accent */}
               <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-cyanase-primary/30" />
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-cyanase-primary/30" />
@@ -298,7 +298,7 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
           const radius = 80 + Math.random() * 60;
           const x = Math.cos(angle) * radius;
           const y = Math.sin(angle) * radius;
-          
+
           return (
             <motion.div
               key={`node-${i}`}
@@ -310,7 +310,7 @@ export const GlobeSectors = ({ sectors }: GlobeSectorsProps) => {
                 height: '6px',
               }}
               initial={{ opacity: 0 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 0.8, 0],
                 scale: [0.5, 1, 0.5]
               }}

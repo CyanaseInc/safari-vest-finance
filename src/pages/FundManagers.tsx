@@ -4,17 +4,17 @@ import { Navigation } from "@/components/Navigation"
 import { Footer } from "@/components/Footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  Building, 
+import {
+  Building,
   Banknote,
-  Briefcase, 
+  Briefcase,
   Users,
   Hospital,
   GraduationCap,
   ChartBar,
   ChevronDown,
 } from "lucide-react"
-import { 
+import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
@@ -24,13 +24,13 @@ import { GlobeSectors } from "@/components/sectors/GlobeSectors"
 
 const FundManagers = () => {
   const isMobile = useIsMobile();
-  
+
   const sectors = [
     {
       id: "fintech",
       icon: <Banknote className="h-10 w-10 text-cyanase-primary" />,
       emoji: "🏦",
-      name: "Fintech Companies",
+      name: "Fintechs",
       description: "Companies that integrate Cyanase's investment APIs to allow their users to invest directly from mobile wallets or payment apps.",
       examples: "Flutterwave, MTN Mobile Money, Airtel Money",
       value: "They embed investment services into their platforms without handling the regulatory burden."
@@ -39,7 +39,7 @@ const FundManagers = () => {
       id: "ecommerce",
       icon: <Briefcase className="h-10 w-10 text-purple-500" />,
       emoji: "🛒",
-      name: "E-commerce Platforms",
+      name: "E-commerce",
       description: "Online marketplaces and digital stores partner to offer investment options as part of their checkout or reward systems.",
       examples: "",
       value: "A customer earns cashback or loyalty points in the form of investments (e.g., unit trusts)."
@@ -48,7 +48,7 @@ const FundManagers = () => {
       id: "social",
       icon: <Users className="h-10 w-10 text-purple-500" />,
       emoji: "📱",
-      name: "Social Networks and Communities",
+      name: "Social Networks",
       description: "Social platforms and community-based apps integrate Cyanase to enable group investing.",
       examples: "",
       value: "Group admins create saving goals, and members contribute funds that earn returns via Cyanase."
@@ -57,7 +57,7 @@ const FundManagers = () => {
       id: "healthcare",
       icon: <Hospital className="h-10 w-10 text-purple-500" />,
       emoji: "🏥",
-      name: "Healthcare Cooperatives and SACCOs",
+      name: "SACCOs",
       description: "Healthcare professionals and SACCOs often lack access to low-risk investment tools. Cyanase provides tailored digital solutions.",
       examples: "",
       value: "A SACCO can invest collective funds into a unit trust via the Cyanase API and earn interest transparently."
@@ -66,7 +66,7 @@ const FundManagers = () => {
       id: "education",
       icon: <GraduationCap className="h-10 w-10 text-purple-500" />,
       emoji: "🎓",
-      name: "Educational Institutions & NGOs",
+      name: "Educational Institutions",
       description: "Cyanase collaborates with financial literacy-focused NGOs, schools, or universities to promote investing habits among young people and women.",
       examples: "",
       value: "Cyanase offers demo accounts, subsidized investment access, and workshops for students and women's groups."
@@ -75,7 +75,7 @@ const FundManagers = () => {
       id: "village",
       icon: <Building className="h-10 w-10 text-purple-500" />,
       emoji: "🏘️",
-      name: "Village Saving Groups (VSLAs)",
+      name: "Village Saving Groups",
       description: "Village and rural savings groups use Cyanase's tools to digitize savings, track group funds, and invest together.",
       examples: "",
       value: "Members deposit into a collective group wallet that earns interest, and loans can be issued from pooled funds."
@@ -84,7 +84,7 @@ const FundManagers = () => {
       id: "fundmanagers",
       icon: <ChartBar className="h-10 w-10 text-purple-500" />,
       emoji: "📊",
-      name: "Fund Managers & Investment Firms",
+      name: "Fund Managers",
       description: "Professional asset managers use Cyanase's fund portal to onboard users, manage investment products, and track performance.",
       examples: "",
       value: "Cyanase gives them distribution access to low-income and unbanked populations."
@@ -110,13 +110,13 @@ const FundManagers = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       {/* Enhanced Hero Section with Advanced Globe Animation */}
       <div className="pt-24 pb-12 bg-gradient-to-b from-cyanase-primary/5 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 items-center gap-8">
             <div className={`${isMobile ? "order-2" : "order-1"} text-left`}>
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
@@ -124,7 +124,7 @@ const FundManagers = () => {
               >
                 Partner Sectors
               </motion.h1>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
@@ -132,10 +132,10 @@ const FundManagers = () => {
               >
                 We collaborate with multiple sectors globally to deliver innovative financial solutions and expand investment opportunities across markets.
               </motion.p>
-              
+
               {/* Enhanced floating badge cloud for mobile */}
               {isMobile && (
-                <motion.div 
+                <motion.div
                   variants={containerVariants}
                   initial="hidden"
                   animate="show"
@@ -143,33 +143,33 @@ const FundManagers = () => {
                 >
                   {sectors.slice(0, 4).map((sector) => (
                     <motion.div key={sector.id} variants={itemVariants}>
-                      <Badge 
-                        variant="outline" 
+                      <Badge
+                        variant="outline"
                         className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 relative overflow-hidden group"
                       >
                         {/* Animation on hover */}
-                        <motion.span 
+                        <motion.span
                           className="absolute inset-0 bg-cyanase-primary/0 group-hover:bg-cyanase-primary/10 transition-all duration-300"
                           whileHover={{ opacity: [0, 1, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity }}
                         />
-                        {sector.emoji} {sector.name}
+                        {sector.name}
                       </Badge>
                     </motion.div>
                   ))}
                 </motion.div>
               )}
             </div>
-            
+
             <div className={`${isMobile ? "order-1 mb-8" : "order-2"} relative h-[350px]`}>
               {/* New improved globe animation */}
               <GlobeSectors sectors={sectors} />
             </div>
           </div>
-          
+
           {/* Enhanced floating badge cloud for desktop */}
           {!isMobile && (
-            <motion.div 
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="show"
@@ -177,18 +177,18 @@ const FundManagers = () => {
             >
               {sectors.map((sector) => (
                 <motion.div key={sector.id} variants={itemVariants}>
-                  <Badge 
-                    variant="outline" 
+                  <Badge
+                    variant="outline"
                     className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 hover:bg-cyanase-primary/10 transition-colors cursor-default relative overflow-hidden group"
                   >
                     {/* Digital shimmer effect */}
-                    <motion.span 
+                    <motion.span
                       className="absolute inset-0 bg-white/20 group-hover:opacity-100 opacity-0"
-                      animate={{ 
-                        x: ['-100%', '100%'] 
+                      animate={{
+                        x: ['-100%', '100%']
                       }}
-                      transition={{ 
-                        duration: 1.5, 
+                      transition={{
+                        duration: 1.5,
                         ease: "easeInOut",
                         repeat: Infinity,
                         repeatDelay: 3
@@ -202,7 +202,7 @@ const FundManagers = () => {
           )}
         </div>
       </div>
-      
+
       {/* Main Content - Visually Separated Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Sector Showcase */}
@@ -214,7 +214,7 @@ const FundManagers = () => {
                   {sector.icon}
                 </div>
                 <CardTitle className="text-2xl">
-                  {sector.emoji} {sector.name}
+                  {sector.name}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -235,7 +235,7 @@ const FundManagers = () => {
         {/* Expandable Sectors */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional Partner Sectors</h2>
-          
+
           <div className="space-y-4">
             {sectors.slice(2).map((sector) => (
               <Collapsible key={sector.id} className="border border-gray-200 rounded-lg overflow-hidden">
@@ -271,7 +271,7 @@ const FundManagers = () => {
         {/* Value Proposition Summary */}
         <div className="bg-purple-50 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-purple-900 mb-6 text-center">How Cyanase Brings Value</h2>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
@@ -280,7 +280,7 @@ const FundManagers = () => {
               </div>
               <p className="text-gray-600">Embedded investing APIs for seamless integration</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
                 <Briefcase className="h-6 w-6 text-purple-500 mr-2" />
@@ -288,7 +288,7 @@ const FundManagers = () => {
               </div>
               <p className="text-gray-600">Reward-based investing through purchases</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
                 <Users className="h-6 w-6 text-purple-500 mr-2" />
@@ -296,7 +296,7 @@ const FundManagers = () => {
               </div>
               <p className="text-gray-600">Group savings and collaborative investment goals</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
                 <Hospital className="h-6 w-6 text-purple-500 mr-2" />
@@ -304,7 +304,7 @@ const FundManagers = () => {
               </div>
               <p className="text-gray-600">Secure digital investment tools for cooperatives</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
                 <GraduationCap className="h-6 w-6 text-purple-500 mr-2" />
@@ -312,7 +312,7 @@ const FundManagers = () => {
               </div>
               <p className="text-gray-600">Financial literacy & inclusion programs</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
                 <Building className="h-6 w-6 text-purple-500 mr-2" />
@@ -329,15 +329,15 @@ const FundManagers = () => {
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
             Join our ecosystem and leverage Cyanase's investment infrastructure to bring financial inclusion to your customers.
           </p>
-          <a 
-            href="/contact" 
+          <a
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium bg-purple-700 text-white hover:bg-purple-800 h-10 px-6 py-2 transition-colors"
           >
             Contact Our Partnership Team
           </a>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   )

@@ -1,8 +1,8 @@
-
 import { Button } from "./ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom" // Add this import
 
 export const WhatWeDo = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,11 +32,17 @@ export const WhatWeDo = () => {
           <div>
             <h2 className="text-3xl font-bold text-[#252859] mb-6">What we do</h2>
             <p className="text-gray-600 text-lg mb-8">
-              At Cyanase, we simplify access to global investment opportunities by aggregating diverse asset classes from different fund managers into one platform. With our mobile app, individuals can easily download and start investing, while fintechs can integrate our API to offer investment services in their apps without the hassle of managing regulations and compliance.
+              At Cyanase, we simplify access to global investment opportunities by bringing together a 
+              variety of asset classes from different fund managers on a single platform. Our mobile app allows 
+              individuals to easily start saving and investing—either independently or as part of a group. Meanwhile, 
+              fintechs can seamlessly integrate our API to offer investment services 
+              within their apps, without the burden of handling regulations and compliance
             </p>
-            <Button className="bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
-              Learn More <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link to="contact">
+              <Button className="bg-[rgb(247,169,45)] hover:bg-[#252859] text-white">
+                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
           
           <div className="mt-10 lg:mt-0 h-80 relative">
@@ -44,12 +50,12 @@ export const WhatWeDo = () => {
             <div className="w-full h-full flex items-center justify-center relative">
               {/* Central hub/platform */}
               <motion.div 
-                className="absolute z-30 w-24 h-24 bg-gradient-to-br from-[#9b87f5] to-[#252859] rounded-full flex items-center justify-center shadow-xl border-4 border-white"
+                className="absolute z-30 w-24 h-24 rounded-full flex items-center justify-center shadow-xl border-4 border-white"
                 initial={{ scale: 0 }}
                 animate={isVisible ? { scale: 1 } : { scale: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <img src="/logo.svg" alt="Cyanase" className="h-12 w-12" />
+                <img src="/logog.jpg" alt="Cyanase" className="h-12 w-12" />
               </motion.div>
               
               {/* Outer ring - connecting the ecosystem */}

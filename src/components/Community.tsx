@@ -1,7 +1,7 @@
 
 import { Button } from "./ui/button"
 import { MessageSquare } from "lucide-react"
-
+import { Link } from "react-router-dom"
 export const Community = () => {
   return (
     <div className="bg-[#252859] text-white py-16">
@@ -10,9 +10,11 @@ export const Community = () => {
         <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
           Connect with like-minded investors, share insights, and learn from experts in our growing community.
         </p>
+        <Link to ="https://whatsapp.com/channel/0029Va8mc7IEquiJ4UIWgT1X">
         <Button className="bg-[rgb(247,169,45)] hover:bg-white hover:text-[#252859]">
           Join Now <MessageSquare className="ml-2 h-4 w-4" />
         </Button>
+        </Link>
       </div>
     </div>
   )

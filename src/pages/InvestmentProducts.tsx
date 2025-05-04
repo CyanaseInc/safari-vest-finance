@@ -210,9 +210,11 @@ const InvestmentProducts = () => {
                     <p className="mb-4 text-white/90 max-w-3xl">
                       Explore opportunities like private equity, hedge funds, and venture capital to achieve high returns, often with a higher risk-reward profile.
                     </p>
+                    <a href = 'https://invest.cynase.com'>
                     <button className="text-cyanase-secondary bg-white px-4 py-2 rounded-md font-medium hover:bg-cyanase-secondary hover:text-white transition-colors">
-                      Invest now
+                      Invest now 
                     </button>
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -220,110 +222,7 @@ const InvestmentProducts = () => {
           </div>
         </div>
 
-        {/* Global partnerships */}
-        <div className="bg-gray-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-cyanase-primary mb-4">Global Partnerships</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We partner with fund managers around the globe to make investment products cheap and easy to access for everyone everywhere
-              </p>
-            </motion.div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 md:p-10 rounded-xl shadow-sm"
-              >
-                <div className="h-40 flex items-center justify-center">
-                  <div className="relative w-24 h-24">
-                    <motion.div 
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 5, 0, -5, 0],
-                      }}
-                      transition={{ duration: 5, repeat: Infinity }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-br from-cyanase-secondary to-cyanase-primary opacity-20"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-cyanase-primary">
-                      UG
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold text-center mb-3">Uganda</h3>
-                <p className="text-gray-600 text-center">
-                  Local investment products from licensed fund managers in Uganda.
-                </p>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 md:p-10 rounded-xl shadow-sm"
-              >
-                <div className="h-40 flex items-center justify-center">
-                  <div className="relative w-24 h-24">
-                    <motion.div 
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        rotate: [0, -5, 0, 5, 0],
-                      }}
-                      transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-br from-cyanase-primary to-cyanase-secondary opacity-20"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-cyanase-primary">
-                      KE
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold text-center mb-3">Kenya</h3>
-                <p className="text-gray-600 text-center">
-                  Access to Kenyan markets through our partner network.
-                </p>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 md:p-10 rounded-xl shadow-sm"
-              >
-                <div className="h-40 flex items-center justify-center">
-                  <div className="relative w-24 h-24">
-                    <motion.div 
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 5, 0, -5, 0],
-                      }}
-                      transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-br from-cyanase-secondary/60 to-cyanase-primary/60 opacity-20"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-cyanase-primary">
-                      GLO
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold text-center mb-3">Global</h3>
-                <p className="text-gray-600 text-center">
-                  International investment options from markets around the world.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-        
+      
         <Footer />
       </div>
     </div>

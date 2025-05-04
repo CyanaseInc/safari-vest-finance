@@ -38,7 +38,7 @@ export const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to="/social-app" className="text-gray-300 hover:text-cyanase-secondary">
-                  Social App
+                  Table investing
                 </Link>
               </li>
               <li>
@@ -57,11 +57,11 @@ export const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-cyanase-secondary" />
-                <span className="text-gray-300">+256 123 456 789</span>
+                <span className="text-gray-300">+256 705 640 852</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-cyanase-secondary" />
-                <span className="text-gray-300">info@cyanase.com</span>
+                <span className="text-gray-300">support@cyanase.com</span>
               </div>
             </div>
           </div>

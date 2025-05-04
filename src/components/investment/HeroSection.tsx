@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { GlobeAnimation } from "./GlobeAnimation";
+import { Link} from "react-router-dom"
 
 export const HeroSection = () => {
   const isMobile = useIsMobile();
@@ -47,7 +48,7 @@ export const HeroSection = () => {
               transition={{ duration: 0.7 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-cyanase-primary mb-6"
             >
-              Global Investment Products
+               Investment Products
             </motion.h1>
             
             <motion.p
@@ -56,7 +57,8 @@ export const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="text-lg md:text-xl text-gray-600 mb-8"
             >
-              Access diverse investment opportunities across the globe through our sophisticated platform. From local treasuries to international equities, we've made investing borderless.
+              Access a wide range of investment products — from local unit trusts and treasury bills to global assets —
+              all in one platform, built for  investors and saving groups.
             </motion.p>
             
             <motion.div
@@ -65,12 +67,16 @@ export const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
+              <a href = "https://auth.cyanase.com">
               <Button className="bg-cyanase-primary hover:bg-cyanase-primary-dark text-white px-6 py-2 h-auto">
                 Create investment account
               </Button>
+              </a>
+              <Link to = '/contact'>
               <Button variant="outline" className="border-cyanase-secondary text-cyanase-primary hover:bg-cyanase-secondary hover:text-cyanase-primary px-6 py-2 h-auto">
                 Partner with us
               </Button>
+              </Link>
             </motion.div>
           </div>
           

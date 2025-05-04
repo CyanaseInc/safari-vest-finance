@@ -14,9 +14,8 @@ export const Navigation = () => {
     return location.pathname === path
   }
 
-  const linkClass = (path: string) => 
-    `text-gray-700 hover:text-cyanase-primary px-3 py-2 transition-colors ${
-      isActive(path) ? 'text-cyanase-primary font-semibold border-b-2 border-cyanase-secondary' : ''
+  const linkClass = (path: string) =>
+    `text-gray-700 hover:text-cyanase-primary px-3 py-2 transition-colors ${isActive(path) ? 'text-cyanase-primary font-semibold border-b-2 border-cyanase-secondary' : ''
     }`
 
   const toggleMenu = () => {
@@ -29,18 +28,19 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img src="/logo.svg" alt="Cyanase" className="h-8 w-auto" />
+              <img src="/logo.png" alt="Cyanase" className="h-8 w-auto" />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
+            <Link to="/" className={linkClass("/")}>Home</Link>
             <Link to="/investment-products" className={linkClass("/investment-products")}>Investment Products</Link>
             <Link to="/fund-managers" className={linkClass("/fund-managers")}>Sectors</Link>
             <Link to="/api" className={linkClass("/api")}>API</Link>
-            <Link to="/social-app" className={linkClass("/social-app")}>Social App</Link>
+            <Link to="/social-app" className={linkClass("/social-app")}>Table investing</Link>
             <Link to="/goal-based-investing" className={linkClass("/goal-based-investing")}>Goal-Based Investing</Link>
-            <Link to="/blog" className={linkClass("/blog")}>Blog</Link>
+
             <Link to="/contact">
               <Button variant="default" className="bg-cyanase-secondary hover:bg-cyanase-primary text-white">
                 Contact Us
@@ -64,43 +64,43 @@ export const Navigation = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
-              <Link 
-                to="/investment-products" 
+              <Link
+                to="/investment-products"
                 className={`${linkClass("/investment-products")} block py-2`}
                 onClick={toggleMenu}
               >
                 Investment Products
               </Link>
-              <Link 
-                to="/fund-managers" 
+              <Link
+                to="/fund-managers"
                 className={`${linkClass("/fund-managers")} block py-2`}
                 onClick={toggleMenu}
               >
                 Sectors
               </Link>
-              <Link 
-                to="/api" 
+              <Link
+                to="/api"
                 className={`${linkClass("/api")} block py-2`}
                 onClick={toggleMenu}
               >
                 API
               </Link>
-              <Link 
-                to="/social-app" 
+              <Link
+                to="/social-app"
                 className={`${linkClass("/social-app")} block py-2`}
                 onClick={toggleMenu}
               >
                 Social App
               </Link>
-              <Link 
-                to="/goal-based-investing" 
+              <Link
+                to="/goal-based-investing"
                 className={`${linkClass("/goal-based-investing")} block py-2`}
                 onClick={toggleMenu}
               >
                 Goal-Based Investing
               </Link>
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
                 className={`${linkClass("/blog")} block py-2`}
                 onClick={toggleMenu}
               >

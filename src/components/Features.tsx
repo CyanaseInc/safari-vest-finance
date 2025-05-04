@@ -20,7 +20,7 @@ export const Features = () => {
             <TabsTrigger value="products">Investment Products</TabsTrigger>
             <TabsTrigger value="partners">Fund Managers</TabsTrigger>
             <TabsTrigger value="api">API</TabsTrigger>
-            <TabsTrigger value="app">Social App</TabsTrigger>
+            <TabsTrigger value="app">Table investing</TabsTrigger>
             <TabsTrigger value="investing">Goal-Based</TabsTrigger>
           </TabsList>
           

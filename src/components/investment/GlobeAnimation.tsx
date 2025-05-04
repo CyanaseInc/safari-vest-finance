@@ -185,7 +185,7 @@ export const GlobeAnimation = () => {
         >
           <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-lg">
             <BarChart3 className="h-6 w-6 text-cyanase-primary mr-2" />
-            <span className="font-medium text-sm">Treasury Bonds 5%</span>
+            <span className="font-medium text-sm">Treasury Bonds 12%</span>
           </div>
         </motion.div>
       </motion.div>
@@ -221,7 +221,7 @@ export const GlobeAnimation = () => {
         >
           <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-lg">
             <DollarSign className="h-6 w-6 text-yellow-500 mr-2" />
-            <span className="font-medium text-sm">Forex Markets</span>
+            <span className="font-medium text-sm">Unit trusts</span>
           </div>
         </motion.div>
       </motion.div>

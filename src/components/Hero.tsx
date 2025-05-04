@@ -12,8 +12,8 @@ export const Hero = () => {
   const [imageCenter, setImageCenter] = useState({ x: 0, y: 0 });
   const imageRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [glowParticles, setGlowParticles] = useState<{x: number, y: number, size: number, color: string, speed: number}[]>([]);
-  
+  const [glowParticles, setGlowParticles] = useState<{ x: number, y: number, size: number, color: string, speed: number }[]>([]);
+
   // Array of cards with different messages (increased to 8)
   const cardMessages = [
     { icon: <ShieldCheck size={24} className="text-purple-700" />, title: "Secure Transactions", color: "bg-white" },
@@ -42,7 +42,7 @@ export const Hero = () => {
     window.addEventListener('resize', updateImageCenter);
     return () => window.removeEventListener('resize', updateImageCenter);
   }, [isImageLoaded]);
-  
+
   // Track mouse position for parallax effects
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -51,7 +51,7 @@ export const Hero = () => {
         y: e.clientY
       });
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -63,14 +63,14 @@ export const Hero = () => {
       y: Math.random() * window.innerHeight,
       size: Math.random() * 40 + 20,
       color: [
-        'rgba(155, 135, 245, 0.3)', // Purple
-        'rgba(214, 188, 250, 0.3)', // Light Purple
+        'rgba(247, 169, 45, 1)', // Purple
+        'rgba(247, 169, 45, 0.102)', // Light Purple
         'rgba(94, 234, 212, 0.3)',  // Teal
         'rgba(253, 224, 71, 0.2)'   // Yellow
       ][Math.floor(Math.random() * 4)],
       speed: Math.random() * 0.2 + 0.1
     }));
-    
+
     setGlowParticles(particles);
   }, []);
 
@@ -88,7 +88,7 @@ export const Hero = () => {
         } : {})
       })));
     };
-    
+
     const interval = setInterval(moveParticles, 50);
     return () => clearInterval(interval);
   }, []);
@@ -146,16 +146,16 @@ export const Hero = () => {
       // Draw glow effect based on mouse position
       const gradientX = mousePosition.x || canvas.width / 2;
       const gradientY = mousePosition.y || canvas.height / 2;
-      
+
       const radialGradient = ctx.createRadialGradient(
         gradientX, gradientY, 0,
         gradientX, gradientY, 300
       );
-      
+
       radialGradient.addColorStop(0, 'rgba(155, 135, 245, 0.2)');
       radialGradient.addColorStop(0.5, 'rgba(155, 135, 245, 0.05)');
       radialGradient.addColorStop(1, 'rgba(155, 135, 245, 0)');
-      
+
       ctx.fillStyle = radialGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -166,15 +166,15 @@ export const Hero = () => {
         particle.y += particle.vy;
 
         // Apply slight attraction to mouse
-        const dx = (mousePosition.x || canvas.width/2) - particle.x;
-        const dy = (mousePosition.y || canvas.height/2) - particle.y;
+        const dx = (mousePosition.x || canvas.width / 2) - particle.x;
+        const dy = (mousePosition.y || canvas.height / 2) - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < 200) {
           particle.vx += dx * 0.0001;
           particle.vy += dy * 0.0001;
         }
-        
+
         // Limit velocity
         const maxSpeed = 0.5;
         const speed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
@@ -193,7 +193,7 @@ export const Hero = () => {
         // Draw particle with glow
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
-        
+
         // Add glow effect to some particles
         if (particle.size > 2) {
           const glow = ctx.createRadialGradient(
@@ -205,7 +205,7 @@ export const Hero = () => {
           ctx.fillStyle = glow;
           ctx.fillRect(particle.x - pulseSize * 4, particle.y - pulseSize * 4, pulseSize * 8, pulseSize * 8);
         }
-        
+
         ctx.fillStyle = particle.color;
         ctx.fill();
       });
@@ -220,12 +220,12 @@ export const Hero = () => {
           if (distance < connectionDistance) {
             // Calculate line opacity based on distance
             const opacity = (1 - distance / connectionDistance) * p1.brightness * p2.brightness;
-            
+
             // Draw gradient connection line
             const gradient = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-            gradient.addColorStop(0, `rgba(155, 135, 245, ${opacity})`);
+            gradient.addColorStop(0, `rgba(247, 169, 45, ${opacity})`);
             gradient.addColorStop(1, `rgba(214, 188, 250, ${opacity})`);
-            
+
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -274,9 +274,9 @@ export const Hero = () => {
           }}
         />
       ))}
-      
-      <canvas 
-        ref={canvasRef} 
+
+      <canvas
+        ref={canvasRef}
         className="absolute inset-0 z-0 w-full h-full"
         style={{ opacity: 0.8 }}
       />
@@ -284,10 +284,10 @@ export const Hero = () => {
         <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
           <div className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="flex flex-col lg:flex-row items-center">
-              <motion.div 
+              <motion.div
                 className="lg:w-1/2 lg:pr-8"
-                style={{ 
-                  perspective: '1000px', 
+                style={{
+                  perspective: '1000px',
                   transformStyle: 'preserve-3d'
                 }}
               >
@@ -297,34 +297,34 @@ export const Hero = () => {
                   transition={{ duration: 0.8 }}
                   style={{
                     transformStyle: 'preserve-3d',
-                    transform: `translateX(${(mousePosition.x - window.innerWidth/2) * -0.01}px) 
-                               translateY(${(mousePosition.y - window.innerHeight/2) * -0.01}px)`
+                    transform: `translateX(${(mousePosition.x - window.innerWidth / 2) * -0.01}px) 
+                               translateY(${(mousePosition.y - window.innerHeight / 2) * -0.01}px)`
                   }}
                   className="sm:text-center lg:text-left"
                 >
                   <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                    <motion.span 
+                    <motion.span
                       className="block"
-                      animate={{ 
-                        textShadow: ['0 0 0px rgba(155, 135, 245, 0)', '0 0 20px rgba(155, 135, 245, 0.5)', '0 0 0px rgba(155, 135, 245, 0)'] 
+                      animate={{
+                        textShadow: ['0 0 0px rgba(155, 135, 245, 0)', '0 0 20px rgba(155, 135, 245, 0.5)', '0 0 0px rgba(155, 135, 245, 0)']
                       }}
                       transition={{ duration: 3, repeat: Infinity }}
                     >
-                      Digitizing Village
+                      Easy Investing
                     </motion.span>
-                    <motion.span 
-                      className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-indigo-500"
-                      animate={{ 
-                        backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] 
+                    <motion.span
+                      className="block  text-primary"
+                      animate={{
+                        backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
                       }}
                       transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                       style={{ backgroundSize: '200% auto' }}
                     >
-                      Savings Groups
+                      For Everyone
                     </motion.span>
                   </h1>
-                  
-                  <motion.p 
+
+                  <motion.p
                     className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -332,7 +332,7 @@ export const Hero = () => {
                   >
                     Empowering African communities with modern financial tools. Save, invest, and grow together through mobile technology.
                   </motion.p>
-                  
+
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -342,19 +342,19 @@ export const Hero = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5, duration: 0.5 }}
                     >
-                      <Button className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-700 to-indigo-600 hover:from-purple-800 hover:to-indigo-700 md:py-4 md:text-lg md:px-10 relative overflow-hidden group">
-                        <motion.span 
-                          className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-500 to-indigo-500 opacity-0 group-hover:opacity-30"
-                          animate={{ 
-                            x: ['-100%', '100%'], 
+                      <Button className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-secondary md:py-4 md:text-lg md:px-10 relative overflow-hidden group">
+                        <motion.span
+                          className="absolute inset-0 w-full h-full  opacity-0 group-hover:opacity-30"
+                          animate={{
+                            x: ['-100%', '100%'],
                           }}
-                          transition={{ 
-                            duration: 1.5, 
+                          transition={{
+                            duration: 1.5,
                             repeat: Infinity,
                             ease: "linear"
                           }}
                         />
-                        Get Started 
+                        Get Started
                         <motion.div
                           animate={{ x: [0, 5, 0] }}
                           transition={{ duration: 1, repeat: Infinity }}
@@ -371,42 +371,35 @@ export const Hero = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.7, duration: 0.5 }}
                     >
-                      <Button variant="outline" className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-purple-700 border-purple-700 hover:bg-purple-50 md:py-4 md:text-lg md:px-10 group">
-                        Learn More 
-                        <motion.div
-                          animate={{ rotate: [0, 360] }}
-                          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                          className="ml-2"
-                        >
-                          <Network className="h-5 w-5" />
-                        </motion.div>
+                      <Button variant="outline" className="border-cyanase-secondary font-medium text-base text-cyanase-primary hover:bg-cyanase-secondary hover:text-cyanase-primary px-6 py-2 h-auto">
+                        Partner with us
                       </Button>
                     </motion.div>
                   </div>
                 </motion.div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="lg:w-1/2 mt-12 lg:mt-0 relative"
                 style={{
-                  transform: `translateX(${(mousePosition.x - window.innerWidth/2) * 0.02}px) 
-                             translateY(${(mousePosition.y - window.innerHeight/2) * 0.02}px)`
+                  transform: `translateX(${(mousePosition.x - window.innerWidth / 2) * 0.02}px) 
+                             translateY(${(mousePosition.y - window.innerHeight / 2) * 0.02}px)`
                 }}
               >
                 <div className="relative" ref={imageRef}>
                   {/* Mobile Phone App Mockup */}
-                  <motion.div 
+                  <motion.div
                     className="relative mx-auto"
                     style={{ maxWidth: "280px" }}
-                    animate={{ 
+                    animate={{
                       y: [0, -10, 0],
-                      rotateY: (mousePosition.x - window.innerWidth/2) * 0.01,
-                      rotateX: (mousePosition.y - window.innerHeight/2) * -0.01,
+                      rotateY: (mousePosition.x - window.innerWidth / 2) * 0.01,
+                      rotateX: (mousePosition.y - window.innerHeight / 2) * -0.01,
                     }}
-                    transition={{ 
+                    transition={{
                       y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                       rotateX: { duration: 0.1, ease: "linear" },
                       rotateY: { duration: 0.1, ease: "linear" },
@@ -415,18 +408,18 @@ export const Hero = () => {
                     {/* Phone frame */}
                     <div className="relative rounded-[3rem] overflow-hidden border-8 border-black bg-black shadow-2xl" style={{ height: "550px" }}>
                       {/* Add glowing effect around phone */}
-                      <motion.div 
+                      <motion.div
                         className="absolute -inset-1 rounded-[3.5rem] opacity-30 blur-md"
-                        animate={{ 
+                        animate={{
                           boxShadow: [
-                            '0 0 0px rgba(155, 135, 245, 0.5)', 
-                            '0 0 20px rgba(155, 135, 245, 1)', 
+                            '0 0 0px rgba(155, 135, 245, 0.5)',
+                            '0 0 20px rgba(155, 135, 245, 1)',
                             '0 0 0px rgba(155, 135, 245, 0.5)'
-                          ] 
+                          ]
                         }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
-                      
+
                       {/* Phone status bar */}
                       <div className="absolute top-0 left-0 w-full bg-black text-white z-10 flex justify-between items-center px-6 py-2 text-xs">
                         <span>9:41</span>
@@ -452,28 +445,28 @@ export const Hero = () => {
                           </motion.div>
                         </div>
                       </div>
-                      
+
                       {/* Phone content */}
                       <div className="relative w-full h-full pt-8 bg-gradient-to-b from-purple-800 via-purple-700 to-indigo-600">
                         {/* Animated gradient background */}
-                        <motion.div 
+                        <motion.div
                           className="absolute inset-0 opacity-20"
-                          animate={{ 
+                          animate={{
                             background: [
                               'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%)',
                               'radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%)'
-                            ] 
+                            ]
                           }}
                           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        
+
                         {/* App header */}
                         <div className="flex justify-between items-center px-5 py-2 text-white">
                           <div>
                             <h3 className="font-bold text-lg">Hello, Sarah</h3>
                             <p className="text-xs opacity-80">Welcome back</p>
                           </div>
-                          <motion.div 
+                          <motion.div
                             className="bg-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
@@ -481,9 +474,9 @@ export const Hero = () => {
                             <span className="text-purple-700 font-bold text-sm">S</span>
                           </motion.div>
                         </div>
-                        
+
                         {/* Main balance card */}
-                        <motion.div 
+                        <motion.div
                           className="mx-4 my-4 bg-white rounded-xl p-4 shadow-lg relative overflow-hidden"
                           animate={{ y: [2, -2, 2] }}
                           transition={{ duration: 4, repeat: Infinity }}
@@ -491,9 +484,9 @@ export const Hero = () => {
                           style={{ transformStyle: 'preserve-3d' }}
                         >
                           {/* Card shimmer effect */}
-                          <motion.div 
+                          <motion.div
                             className="absolute inset-0 opacity-30"
-                            animate={{ 
+                            animate={{
                               background: [
                                 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
                                 'linear-gradient(90deg, transparent, transparent, transparent)'
@@ -502,8 +495,8 @@ export const Hero = () => {
                             }}
                             transition={{ duration: 2, repeat: Infinity, repeatDelay: 5 }}
                           />
-                          
-                          <motion.p 
+
+                          <motion.p
                             className="text-xs text-gray-500"
                             animate={{ x: [0, 2, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
@@ -512,7 +505,7 @@ export const Hero = () => {
                           </motion.p>
                           <h2 className="text-2xl font-bold flex items-center">
                             <motion.span
-                              animate={{ 
+                              animate={{
                                 scale: [1, 1.1, 1],
                                 color: ['#1a202c', '#805ad5', '#1a202c']
                               }}
@@ -537,9 +530,9 @@ export const Hero = () => {
                             </motion.div>
                             <span className="ml-1">+15% this month</span>
                           </div>
-                          
+
                           <div className="flex justify-between mt-4">
-                            <motion.button 
+                            <motion.button
                               whileHover={{ scale: 1.05, backgroundColor: '#EDE9FE' }}
                               whileTap={{ scale: 0.95 }}
                               className="bg-purple-100 rounded-lg px-3 py-2 text-purple-700 text-xs font-medium flex items-center"
@@ -555,7 +548,7 @@ export const Hero = () => {
                               </motion.div>
                               Add Money
                             </motion.button>
-                            <motion.button 
+                            <motion.button
                               whileHover={{ scale: 1.05, backgroundColor: '#EDE9FE' }}
                               whileTap={{ scale: 0.95 }}
                               className="bg-purple-100 rounded-lg px-3 py-2 text-purple-700 text-xs font-medium flex items-center"
@@ -567,7 +560,7 @@ export const Hero = () => {
                             </motion.button>
                           </div>
                         </motion.div>
-                        
+
                         {/* Quick actions */}
                         <div className="mx-4 my-4 backdrop-blur-md rounded-xl p-4 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 border border-white/10">
                           <p className="text-xs text-white mb-3">Quick Actions</p>
@@ -579,9 +572,9 @@ export const Hero = () => {
                                 <PiggyBank size={18} className="text-white" />,
                                 <LineChart size={18} className="text-white" />
                               ];
-                              
+
                               return (
-                                <motion.div 
+                                <motion.div
                                   key={action}
                                   whileHover={{ y: -5 }}
                                   whileTap={{ scale: 0.9 }}
@@ -590,32 +583,32 @@ export const Hero = () => {
                                   animate={{ y: 0, opacity: 1 }}
                                   transition={{ delay: 0.2 * index, duration: 0.5 }}
                                 >
-                                  <motion.div 
+                                  <motion.div
                                     className="bg-white/20 rounded-full h-10 w-10 flex items-center justify-center mb-1 relative overflow-hidden"
-                                    whileHover={{ 
+                                    whileHover={{
                                       boxShadow: '0 0 10px rgba(255,255,255,0.5)',
                                       backgroundColor: 'rgba(255,255,255,0.3)'
                                     }}
                                   >
                                     {/* Sparkle effect on hover */}
-                                    <motion.div 
+                                    <motion.div
                                       className="absolute inset-0 opacity-0 hover:opacity-100"
-                                      animate={{ 
+                                      animate={{
                                         background: [
                                           'radial-gradient(circle at top left, rgba(255,255,255,0.5) 0%, transparent 20%)',
                                           'radial-gradient(circle at bottom right, rgba(255,255,255,0.5) 0%, transparent 20%)'
                                         ],
-                                        rotate: [0, 360] 
+                                        rotate: [0, 360]
                                       }}
                                       transition={{ duration: 3, repeat: Infinity }}
                                     />
-                                    
+
                                     {icons[index]}
                                   </motion.div>
-                                  <motion.span 
+                                  <motion.span
                                     className="text-white text-xs"
-                                    animate={{ 
-                                      textShadow: ['0 0 0px rgba(255,255,255,0)', '0 0 8px rgba(255,255,255,0.5)', '0 0 0px rgba(255,255,255,0)'] 
+                                    animate={{
+                                      textShadow: ['0 0 0px rgba(255,255,255,0)', '0 0 8px rgba(255,255,255,0.5)', '0 0 0px rgba(255,255,255,0)']
                                     }}
                                     transition={{ duration: 2, delay: index * 0.5, repeat: Infinity }}
                                   >
@@ -626,13 +619,13 @@ export const Hero = () => {
                             })}
                           </div>
                         </div>
-                        
+
                         {/* Recent Transactions */}
                         <div className="mx-4 mt-4 bg-white rounded-t-xl p-4 relative overflow-hidden">
                           {/* Card shimmer effect */}
-                          <motion.div 
+                          <motion.div
                             className="absolute inset-0 opacity-10"
-                            animate={{ 
+                            animate={{
                               background: [
                                 'linear-gradient(135deg, transparent 0%, rgba(155, 135, 245, 0.6) 50%, transparent 100%)',
                                 'linear-gradient(135deg, transparent 0%, transparent 50%, transparent 100%)'
@@ -642,16 +635,16 @@ export const Hero = () => {
                             }}
                             transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
                           />
-                        
+
                           <div className="flex justify-between items-center mb-4">
-                            <motion.p 
+                            <motion.p
                               className="font-medium"
                               animate={{ x: [0, 2, 0] }}
                               transition={{ duration: 3, repeat: Infinity }}
                             >
                               Recent Transactions
                             </motion.p>
-                            <motion.span 
+                            <motion.span
                               className="text-purple-700 text-xs"
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
@@ -659,9 +652,9 @@ export const Hero = () => {
                               View All
                             </motion.span>
                           </div>
-                          
+
                           {/* First transaction */}
-                          <motion.div 
+                          <motion.div
                             className="flex items-center justify-between py-2 border-b border-gray-100"
                             whileHover={{ backgroundColor: '#F9FAFB', x: 2 }}
                             initial={{ x: -20, opacity: 0 }}
@@ -669,7 +662,7 @@ export const Hero = () => {
                             transition={{ delay: 0.3 }}
                           >
                             <div className="flex items-center">
-                              <motion.div 
+                              <motion.div
                                 className="bg-blue-100 rounded-full h-8 w-8 flex items-center justify-center mr-3"
                                 whileHover={{ scale: 1.1, backgroundColor: '#DBEAFE' }}
                               >
@@ -680,9 +673,9 @@ export const Hero = () => {
                                 <p className="text-xs text-gray-500">May 30</p>
                               </div>
                             </div>
-                            <motion.span 
+                            <motion.span
                               className="text-sm"
-                              animate={{ 
+                              animate={{
                                 scale: [1, 1.05, 1],
                               }}
                               transition={{ duration: 2, repeat: Infinity }}
@@ -690,9 +683,9 @@ export const Hero = () => {
                               -$28.90
                             </motion.span>
                           </motion.div>
-                          
+
                           {/* Second transaction */}
-                          <motion.div 
+                          <motion.div
                             className="flex items-center justify-between py-2"
                             whileHover={{ backgroundColor: '#F9FAFB', x: 2 }}
                             initial={{ x: -20, opacity: 0 }}
@@ -700,7 +693,7 @@ export const Hero = () => {
                             transition={{ delay: 0.4 }}
                           >
                             <div className="flex items-center">
-                              <motion.div 
+                              <motion.div
                                 className="bg-green-100 rounded-full h-8 w-8 flex items-center justify-center mr-3"
                                 whileHover={{ scale: 1.1, backgroundColor: '#DCFCE7' }}
                               >
@@ -711,9 +704,9 @@ export const Hero = () => {
                                 <p className="text-xs text-gray-500">May 28</p>
                               </div>
                             </div>
-                            <motion.span 
+                            <motion.span
                               className="text-sm text-green-500"
-                              animate={{ 
+                              animate={{
                                 scale: [1, 1.05, 1],
                               }}
                               transition={{ duration: 2, delay: 0.5, repeat: Infinity }}
@@ -722,13 +715,13 @@ export const Hero = () => {
                             </motion.span>
                           </motion.div>
                         </div>
-                      
+
                         {/* Bottom app bar with home indicator */}
                         <div className="absolute bottom-0 left-0 right-0">
                           <div className="flex justify-center">
-                            <motion.div 
+                            <motion.div
                               className="bg-white h-1 w-1/3 rounded-full mb-1"
-                              animate={{ 
+                              animate={{
                                 opacity: [0.5, 1, 0.5],
                                 width: ['30%', '33%', '30%']
                               }}
@@ -738,32 +731,32 @@ export const Hero = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Phone notch */}
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-7 bg-black rounded-b-3xl" />
                   </motion.div>
-                  
+
                   {/* Animated notification cards */}
                   <AnimatePresence>
                     {cardMessages.map((card, index) => (
-                      <motion.div 
+                      <motion.div
                         key={index}
                         className="absolute"
-                        style={{ 
+                        style={{
                           left: `${imageCenter.x}px`,
                           top: `${imageCenter.y}px`,
                           zIndex: visibleCardIndex === index ? 30 : 20,
                           perspective: '1000px'
                         }}
-                        initial={{ 
-                          opacity: 0, 
+                        initial={{
+                          opacity: 0,
                           scale: 0.5,
                           x: 0,
                           y: 0,
                           rotateY: 45,
                           rotateX: -15
                         }}
-                        animate={{ 
+                        animate={{
                           opacity: visibleCardIndex === index ? 1 : 0,
                           scale: visibleCardIndex === index ? 1 : 0.5,
                           x: visibleCardIndex === index ? getCardFinalPosition(index, "x") : 0,
@@ -771,8 +764,8 @@ export const Hero = () => {
                           rotateY: visibleCardIndex === index ? 0 : 45,
                           rotateX: visibleCardIndex === index ? 0 : -15,
                         }}
-                        exit={{ 
-                          opacity: 0, 
+                        exit={{
+                          opacity: 0,
                           scale: 0.5,
                           x: 0,
                           y: 0,
@@ -788,9 +781,9 @@ export const Hero = () => {
                         >
                           <Card className={`shadow-lg ${card.color} border-0 overflow-hidden`}>
                             {/* Add subtle gradient overlay */}
-                            <motion.div 
+                            <motion.div
                               className="absolute inset-0 opacity-20"
-                              animate={{ 
+                              animate={{
                                 background: [
                                   'linear-gradient(45deg, transparent, rgba(155, 135, 245, 0.3))',
                                   'linear-gradient(45deg, rgba(155, 135, 245, 0.3), transparent)'
@@ -798,7 +791,7 @@ export const Hero = () => {
                               }}
                               transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
                             />
-                            
+
                             <CardContent className="p-3">
                               <div className="flex items-center space-x-2">
                                 <motion.div
@@ -807,10 +800,10 @@ export const Hero = () => {
                                 >
                                   {card.icon}
                                 </motion.div>
-                                <motion.span 
+                                <motion.span
                                   className="text-sm font-semibold"
-                                  animate={{ 
-                                    textShadow: ['0 0 0px rgba(0,0,0,0)', '0 0 5px rgba(155, 135, 245, 0.5)', '0 0 0px rgba(0,0,0,0)'] 
+                                  animate={{
+                                    textShadow: ['0 0 0px rgba(0,0,0,0)', '0 0 5px rgba(155, 135, 245, 0.5)', '0 0 0px rgba(0,0,0,0)']
                                   }}
                                   transition={{ duration: 2, repeat: Infinity }}
                                 >
@@ -823,16 +816,16 @@ export const Hero = () => {
                       </motion.div>
                     ))}
                   </AnimatePresence>
-                  
+
                   {/* Network icon at top right with particles */}
-                  <motion.div 
+                  <motion.div
                     className="absolute -top-4 -right-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-full shadow-lg"
                     whileHover={{ scale: 1.1, boxShadow: '0 0 20px rgba(155, 135, 245, 0.5)' }}
-                    animate={{ 
+                    animate={{
                       rotate: [0, 10, 0, -10, 0],
                       scale: [1, 1.05, 1]
                     }}
-                    transition={{ 
+                    transition={{
                       rotate: { duration: 5, repeat: Infinity },
                       scale: { duration: 2, repeat: Infinity }
                     }}
@@ -854,30 +847,30 @@ export const Hero = () => {
                         }}
                       />
                     ))}
-                    
+
                     <Network size={28} className="text-purple-700 z-10 relative" />
-                    
+
                     {/* Glowing effect */}
-                    <motion.div 
+                    <motion.div
                       className="absolute inset-0 rounded-full"
-                      animate={{ 
+                      animate={{
                         boxShadow: [
-                          '0 0 0px rgba(155, 135, 245, 0.3)', 
-                          '0 0 15px rgba(155, 135, 245, 0.8)', 
+                          '0 0 0px rgba(155, 135, 245, 0.3)',
+                          '0 0 15px rgba(155, 135, 245, 0.8)',
                           '0 0 0px rgba(155, 135, 245, 0.3)'
-                        ] 
+                        ]
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
                   </motion.div>
-                  
+
                   {/* Stars */}
                   {[...Array(5)].map((_, i) => {
                     const randomX = Math.random() * 300 - 150;
                     const randomY = Math.random() * 300 - 150;
                     const delay = Math.random() * 2;
                     const duration = 1 + Math.random() * 2;
-                    
+
                     return (
                       <motion.div
                         key={`star-${i}`}
@@ -887,14 +880,14 @@ export const Hero = () => {
                           top: `calc(50% + ${randomY}px)`,
                           zIndex: 5
                         }}
-                        animate={{ 
+                        animate={{
                           scale: [0, 1, 0],
                           opacity: [0, 1, 0],
                           rotate: [0, 180]
                         }}
-                        transition={{ 
+                        transition={{
                           duration,
-                          delay, 
+                          delay,
                           repeat: Infinity,
                           repeatDelay: 3
                         }}
@@ -926,6 +919,6 @@ function getCardFinalPosition(index: number, axis: "x" | "y") {
     { x: -120, y: 120 },    // Bottom left
     { x: 120, y: 120 },     // Bottom right
   ];
-  
+
   return positions[index % positions.length][axis];
 }

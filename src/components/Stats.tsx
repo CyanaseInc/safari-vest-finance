@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 export const Stats = () => {
   const [users, setUsers] = useState(0)
   const [transactions, setTransactions] = useState(0)
-  const [countries, setCountries] = useState(0)
+  const [products, setproducts] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export const Stats = () => {
       const durationMs = 2000
       const steps = 50
       const userStep = 4000 / steps
-      const transactionStep = 4.3 / steps
-      const countriesStep = 5 / steps
+      const transactionStep = 50 / steps
+      const productsStep = 5 / steps
       const interval = durationMs / steps
 
       let currentStep = 0
@@ -45,8 +45,8 @@ export const Stats = () => {
         currentStep++
         
         setUsers(Math.min(Math.ceil(currentStep * userStep), 4000))
-        setTransactions(Math.min(parseFloat((currentStep * transactionStep).toFixed(1)), 4.3))
-        setCountries(Math.min(Math.ceil(currentStep * countriesStep), 5))
+        setTransactions(Math.min(parseFloat((currentStep * transactionStep).toFixed(1)), 40.3))
+        setproducts(Math.min(Math.ceil(currentStep * productsStep), 5))
         
         if (currentStep >= steps) {
           clearInterval(timer)
@@ -79,18 +79,18 @@ export const Stats = () => {
           </div>
           <div className="flex flex-col mt-10 sm:mt-0 transition-all transform hover:scale-105 duration-300">
             <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-200">
-              Transactions
+              Deposits
             </dt>
             <dd className="order-1 text-5xl font-extrabold text-white">
-              ${isVisible ? transactions.toLocaleString() + "M+" : "0M+"}
+              {isVisible ? transactions.toLocaleString() + "K+" : "0M+"}
             </dd>
           </div>
           <div className="flex flex-col mt-10 sm:mt-0 transition-all transform hover:scale-105 duration-300">
             <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-200">
-              Countries
+              products
             </dt>
             <dd className="order-1 text-5xl font-extrabold text-white">
-              {isVisible ? countries.toLocaleString() + "+" : "0+"}
+              {isVisible ? products.toLocaleString() + "+" : "0+"}
             </dd>
           </div>
         </dl>

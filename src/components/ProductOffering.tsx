@@ -36,24 +36,26 @@ export const ProductOffering = () => {
     },
     {
       icon: <Users className="h-12 w-12 text-[rgb(247,169,45)]" />,
-      title: "Fund Managers",
+      title: "Partner Fund Managers",
       description: [
-        "Partner with licensed, experienced fund managers.",
-        "Enjoy diversified portfolios tailored to your goals.",
-        "Benefit from active monitoring to maximize returns."
+        "Licensed fund managers support group and individual investments.",
+        "Offer accessible investment products to underserved communities.",
+        "Ensure transparency and impact through regulated investment vehicles."
       ],
       link: "/fund-managers"
     },
+    
     {
       icon: <Coins className="h-12 w-12 text-[rgb(247,169,45)]" />,
-      title: "Scila Savings",
+      title: "Social Investing",
       description: [
-        "Save regularly with flexible terms and competitive rates.",
-        "Automate your savings with smart schedules and goals.",
-        "Access funds when needed with no hidden penalties."
+        "Invest as a group to achieve shared financial goals.",
+        "Track group contributions and returns in real time.",
+        "Earn interest while supporting your community’s growth."
       ],
-      link: "/scila-savings"
+      link: "/social-investing"
     }
+    
   ]
 
   return (
