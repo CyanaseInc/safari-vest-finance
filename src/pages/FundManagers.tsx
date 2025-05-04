@@ -1,4 +1,3 @@
-
 import React from "react"
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation"
@@ -112,7 +111,7 @@ const FundManagers = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section with Gradient Background - Changed to Left-text, Right-animation format */}
+      {/* Enhanced Hero Section with Advanced Globe Animation */}
       <div className="pt-24 pb-12 bg-gradient-to-b from-cyanase-primary/5 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 items-center gap-8">
@@ -131,11 +130,10 @@ const FundManagers = () => {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="text-lg text-gray-600"
               >
-                Cyanase partners with multiple sectors to enable investing and financial inclusion in Africa, 
-                especially in underserved and developing markets.
+                We collaborate with multiple sectors globally to deliver innovative financial solutions and expand investment opportunities across markets.
               </motion.p>
               
-              {/* Floating Badge Cloud for mobile view */}
+              {/* Enhanced floating badge cloud for mobile */}
               {isMobile && (
                 <motion.div 
                   variants={containerVariants}
@@ -147,8 +145,14 @@ const FundManagers = () => {
                     <motion.div key={sector.id} variants={itemVariants}>
                       <Badge 
                         variant="outline" 
-                        className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2"
+                        className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 relative overflow-hidden group"
                       >
+                        {/* Glow effect on hover */}
+                        <motion.span 
+                          className="absolute inset-0 bg-cyanase-primary/0 group-hover:bg-cyanase-primary/10 transition-all duration-300"
+                          whileHover={{ opacity: [0, 1, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        />
                         {sector.emoji} {sector.name}
                       </Badge>
                     </motion.div>
@@ -158,22 +162,114 @@ const FundManagers = () => {
             </div>
             
             <div className={`${isMobile ? "order-1 mb-8" : "order-2"} relative h-[350px]`}>
-              {/* Interactive globe with connected sectors */}
+              {/* Enhanced interactive globe with digital finance elements */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
                 className="relative h-full w-full flex items-center justify-center"
               >
+                {/* Digital grid background */}
+                <div className="absolute inset-0 opacity-10">
+                  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+                        <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                      </pattern>
+                      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <rect width="40" height="40" fill="url(#smallGrid)" />
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                  </svg>
+                </div>
+                
+                {/* Glowing sphere */}
+                <motion.div 
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40"
+                  animate={{ 
+                    boxShadow: [
+                      '0 0 40px 10px rgba(37, 40, 89, 0.2)', 
+                      '0 0 60px 20px rgba(37, 40, 89, 0.3)', 
+                      '0 0 40px 10px rgba(37, 40, 89, 0.2)'
+                    ] 
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ width: 100, height: 100, filter: "blur(8px)" }}
+                />
+                
+                {/* Enhanced rotating globe */}
                 <motion.div
                   animate={{ rotateY: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                   className="relative"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
                 >
-                  <Globe className="h-32 w-32 text-cyanase-primary/30" />
+                  {/* Inner glowing effect */}
+                  <motion.div
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanase-primary/10"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 0.2, 0.5]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ width: 70, height: 70 }}
+                  />
+                  
+                  {/* Globe with 3D effect */}
+                  <div className="relative">
+                    <Globe className="h-32 w-32 text-cyanase-primary/30" strokeWidth={0.8} />
+                    
+                    {/* Digital latitude/longitude lines */}
+                    <svg className="absolute inset-0" viewBox="0 0 100 100">
+                      {[...Array(6)].map((_, i) => (
+                        <motion.ellipse 
+                          key={`lat-${i}`}
+                          cx="50" 
+                          cy="50" 
+                          rx="45" 
+                          ry={10 + i * 6} 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="0.3"
+                          className="text-cyanase-primary/20"
+                          animate={{ opacity: [0.3, 0.5, 0.3] }}
+                          transition={{ 
+                            duration: 3, 
+                            delay: i * 0.5,
+                            repeat: Infinity 
+                          }}
+                        />
+                      ))}
+                      
+                      {[...Array(6)].map((_, i) => (
+                        <motion.line 
+                          key={`long-${i}`}
+                          x1="50" 
+                          y1="5" 
+                          x2="50" 
+                          y2="95" 
+                          stroke="currentColor" 
+                          strokeWidth="0.3"
+                          className="text-cyanase-primary/20"
+                          transform={`rotate(${i * 30} 50 50)`}
+                          animate={{ opacity: [0.3, 0.5, 0.3] }}
+                          transition={{ 
+                            duration: 3,
+                            delay: i * 0.5,
+                            repeat: Infinity 
+                          }}
+                        />
+                      ))}
+                    </svg>
+                  </div>
                 </motion.div>
                 
-                {/* Circular orbiting sectors */}
+                {/* Enhanced circular orbiting sectors with data streams */}
                 {sectors.slice(0, 7).map((sector, index) => {
                   const angle = (index * (360 / 7)) * (Math.PI / 180);
                   const radius = 120;
@@ -181,69 +277,161 @@ const FundManagers = () => {
                   const y = Math.sin(angle) * radius;
                   
                   return (
-                    <motion.div
-                      key={sector.id}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ 
-                        opacity: 1, 
-                        scale: 1,
-                        x: x,
-                        y: y
-                      }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 0.3 + (index * 0.1),
-                        type: "spring",
-                      }}
-                      style={{ position: "absolute", left: "50%", top: "50%", marginLeft: "-20px", marginTop: "-20px" }}
-                    >
+                    <React.Fragment key={sector.id}>
                       <motion.div
-                        whileHover={{ scale: 1.2 }}
-                        className="w-10 h-10 rounded-full bg-cyanase-primary/10 flex items-center justify-center"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ 
+                          opacity: 1, 
+                          scale: 1,
+                          x: x,
+                          y: y,
+                          rotateZ: [0, 360],
+                        }}
+                        transition={{ 
+                          duration: 0.8, 
+                          delay: 0.3 + (index * 0.1),
+                          type: "spring",
+                          rotateZ: {
+                            duration: 20,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }
+                        }}
+                        style={{ 
+                          position: "absolute", 
+                          left: "50%", 
+                          top: "50%", 
+                          marginLeft: "-20px", 
+                          marginTop: "-20px",
+                          zIndex: 10
+                        }}
                       >
-                        <div className="text-lg">{sector.emoji}</div>
+                        <motion.div
+                          whileHover={{ scale: 1.2 }}
+                          animate={{
+                            boxShadow: [
+                              '0 0 0 rgba(37, 40, 89, 0.2)',
+                              '0 0 10px rgba(37, 40, 89, 0.5)',
+                              '0 0 0 rgba(37, 40, 89, 0.2)'
+                            ]
+                          }}
+                          transition={{
+                            boxShadow: {
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }
+                          }}
+                          className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative border border-cyanase-primary/20"
+                          style={{ backdropFilter: "blur(4px)" }}
+                        >
+                          {/* Pulsing glow effect */}
+                          <motion.div 
+                            className="absolute inset-0 rounded-full bg-cyanase-primary/10"
+                            animate={{ 
+                              scale: [1, 1.3, 1],
+                              opacity: [0.7, 0, 0.7]
+                            }}
+                            transition={{ 
+                              duration: 2, 
+                              repeat: Infinity,
+                              delay: index * 0.2
+                            }}
+                          />
+                          
+                          <div className="relative z-10 text-lg">{sector.emoji}</div>
+                          
+                          {/* Tooltip on hover */}
+                          <motion.div
+                            className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white px-2 py-1 rounded text-xs font-medium text-cyanase-primary shadow-md whitespace-nowrap"
+                            initial={{ opacity: 0, y: -5, scale: 0.9 }}
+                            whileHover={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {sector.name}
+                          </motion.div>
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
+                      
+                      {/* Enhanced connection lines with animated data flow */}
+                      <svg className="absolute inset-0 z-0">
+                        <motion.path
+                          d={`M0 0 L${x} ${y}`}
+                          stroke="rgba(37, 40, 89, 0.15)"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          fill="none"
+                          style={{ transform: "translate(50%, 50%)" }}
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ pathLength: 1, opacity: 1 }}
+                          transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
+                        />
+                        
+                        {/* Data packets traveling along the lines */}
+                        <motion.circle 
+                          r="3" 
+                          fill="rgba(37, 40, 89, 0.5)"
+                          style={{ transform: "translate(50%, 50%)" }}
+                          initial={{ opacity: 0 }}
+                          animate={{ 
+                            opacity: [0, 1, 0],
+                            x: [0, x * 0.5, x],
+                            y: [0, y * 0.5, y], 
+                          }}
+                          transition={{ 
+                            duration: 2, 
+                            repeat: Infinity,
+                            delay: index * 0.5,
+                            ease: "easeInOut"
+                          }}
+                        />
+                      </svg>
+                    </React.Fragment>
                   );
                 })}
                 
-                {/* Connection lines */}
-                <svg className="absolute inset-0" style={{ zIndex: -1 }}>
-                  {sectors.slice(0, 7).map((sector, index) => {
-                    const angle = (index * (360 / 7)) * (Math.PI / 180);
-                    const radius = 120;
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-                    
-                    return (
-                      <motion.path
-                        key={`line-${index}`}
-                        d={`M0 0 L${x} ${y}`}
-                        stroke="rgba(37, 40, 89, 0.2)"
-                        strokeWidth="2"
-                        strokeDasharray="4 4"
-                        fill="none"
-                        style={{ transform: "translate(50%, 50%)" }}
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
-                      />
-                    );
-                  })}
-                </svg>
+                {/* Digital binary code bits floating around */}
+                {[...Array(20)].map((_, i) => (
+                  <motion.div
+                    key={`bit-${i}`}
+                    className="absolute text-cyanase-primary/10 text-xs font-mono"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                    }}
+                    animate={{
+                      y: [0, -30],
+                      opacity: [0, 0.8, 0]
+                    }}
+                    transition={{
+                      duration: 2 + Math.random() * 3,
+                      repeat: Infinity,
+                      delay: Math.random() * 5
+                    }}
+                  >
+                    {Math.random() > 0.5 ? '1' : '0'}
+                  </motion.div>
+                ))}
                 
-                {/* Pulse animation in the center */}
+                {/* Central pulse animation with enhanced glow */}
                 <motion.div 
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanase-primary/20"
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0.2, 0.7] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanase-primary/10"
+                  animate={{ 
+                    scale: [1, 1.8, 1], 
+                    opacity: [0.7, 0.1, 0.7] 
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
                   style={{ width: 60, height: 60 }}
                 />
               </motion.div>
             </div>
           </div>
           
-          {/* Floating Badge Cloud for desktop */}
+          {/* Enhanced floating badge cloud for desktop */}
           {!isMobile && (
             <motion.div 
               variants={containerVariants}
@@ -255,8 +443,21 @@ const FundManagers = () => {
                 <motion.div key={sector.id} variants={itemVariants}>
                   <Badge 
                     variant="outline" 
-                    className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 hover:bg-cyanase-primary/10 transition-colors cursor-default"
+                    className="text-cyanase-primary bg-cyanase-primary/5 border-cyanase-primary/20 px-3 py-1.5 text-sm mb-2 hover:bg-cyanase-primary/10 transition-colors cursor-default relative overflow-hidden group"
                   >
+                    {/* Digital shimmer effect */}
+                    <motion.span 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:opacity-100 opacity-0"
+                      animate={{ 
+                        x: ['-100%', '100%'] 
+                      }}
+                      transition={{ 
+                        duration: 1.5, 
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatDelay: 3
+                      }}
+                    />
                     {sector.emoji} {sector.name}
                   </Badge>
                 </motion.div>
