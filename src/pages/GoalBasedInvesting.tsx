@@ -24,7 +24,7 @@ const GoalBasedInvesting = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gradient-to-b from-purple-50 to-white">
+      <section className="pt-24 pb-12 bg-gradient-to-b from-cyanase-secondary/10 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -37,7 +37,7 @@ const GoalBasedInvesting = () => {
                 Set your financial targets and achieve them with our automated investment tools.
                 Perfect for individuals or groups saving for land, education, or business ventures.
               </p>
-              <Button className="bg-purple-700 hover:bg-purple-800 text-white">
+              <Button className="bg-cyanase-secondary hover:bg-cyanase-secondary-dark text-white">
                 Start Investing Today <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
@@ -54,13 +54,13 @@ const GoalBasedInvesting = () => {
                     <h3 className="font-semibold text-lg text-gray-900">Land Purchase Fund</h3>
                     <p className="text-gray-500 text-sm">Target: 15,000,000 UGX</p>
                   </div>
-                  <span className="bg-purple-100 text-purple-700 text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="bg-cyanase-secondary/20 text-cyanase-secondary text-xs font-semibold px-3 py-1 rounded-full">
                     75% Complete
                   </span>
                 </div>
                 
                 <Progress value={75} className="h-2 mb-6 bg-gray-100">
-                  <span className="bg-purple-600 h-full rounded-full" />
+                  <span className="bg-cyanase-secondary h-full rounded-full" />
                 </Progress>
                 
                 <div className="grid grid-cols-2 gap-4 mb-4">
@@ -74,7 +74,7 @@ const GoalBasedInvesting = () => {
                   </div>
                 </div>
                 
-                <div className="text-center p-3 rounded-lg bg-purple-50 text-purple-700 text-sm">
+                <div className="text-center p-3 rounded-lg bg-cyanase-secondary/10 text-cyanase-secondary text-sm">
                   <span className="font-medium">Target Date: December 2025</span>
                 </div>
               </div>
@@ -93,7 +93,7 @@ const GoalBasedInvesting = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-3 py-1 bg-cyanase-secondary/20 text-cyanase-secondary rounded-full text-sm font-medium mb-4">
               Investment Simplified
             </span>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -139,8 +139,8 @@ const GoalBasedInvesting = () => {
                     viewport={{ once: true }}
                     className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm hover:shadow transition-shadow"
                   >
-                    <div className="bg-purple-100 h-12 w-12 rounded-lg flex items-center justify-center mb-4">
-                      <step.icon className="text-purple-700 h-6 w-6" />
+                    <div className="bg-cyanase-secondary/20 h-12 w-12 rounded-lg flex items-center justify-center mb-4">
+                      <step.icon className="text-cyanase-secondary h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
                     <p className="text-gray-600">{step.description}</p>
@@ -150,12 +150,12 @@ const GoalBasedInvesting = () => {
             </TabsContent>
             
             <TabsContent value="group">
-              <div className="bg-purple-50 p-8 rounded-xl">
+              <div className="bg-cyanase-secondary/10 p-8 rounded-xl">
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div className="md:w-1/3">
                     <div className="bg-white p-6 rounded-lg shadow-md">
                       <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                        <Users className="mr-2 h-5 w-5 text-purple-700" />
+                        <Users className="mr-2 h-5 w-5 text-cyanase-secondary" />
                         Social Investing
                       </h3>
                       <p className="text-gray-600 mb-4">
@@ -179,12 +179,12 @@ const GoalBasedInvesting = () => {
                   </div>
                   
                   <div className="md:w-2/3">
-                    <h3 className="text-2xl font-semibold text-purple-900 mb-4">How Group Goals Work</h3>
+                    <h3 className="text-2xl font-semibold text-cyanase-secondary mb-4">How Group Goals Work</h3>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="bg-white p-4 rounded-lg shadow-sm">
                         <div className="flex items-center mb-3">
-                          <div className="bg-purple-100 p-2 rounded-full mr-3">
-                            <Users className="text-purple-600 h-4 w-4" />
+                          <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                            <Users className="text-cyanase-secondary h-4 w-4" />
                           </div>
                           <h4 className="font-medium">Group Creation</h4>
                         </div>
@@ -195,8 +195,8 @@ const GoalBasedInvesting = () => {
                       
                       <div className="bg-white p-4 rounded-lg shadow-sm">
                         <div className="flex items-center mb-3">
-                          <div className="bg-purple-100 p-2 rounded-full mr-3">
-                            <RefreshCw className="text-purple-600 h-4 w-4" />
+                          <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                            <RefreshCw className="text-cyanase-secondary h-4 w-4" />
                           </div>
                           <h4 className="font-medium">Collective Saving</h4>
                         </div>
@@ -207,8 +207,8 @@ const GoalBasedInvesting = () => {
                       
                       <div className="bg-white p-4 rounded-lg shadow-sm">
                         <div className="flex items-center mb-3">
-                          <div className="bg-purple-100 p-2 rounded-full mr-3">
-                            <BarChart className="text-purple-600 h-4 w-4" />
+                          <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                            <BarChart className="text-cyanase-secondary h-4 w-4" />
                           </div>
                           <h4 className="font-medium">Progress Tracking</h4>
                         </div>
@@ -219,8 +219,8 @@ const GoalBasedInvesting = () => {
                       
                       <div className="bg-white p-4 rounded-lg shadow-sm">
                         <div className="flex items-center mb-3">
-                          <div className="bg-purple-100 p-2 rounded-full mr-3">
-                            <CheckCircle className="text-purple-600 h-4 w-4" />
+                          <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                            <CheckCircle className="text-cyanase-secondary h-4 w-4" />
                           </div>
                           <h4 className="font-medium">Goal Achievement</h4>
                         </div>
@@ -256,8 +256,8 @@ const GoalBasedInvesting = () => {
               <AccordionItem value="item-1" className="border-b">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   <div className="flex items-center">
-                    <div className="bg-purple-100 p-2 rounded-full mr-3">
-                      <Target className="text-purple-600 h-5 w-5" />
+                    <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                      <Target className="text-cyanase-secondary h-5 w-5" />
                     </div>
                     <h3 className="text-lg font-medium">1. Create a Goal</h3>
                   </div>
@@ -278,8 +278,8 @@ const GoalBasedInvesting = () => {
               <AccordionItem value="item-2" className="border-b">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   <div className="flex items-center">
-                    <div className="bg-purple-100 p-2 rounded-full mr-3">
-                      <RefreshCw className="text-purple-600 h-5 w-5" />
+                    <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                      <RefreshCw className="text-cyanase-secondary h-5 w-5" />
                     </div>
                     <h3 className="text-lg font-medium">2. Automated Contributions</h3>
                   </div>
@@ -296,8 +296,8 @@ const GoalBasedInvesting = () => {
               <AccordionItem value="item-3" className="border-b">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   <div className="flex items-center">
-                    <div className="bg-purple-100 p-2 rounded-full mr-3">
-                      <BarChart className="text-purple-600 h-5 w-5" />
+                    <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                      <BarChart className="text-cyanase-secondary h-5 w-5" />
                     </div>
                     <h3 className="text-lg font-medium">3. Earnings & Progress</h3>
                   </div>
@@ -313,8 +313,8 @@ const GoalBasedInvesting = () => {
               <AccordionItem value="item-4" className="border-b">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   <div className="flex items-center">
-                    <div className="bg-purple-100 p-2 rounded-full mr-3">
-                      <TrendingUp className="text-purple-600 h-5 w-5" />
+                    <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                      <TrendingUp className="text-cyanase-secondary h-5 w-5" />
                     </div>
                     <h3 className="text-lg font-medium">4. Flexible Adjustments</h3>
                   </div>
@@ -330,8 +330,8 @@ const GoalBasedInvesting = () => {
               <AccordionItem value="item-5">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   <div className="flex items-center">
-                    <div className="bg-purple-100 p-2 rounded-full mr-3">
-                      <CheckCircle className="text-purple-600 h-5 w-5" />
+                    <div className="bg-cyanase-secondary/20 p-2 rounded-full mr-3">
+                      <CheckCircle className="text-cyanase-secondary h-5 w-5" />
                     </div>
                     <h3 className="text-lg font-medium">5. Withdrawal Upon Completion</h3>
                   </div>
@@ -386,10 +386,10 @@ const GoalBasedInvesting = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-purple-50 p-6 rounded-xl"
+                className="bg-cyanase-secondary/10 p-6 rounded-xl"
               >
                 <div className="bg-white h-16 w-16 rounded-full shadow-sm flex items-center justify-center mb-6">
-                  <benefit.icon className="text-purple-700 h-8 w-8" />
+                  <benefit.icon className="text-cyanase-secondary h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
@@ -400,18 +400,18 @@ const GoalBasedInvesting = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 bg-purple-700">
+      <section className="py-16 bg-cyanase-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:w-2/3">
               <h2 className="text-3xl font-bold text-white mb-4">Start Your Financial Journey Today</h2>
-              <p className="text-purple-100 text-lg">
+              <p className="text-cyanase-secondary-light text-lg">
                 Cyanase combines social savings, mobile money, and regulated investing to make goal-based 
                 financial planning available to anyone — even in remote villages.
               </p>
             </div>
             <div>
-              <Button className="bg-white text-purple-700 hover:bg-purple-50 px-8 py-6 text-lg h-auto">
+              <Button className="bg-white text-cyanase-secondary hover:bg-gray-100 px-8 py-6 text-lg h-auto">
                 Create Your First Goal <Trophy className="ml-2 h-5 w-5" />
               </Button>
             </div>

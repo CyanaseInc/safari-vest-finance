@@ -1,3 +1,4 @@
+
 import React from "react"
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation"
@@ -37,7 +38,7 @@ const FundManagers = () => {
     },
     {
       id: "ecommerce",
-      icon: <Briefcase className="h-10 w-10 text-purple-500" />,
+      icon: <Briefcase className="h-10 w-10 text-cyanase-secondary" />,
       emoji: "🛒",
       name: "E-commerce",
       description: "Online marketplaces and digital stores partner to offer investment options as part of their checkout or reward systems.",
@@ -46,7 +47,7 @@ const FundManagers = () => {
     },
     {
       id: "social",
-      icon: <Users className="h-10 w-10 text-purple-500" />,
+      icon: <Users className="h-10 w-10 text-cyanase-secondary" />,
       emoji: "📱",
       name: "Social Networks",
       description: "Social platforms and community-based apps integrate Cyanase to enable group investing.",
@@ -55,7 +56,7 @@ const FundManagers = () => {
     },
     {
       id: "healthcare",
-      icon: <Hospital className="h-10 w-10 text-purple-500" />,
+      icon: <Hospital className="h-10 w-10 text-cyanase-secondary" />,
       emoji: "🏥",
       name: "SACCOs",
       description: "Healthcare professionals and SACCOs often lack access to low-risk investment tools. Cyanase provides tailored digital solutions.",
@@ -64,7 +65,7 @@ const FundManagers = () => {
     },
     {
       id: "education",
-      icon: <GraduationCap className="h-10 w-10 text-purple-500" />,
+      icon: <GraduationCap className="h-10 w-10 text-cyanase-secondary" />,
       emoji: "🎓",
       name: "Educational Institutions",
       description: "Cyanase collaborates with financial literacy-focused NGOs, schools, or universities to promote investing habits among young people and women.",
@@ -73,7 +74,7 @@ const FundManagers = () => {
     },
     {
       id: "village",
-      icon: <Building className="h-10 w-10 text-purple-500" />,
+      icon: <Building className="h-10 w-10 text-cyanase-secondary" />,
       emoji: "🏘️",
       name: "Village Saving Groups",
       description: "Village and rural savings groups use Cyanase's tools to digitize savings, track group funds, and invest together.",
@@ -82,7 +83,7 @@ const FundManagers = () => {
     },
     {
       id: "fundmanagers",
-      icon: <ChartBar className="h-10 w-10 text-purple-500" />,
+      icon: <ChartBar className="h-10 w-10 text-cyanase-secondary" />,
       emoji: "📊",
       name: "Fund Managers",
       description: "Professional asset managers use Cyanase's fund portal to onboard users, manage investment products, and track performance.",
@@ -208,9 +209,9 @@ const FundManagers = () => {
         {/* Sector Showcase */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {sectors.slice(0, 2).map((sector) => (
-            <Card key={sector.id} className="overflow-hidden border-0 shadow-lg bg-gradient-to-br from-purple-50 to-white">
+            <Card key={sector.id} className="overflow-hidden border-0 shadow-lg bg-gradient-to-br from-cyanase-secondary/10 to-white">
               <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                <div className="p-3 rounded-full bg-purple-100">
+                <div className="p-3 rounded-full bg-cyanase-secondary/10">
                   {sector.icon}
                 </div>
                 <CardTitle className="text-2xl">
@@ -221,11 +222,11 @@ const FundManagers = () => {
                 <p className="text-gray-600 mb-4">{sector.description}</p>
                 {sector.examples && (
                   <div className="mb-2">
-                    <span className="font-semibold text-purple-700">Examples:</span> {sector.examples}
+                    <span className="font-semibold text-cyanase-secondary">Examples:</span> {sector.examples}
                   </div>
                 )}
                 <div>
-                  <span className="font-semibold text-purple-700">Use Case:</span> {sector.value}
+                  <span className="font-semibold text-cyanase-secondary">Use Case:</span> {sector.value}
                 </div>
               </CardContent>
             </Card>
@@ -239,16 +240,16 @@ const FundManagers = () => {
           <div className="space-y-4">
             {sectors.slice(2).map((sector) => (
               <Collapsible key={sector.id} className="border border-gray-200 rounded-lg overflow-hidden">
-                <CollapsibleTrigger className="flex w-full items-center justify-between p-4 bg-white hover:bg-purple-50 transition-colors">
+                <CollapsibleTrigger className="flex w-full items-center justify-between p-4 bg-white hover:bg-cyanase-secondary/10 transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-full bg-purple-100">
+                    <div className="p-2 rounded-full bg-cyanase-secondary/10">
                       {sector.icon}
                     </div>
                     <h3 className="text-xl font-medium">
                       {sector.emoji} {sector.name}
                     </h3>
                   </div>
-                  <div className="text-purple-500">
+                  <div className="text-cyanase-secondary">
                     <ChevronDown className="h-5 w-5" />
                   </div>
                 </CollapsibleTrigger>
@@ -256,11 +257,11 @@ const FundManagers = () => {
                   <p className="text-gray-600 mb-4">{sector.description}</p>
                   {sector.examples && (
                     <div className="mb-2">
-                      <span className="font-semibold text-purple-700">Examples:</span> {sector.examples}
+                      <span className="font-semibold text-cyanase-secondary">Examples:</span> {sector.examples}
                     </div>
                   )}
                   <div>
-                    <span className="font-semibold text-purple-700">Use Case:</span> {sector.value}
+                    <span className="font-semibold text-cyanase-secondary">Use Case:</span> {sector.value}
                   </div>
                 </CollapsibleContent>
               </Collapsible>
@@ -269,13 +270,13 @@ const FundManagers = () => {
         </div>
 
         {/* Value Proposition Summary */}
-        <div className="bg-purple-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-purple-900 mb-6 text-center">How Cyanase Brings Value</h2>
+        <div className="bg-cyanase-secondary/10 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-cyanase-primary mb-6 text-center">How Cyanase Brings Value</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
-                <Banknote className="h-6 w-6 text-purple-500 mr-2" />
+                <Banknote className="h-6 w-6 text-cyanase-secondary mr-2" />
                 <h3 className="font-semibold">Fintechs</h3>
               </div>
               <p className="text-gray-600">Embedded investing APIs for seamless integration</p>
@@ -283,7 +284,7 @@ const FundManagers = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
-                <Briefcase className="h-6 w-6 text-purple-500 mr-2" />
+                <Briefcase className="h-6 w-6 text-cyanase-secondary mr-2" />
                 <h3 className="font-semibold">E-commerce</h3>
               </div>
               <p className="text-gray-600">Reward-based investing through purchases</p>
@@ -291,7 +292,7 @@ const FundManagers = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
-                <Users className="h-6 w-6 text-purple-500 mr-2" />
+                <Users className="h-6 w-6 text-cyanase-secondary mr-2" />
                 <h3 className="font-semibold">Social networks</h3>
               </div>
               <p className="text-gray-600">Group savings and collaborative investment goals</p>
@@ -299,7 +300,7 @@ const FundManagers = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
-                <Hospital className="h-6 w-6 text-purple-500 mr-2" />
+                <Hospital className="h-6 w-6 text-cyanase-secondary mr-2" />
                 <h3 className="font-semibold">SACCOs & Healthcare</h3>
               </div>
               <p className="text-gray-600">Secure digital investment tools for cooperatives</p>
@@ -307,7 +308,7 @@ const FundManagers = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
-                <GraduationCap className="h-6 w-6 text-purple-500 mr-2" />
+                <GraduationCap className="h-6 w-6 text-cyanase-secondary mr-2" />
                 <h3 className="font-semibold">Education & NGOs</h3>
               </div>
               <p className="text-gray-600">Financial literacy & inclusion programs</p>
@@ -315,7 +316,7 @@ const FundManagers = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-3">
-                <Building className="h-6 w-6 text-purple-500 mr-2" />
+                <Building className="h-6 w-6 text-cyanase-secondary mr-2" />
                 <h3 className="font-semibold">Village groups</h3>
               </div>
               <p className="text-gray-600">Digitized community investing platforms</p>
@@ -325,13 +326,13 @@ const FundManagers = () => {
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-purple-900 mb-4">Become a Partner</h2>
+          <h2 className="text-2xl font-bold text-cyanase-primary mb-4">Become a Partner</h2>
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
             Join our ecosystem and leverage Cyanase's investment infrastructure to bring financial inclusion to your customers.
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium bg-purple-700 text-white hover:bg-purple-800 h-10 px-6 py-2 transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium bg-cyanase-secondary text-white hover:bg-cyanase-secondary-dark h-10 px-6 py-2 transition-colors"
           >
             Contact Our Partnership Team
           </a>
