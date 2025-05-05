@@ -1,4 +1,3 @@
-
 import { Navigation } from "@/components/Navigation"
 import { Footer } from "@/components/Footer"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,6 +12,7 @@ interface BlogPost {
   image: string;
   date: string;
   category: string;
+  link: string;
 }
 
 const blogPosts: BlogPost[] = [
