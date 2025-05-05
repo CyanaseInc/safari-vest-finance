@@ -33,7 +33,7 @@ export const Preloader = () => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="w-16 h-16 mb-4 border-4 border-t-purple-700 border-r-purple-500 border-b-purple-300 border-l-purple-100 rounded-full"
+          className="w-16 h-16 mb-4 border-4 border-t-cyanase-secondary border-r-cyanase-secondary border-b-cyanase-secondary-light border-l-white rounded-full"
         />
         <motion.h2
           animate={{ opacity: [0.5, 1, 0.5] }}
@@ -42,7 +42,7 @@ export const Preloader = () => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="text-2xl font-bold text-purple-700"
+          className="text-2xl font-bold text-cyanase-secondary"
         >
           Cyanase
         </motion.h2>

@@ -14,9 +14,9 @@ const SocialApp = () => {
     transition: { duration: 0.5 }
   }
 
-  // Define primary and secondary colors
-  const primaryColor = "#9b87f5";
-  const secondaryColor = "#7E69AB";
+  // Define primary and secondary colors from our theme
+  const primaryColor = "#F7A92D";
+  const secondaryColor = "#FCBF3D";
   
   // State for animated illustration
   const [isIllustrationVisible, setIsIllustrationVisible] = useState(false);
@@ -62,10 +62,10 @@ const SocialApp = () => {
                   and grow together through technology designed for African communities.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white font-medium">
+                  <Button className="bg-cyanase-secondary hover:bg-cyanase-secondary-dark text-white font-medium">
                     Download App <Share2 className="ml-2 h-4 w-4" />
                   </Button>
-                  <Button variant="outline" className="border-[#9b87f5] text-[#9b87f5] hover:bg-[#9b87f5]/10">
+                  <Button variant="outline" className="border-cyanase-secondary text-cyanase-secondary hover:bg-cyanase-secondary/10">
                     Learn More
                   </Button>
                 </div>
@@ -81,7 +81,7 @@ const SocialApp = () => {
               >
                 {/* Central community circle */}
                 <motion.div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] rounded-full flex items-center justify-center shadow-lg z-30 border-4 border-white"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-cyanase-secondary to-cyanase-secondary-dark rounded-full flex items-center justify-center shadow-lg z-30 border-4 border-white"
                   initial={{ scale: 0 }}
                   animate={isIllustrationVisible ? { scale: 1 } : { scale: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -91,14 +91,14 @@ const SocialApp = () => {
                 
                 {/* Orbit paths */}
                 <motion.div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border-2 border-dashed border-[#9b87f5] opacity-50"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border-2 border-dashed border-cyanase-secondary opacity-50"
                   initial={{ scale: 0, rotate: 0 }}
                   animate={isIllustrationVisible ? { scale: 1, rotate: 360 } : { scale: 0, rotate: 0 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 />
                 
                 <motion.div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border-2 border-dashed border-[#9b87f5] opacity-30"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border-2 border-dashed border-cyanase-secondary opacity-30"
                   initial={{ scale: 0, rotate: 0 }}
                   animate={isIllustrationVisible ? { scale: 1, rotate: -360 } : { scale: 0, rotate: 0 }}
                   transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -108,7 +108,7 @@ const SocialApp = () => {
                 {[0, 72, 144, 216, 288].map((angle, index) => (
                   <motion.div
                     key={`community-${index}`}
-                    className="absolute w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center border-2 border-[#9b87f5] z-20"
+                    className="absolute w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center border-2 border-cyanase-secondary z-20"
                     initial={{ 
                       x: Math.cos(angle * Math.PI / 180) * 120 * 0.5 + 160, 
                       y: Math.sin(angle * Math.PI / 180) * 120 * 0.5 + 200,
@@ -129,11 +129,11 @@ const SocialApp = () => {
                       className="flex items-center justify-center flex-col"
                       whileHover={{ scale: 1.1 }}
                     >
-                      {index === 0 && <Wallet size={20} className="text-[#9b87f5] mb-1" />}
-                      {index === 1 && <PiggyBank size={20} className="text-[#9b87f5] mb-1" />}
-                      {index === 2 && <MessageCircle size={20} className="text-[#9b87f5] mb-1" />}
-                      {index === 3 && <BookOpen size={20} className="text-[#9b87f5] mb-1" />}
-                      {index === 4 && <TrendingUp size={20} className="text-[#9b87f5] mb-1" />}
+                      {index === 0 && <Wallet size={20} className="text-cyanase-secondary mb-1" />}
+                      {index === 1 && <PiggyBank size={20} className="text-cyanase-secondary mb-1" />}
+                      {index === 2 && <MessageCircle size={20} className="text-cyanase-secondary mb-1" />}
+                      {index === 3 && <BookOpen size={20} className="text-cyanase-secondary mb-1" />}
+                      {index === 4 && <TrendingUp size={20} className="text-cyanase-secondary mb-1" />}
                       
                       <span className="text-xs font-semibold text-gray-700 hidden md:block">
                         {index === 0 && "Savings"}
@@ -150,7 +150,7 @@ const SocialApp = () => {
                 {[0, 72, 144, 216, 288].map((angle, index) => (
                   <motion.div 
                     key={`line-${index}`}
-                    className="absolute top-1/2 left-1/2 h-0.5 bg-gradient-to-r from-[#9b87f5] to-purple-300 origin-left"
+                    className="absolute top-1/2 left-1/2 h-0.5 bg-gradient-to-r from-cyanase-secondary to-cyanase-secondary-light origin-left"
                     style={{
                       width: '120px',
                       transform: `rotate(${angle}deg)`,
@@ -306,7 +306,7 @@ const SocialApp = () => {
                 {[0, 1, 2].map((index) => (
                   <motion.div
                     key={`pulse-${index}`}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#9b87f5]"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-cyanase-secondary"
                     initial={{ width: 32, height: 32, opacity: 0.8 }}
                     animate={isIllustrationVisible ? { 
                       width: ['32px', '170px'], 
@@ -334,7 +334,7 @@ const SocialApp = () => {
                 ].map((item, index) => (
                   <motion.div
                     key={`label-${index}`}
-                    className="absolute text-xs md:text-sm px-2 py-1 bg-white/80 backdrop-blur-sm rounded-md shadow-sm border border-[#9b87f5]/20 font-medium text-[#7E69AB]"
+                    className="absolute text-xs md:text-sm px-2 py-1 bg-white/80 backdrop-blur-sm rounded-md shadow-sm border border-cyanase-secondary/20 font-medium text-cyanase-secondary-dark"
                     style={{
                       top: `calc(50% + ${item.y}px)`,
                       left: `calc(50% + ${item.x}px)`,
@@ -374,11 +374,11 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className={`bg-${primaryColor}/10 p-4 rounded-lg flex items-center gap-4 mb-6 w-max`} style={{ backgroundColor: `${primaryColor}20` }}>
-                <div className={`bg-${primaryColor} text-white p-2 rounded-lg`} style={{ backgroundColor: primaryColor }}>
+              <div className="bg-cyanase-secondary/10 p-4 rounded-lg flex items-center gap-4 mb-6 w-max">
+                <div className="bg-cyanase-secondary text-white p-2 rounded-lg">
                   <Users2 size={24} />
                 </div>
-                <h3 className="text-xl font-semibold" style={{ color: secondaryColor }}>Group-Centric Design</h3>
+                <h3 className="text-xl font-semibold text-cyanase-secondary-dark">Group-Centric Design</h3>
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Like WhatsApp for Finance</h3>
               <div className="space-y-4">
@@ -409,7 +409,7 @@ const SocialApp = () => {
                 className="rounded-lg shadow-lg"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "https://placehold.co/600x400/9b87f5/ffffff?text=Group+Management";
+                  target.src = "https://placehold.co/600x400/F7A92D/ffffff?text=Group+Management";
                 }}
               />
             </motion.div>
@@ -429,7 +429,7 @@ const SocialApp = () => {
                 className="rounded-lg shadow-lg"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "https://placehold.co/600x400/9b87f5/ffffff?text=In-App+Communication";
+                  target.src = "https://placehold.co/600x400/F7A92D/ffffff?text=In-App+Communication";
                 }}
               />
             </motion.div>
@@ -439,11 +439,11 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-[#9b87f5]/10 p-4 rounded-lg flex items-center gap-4 mb-6 w-max">
-                <div className="bg-[#9b87f5] text-white p-2 rounded-lg">
+              <div className="bg-cyanase-secondary/10 p-4 rounded-lg flex items-center gap-4 mb-6 w-max">
+                <div className="bg-cyanase-secondary text-white p-2 rounded-lg">
                   <MessageCircle size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-[#7E69AB]">In-App Communication</h3>
+                <h3 className="text-xl font-semibold text-cyanase-secondary-dark">In-App Communication</h3>
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Social Finance Experience</h3>
               <div className="space-y-4">
@@ -468,11 +468,11 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-[#9b87f5]/10 p-4 rounded-lg flex items-center gap-4 mb-6 w-max">
-                <div className="bg-[#9b87f5] text-white p-2 rounded-lg">
+              <div className="bg-cyanase-secondary/10 p-4 rounded-lg flex items-center gap-4 mb-6 w-max">
+                <div className="bg-cyanase-secondary text-white p-2 rounded-lg">
                   <Wallet size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-[#7E69AB]">Mobile Money Integration</h3>
+                <h3 className="text-xl font-semibold text-cyanase-secondary-dark">Mobile Money Integration</h3>
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Seamless African Transactions</h3>
               <div className="space-y-4">
@@ -499,7 +499,7 @@ const SocialApp = () => {
                 className="rounded-lg shadow-lg"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "https://placehold.co/600x400/9b87f5/ffffff?text=Mobile+Money";
+                  target.src = "https://placehold.co/600x400/F7A92D/ffffff?text=Mobile+Money";
                 }}
               />
             </motion.div>
@@ -515,8 +515,8 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="bg-[#9b87f5]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <PiggyBank className="text-[#9b87f5]" size={24} />
+              <div className="bg-cyanase-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <PiggyBank className="text-cyanase-secondary" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-3">Group Wallet & Earnings</h3>
               <p className="text-gray-600 mb-4">Deposited money is stored in a unit trust (a regulated investment fund), earning interest for the group.</p>
@@ -531,8 +531,8 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-[#9b87f5]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="text-[#9b87f5]" size={24} />
+              <div className="bg-cyanase-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="text-cyanase-secondary" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-3">Loans Inside Groups</h3>
               <p className="text-gray-600 mb-4">Members can apply for loans from the group savings.</p>
@@ -547,8 +547,8 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="bg-[#9b87f5]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Users2 className="text-[#9b87f5]" size={24} />
+              <div className="bg-cyanase-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <Users2 className="text-cyanase-secondary" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-3">Gamified Financial Inclusion</h3>
               <p className="text-gray-600 mb-4">Groups that save more or stay consistent are rewarded with re-grants or bonuses (e.g., save UGX 2M, get 500k more).</p>
@@ -563,8 +563,8 @@ const SocialApp = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="bg-[#9b87f5]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <BookOpen className="text-[#9b87f5]" size={24} />
+              <div className="bg-cyanase-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <BookOpen className="text-cyanase-secondary" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-3">Education & Support</h3>
               <p className="text-gray-600 mb-4">Through WhatsApp channels, influencers, and in-app tips, Cyanase educates users on financial literacy.</p>
@@ -574,7 +574,7 @@ const SocialApp = () => {
         </div>
         
         {/* CTA Section */}
-        <div className="bg-[#9b87f5] text-white py-16">
+        <div className="bg-cyanase-secondary text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Start Saving Together?</h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
@@ -582,10 +582,10 @@ const SocialApp = () => {
               and growing their money together through the power of group finance.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button className="bg-white text-[#7E69AB] hover:bg-gray-100 font-medium">
+              <Button className="bg-white text-cyanase-secondary-dark hover:bg-gray-100 font-medium">
                 Download App <Share2 className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-[#7E69AB]">
+              <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-cyanase-secondary-dark">
                 Contact Us
               </Button>
             </div>
