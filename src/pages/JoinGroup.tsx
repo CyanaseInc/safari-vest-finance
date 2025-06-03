@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -87,23 +86,12 @@ const JoinGroup = () => {
             </Card>
           </div>
 
-          {/* Join Section */}
-          <Card>
-            <CardContent className="p-8 text-center">
-              <h3 className="text-xl font-semibold text-[#252859] mb-4">Ready to Join?</h3>
-              <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-                Start your wealth-building journey with us today. Minimum monthly contribution starts at UGX 50,000.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-[#F7A92D] hover:bg-[#F7A92D]/90 text-white px-8 py-2">
-                  Join This Group
-                </Button>
-                <Button variant="outline" className="border-[#252859] text-[#252859] hover:bg-[#252859] hover:text-white">
-                  Learn More
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Join Button */}
+          <div className="text-center">
+            <Button className="bg-[#F7A92D] hover:bg-[#F7A92D]/90 text-white px-8 py-3 text-lg">
+              Join This Group
+            </Button>
+          </div>
         </div>
       </div>
 
