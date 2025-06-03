@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -31,67 +32,64 @@ const JoinGroup = () => {
       
       <div className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Group Header Card */}
-          <Card className="mb-8">
-            <CardContent className="p-8 text-center">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
-                <img
-                  src={groupData.image}
-                  alt={groupData.name}
-                  className="w-full h-full object-cover"
-                />
+          {/* Single Combined Card */}
+          <Card className="p-8">
+            <CardContent className="text-center space-y-8">
+              {/* Group Header */}
+              <div>
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                  <img
+                    src={groupData.image}
+                    alt={groupData.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h1 className="text-3xl font-bold text-[#252859] mb-2">{groupData.name}</h1>
+                <p className="text-lg text-gray-600">{groupData.slogan}</p>
               </div>
-              <h1 className="text-3xl font-bold text-[#252859] mb-2">{groupData.name}</h1>
-              <p className="text-lg text-gray-600">{groupData.slogan}</p>
+
+              {/* Group Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Users className="h-6 w-6 text-[#252859] mr-2" />
+                    <span className="text-sm font-medium text-gray-600">Total Members</span>
+                  </div>
+                  <div className="text-3xl font-bold text-[#252859]">{groupData.totalMembers}</div>
+                  <p className="text-xs text-gray-500">Active savers</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <DollarSign className="h-6 w-6 text-[#F7A92D] mr-2" />
+                    <span className="text-sm font-medium text-gray-600">Total Saved</span>
+                  </div>
+                  <div className="text-3xl font-bold text-[#F7A92D]">
+                    {formatCurrency(groupData.totalSaved)}
+                  </div>
+                  <p className="text-xs text-gray-500">Collective savings</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Calendar className="h-6 w-6 text-[#252859] mr-2" />
+                    <span className="text-sm font-medium text-gray-600">Group Age</span>
+                  </div>
+                  <div className="text-3xl font-bold text-[#252859]">
+                    {groupData.createdDate}
+                  </div>
+                  <p className="text-xs text-gray-500">Since creation</p>
+                </div>
+              </div>
+
+              {/* Join Button */}
+              <div>
+                <Button className="bg-[#F7A92D] hover:bg-[#F7A92D]/90 text-white px-8 py-3 text-lg">
+                  Join This Group
+                </Button>
+              </div>
             </CardContent>
           </Card>
-
-          {/* Group Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Members</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-[#252859]">{groupData.totalMembers}</div>
-                <p className="text-xs text-muted-foreground">Active savers</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Saved</CardTitle>
-                <DollarSign className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-[#F7A92D]">
-                  {formatCurrency(groupData.totalSaved)}
-                </div>
-                <p className="text-xs text-muted-foreground">Collective savings</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Group Age</CardTitle>
-                <Calendar className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-[#252859]">
-                  {groupData.createdDate}
-                </div>
-                <p className="text-xs text-muted-foreground">Since creation</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Join Button */}
-          <div className="text-center">
-            <Button className="bg-[#F7A92D] hover:bg-[#F7A92D]/90 text-white px-8 py-3 text-lg">
-              Join This Group
-            </Button>
-          </div>
         </div>
       </div>
 
