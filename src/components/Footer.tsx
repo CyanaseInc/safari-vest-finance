@@ -51,6 +51,11 @@ export const Footer = () => {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <Link to="/terms-and-conditions" className="text-gray-300 hover:text-cyanase-secondary">
+                  Terms & Conditions
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
