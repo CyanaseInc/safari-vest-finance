@@ -46,6 +46,11 @@ export const Footer = () => {
                   Goal-Based Investing
                 </Link>
               </li>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-300 hover:text-cyanase-secondary">
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

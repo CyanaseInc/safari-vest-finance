@@ -15,6 +15,7 @@ import GoalBasedInvesting from "./pages/GoalBasedInvesting";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import JoinGroup from "./pages/JoinGroup";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { DisclaimerProvider } from "./contexts/DisclaimerContext";
 
 // Create a new QueryClient instance
@@ -39,6 +40,7 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/join-group" element={<JoinGroup />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
