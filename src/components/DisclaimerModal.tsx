@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogAction, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useDisclaimer } from "@/contexts/DisclaimerContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Info } from "lucide-react";
+import { Shield, Info, X } from "lucide-react";
 
 export const DisclaimerModal = () => {
   const { hasSeenDisclaimer, setHasSeenDisclaimer } = useDisclaimer();
@@ -32,11 +32,16 @@ export const DisclaimerModal = () => {
     setHasSeenDisclaimer(true);
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setHasSeenDisclaimer(true);
+  };
+
   return (
     <AnimatePresence>
       {isOpen && !hasSeenDisclaimer && (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-          <AlertDialogContent className="max-w-md border-0 shadow-2xl bg-white rounded-2xl p-0 overflow-hidden">
+          <AlertDialogContent className="max-w-lg border-0 shadow-2xl bg-white rounded-2xl p-0 overflow-hidden">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -44,38 +49,67 @@ export const DisclaimerModal = () => {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="relative"
             >
-              {/* Header with icon */}
-              <div className="flex items-center gap-3 p-6 pb-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center">
-                  <Info className="w-5 h-5 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <AlertDialogTitle className="text-lg font-semibold text-gray-900 leading-tight">
-                    Important Notice
-                  </AlertDialogTitle>
+              {/* Close button */}
+              <button
+                onClick={handleClose}
+                className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+                aria-label="Close disclaimer"
+              >
+                <X className="w-4 h-4 text-gray-600" />
+              </button>
+
+              {/* Header with gradient background */}
+              <div className="bg-gradient-to-r from-[#252859] to-[#353A80] px-6 pt-6 pb-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 pt-1">
+                    <AlertDialogTitle className="text-lg font-semibold text-white leading-tight mb-1">
+                      Important Disclosure
+                    </AlertDialogTitle>
+                    <p className="text-white/80 text-sm">
+                      Please read this important information about our services
+                    </p>
+                  </div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="px-6 pb-6">
-                <AlertDialogDescription className="text-gray-600 text-sm leading-relaxed mb-6">
-                  Cyanase is a financial technology platform. Investment services are provided by our licensed and regulated fund manager partners. 
-                  <span className="block mt-2 text-xs text-gray-500">
-                    Not a bank or investment company.
-                  </span>
+              <div className="px-6 py-5">
+                <AlertDialogDescription className="text-gray-700 text-sm leading-relaxed space-y-3">
+                  <p>
+                    <strong>Cyanase is a financial technology platform.</strong> We are not a bank, investment company, or licensed financial advisor.
+                  </p>
+                  
+                  <p>
+                    Investment services are provided through our partnerships with licensed and regulated fund managers. All investments carry risk, and past performance does not guarantee future results.
+                  </p>
+                  
+                  <p className="text-xs text-gray-500 bg-gray-50 p-3 rounded-lg">
+                    <strong>Risk Warning:</strong> The value of investments can go down as well as up, and you may get back less than you invested. Please ensure you understand the risks before investing.
+                  </p>
                 </AlertDialogDescription>
 
-                {/* Action button */}
-                <AlertDialogAction 
-                  onClick={handleDismiss} 
-                  className="w-full bg-[#252859] hover:bg-[#252859]/90 text-white font-medium py-2.5 rounded-lg transition-colors duration-200"
-                >
-                  Got it
-                </AlertDialogAction>
+                {/* Action buttons */}
+                <div className="flex gap-3 mt-6">
+                  <AlertDialogAction 
+                    onClick={handleDismiss} 
+                    className="flex-1 bg-[#252859] hover:bg-[#252859]/90 text-white font-medium py-2.5 rounded-lg transition-colors duration-200"
+                  >
+                    I understand
+                  </AlertDialogAction>
+                  <button
+                    onClick={handleClose}
+                    className="px-4 py-2.5 text-gray-600 hover:text-gray-800 font-medium transition-colors"
+                  >
+                    Learn more
+                  </button>
+                </div>
               </div>
 
-              {/* Subtle accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#252859] to-[rgb(247,169,45)]" />
+              {/* Bottom accent line */}
+              <div className="h-1 bg-gradient-to-r from-[#252859] via-[rgb(247,169,45)] to-[#252859]" />
             </motion.div>
           </AlertDialogContent>
         </AlertDialog>

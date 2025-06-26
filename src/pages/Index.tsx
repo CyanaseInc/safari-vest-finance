@@ -1,4 +1,3 @@
-
 import { Navigation } from "@/components/Navigation"
 import { Hero } from "@/components/Hero"
 import { Stats } from "@/components/Stats"
@@ -14,6 +13,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton"
 import { FAQ } from "@/components/FAQ"
 import { DisclaimerModal } from "@/components/DisclaimerModal"
 import { Preloader } from "@/components/Preloader"
+import { BuiltWithBoltBadge } from "@/components/BuiltWithBoltBadge"
 
 const Index = () => {
   return (
@@ -34,6 +34,7 @@ const Index = () => {
         <Footer />
         <WhatsAppButton />
         <DisclaimerModal />
+        <BuiltWithBoltBadge />
       </div>
     </div>
   )
