@@ -20,5 +20,3 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
-
-replca the lovable thingwith something eslse
