@@ -18,7 +18,7 @@ export const BuiltWithBoltBadge = () => {
       >
         <div className="flex items-center gap-2">
           <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-            <img src ="bolt.png"/>
+            <img src ="bolt.png" alt ="bolt"/>
           </div>
           <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
             Built with Bolt
