@@ -18,7 +18,7 @@ export const BuiltWithBoltBadge = () => {
         <img
           src="bolt.png"
           alt="Bolt"
-          className="w-8 h-8"
+          className="w-16 h-16"
         />
       </a>
     </motion.div>
