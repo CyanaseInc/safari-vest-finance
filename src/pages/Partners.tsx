@@ -84,16 +84,64 @@ const Partners = () => {
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-cyanase-primary to-cyanase-secondary text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Let's Build Africa's Financial Future Together
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-            Partner with Cyanase to digitize savings groups, enable investing, and accelerate financial inclusion across Africa.
-          </p>
-          <Button size="lg" className="bg-white text-cyanase-primary hover:bg-gray-100">
-            Become a Partner
-          </Button>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="animate-fade-in">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Let's Build Africa's Financial Future Together
+              </h1>
+              <p className="text-xl md:text-2xl mb-8">
+                Partner with Cyanase to digitize savings groups, enable investing, and accelerate financial inclusion across Africa.
+              </p>
+              <Button size="lg" className="bg-white text-cyanase-primary hover:bg-gray-100 hover-scale">
+                Become a Partner
+              </Button>
+            </div>
+            
+            {/* Partnership Animation */}
+            <div className="relative flex justify-center items-center animate-scale-in">
+              <div className="relative w-80 h-80">
+                {/* Central Hub */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                  <Handshake className="h-10 w-10 text-cyanase-primary" />
+                </div>
+                
+                {/* Orbiting Partner Icons */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_20s_linear_infinite]">
+                  <Building className="h-8 w-8 text-cyanase-secondary" />
+                </div>
+                
+                <div className="absolute top-1/4 right-0 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_25s_linear_infinite_reverse]">
+                  <Users className="h-8 w-8 text-cyanase-secondary" />
+                </div>
+                
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_20s_linear_infinite]">
+                  <Heart className="h-8 w-8 text-cyanase-secondary" />
+                </div>
+                
+                <div className="absolute top-1/4 left-0 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_25s_linear_infinite_reverse]">
+                  <Globe className="h-8 w-8 text-cyanase-secondary" />
+                </div>
+                
+                <div className="absolute top-1/2 right-4 w-14 h-14 bg-white/80 rounded-full flex items-center justify-center shadow-md animate-[spin_30s_linear_infinite]">
+                  <GraduationCap className="h-7 w-7 text-cyanase-secondary" />
+                </div>
+                
+                <div className="absolute top-1/2 left-4 w-14 h-14 bg-white/80 rounded-full flex items-center justify-center shadow-md animate-[spin_30s_linear_infinite_reverse]">
+                  <CheckCircle className="h-7 w-7 text-cyanase-secondary" />
+                </div>
+                
+                {/* Connection Lines */}
+                <div className="absolute inset-0">
+                  <svg className="w-full h-full opacity-30" viewBox="0 0 320 320">
+                    <circle cx="160" cy="160" r="120" fill="none" stroke="white" strokeWidth="1" strokeDasharray="5,5" className="animate-[spin_40s_linear_infinite]" />
+                    <circle cx="160" cy="160" r="80" fill="none" stroke="white" strokeWidth="1" strokeDasharray="3,3" className="animate-[spin_30s_linear_infinite_reverse]" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
