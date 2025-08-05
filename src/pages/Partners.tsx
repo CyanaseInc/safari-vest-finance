@@ -83,18 +83,18 @@ const Partners = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-cyanase-primary to-cyanase-secondary text-white py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
             <div className="animate-fade-in">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
                 Let's Build Africa's Financial Future Together
               </h1>
-              <p className="text-xl md:text-2xl mb-8">
+              <p className="text-xl md:text-2xl mb-8 text-gray-600">
                 Partner with Cyanase to digitize savings groups, enable investing, and accelerate financial inclusion across Africa.
               </p>
-              <Button size="lg" className="bg-white text-cyanase-primary hover:bg-gray-100 hover-scale">
+              <Button size="lg" className="bg-cyanase-primary text-white hover:bg-cyanase-primary/90 hover-scale">
                 Become a Partner
               </Button>
             </div>
