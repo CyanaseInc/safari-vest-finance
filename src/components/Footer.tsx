@@ -56,6 +56,11 @@ export const Footer = () => {
                   Terms & Conditions
                 </Link>
               </li>
+              <li>
+                <Link to="/partners" className="text-gray-300 hover:text-cyanase-secondary">
+                  Partner with Us
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
