@@ -101,44 +101,51 @@ const Partners = () => {
             
             {/* Partnership Animation */}
             <div className="relative flex justify-center items-center animate-scale-in">
-              <div className="relative w-80 h-80">
+              <div className="relative w-96 h-96">
                 {/* Central Hub */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                  <Handshake className="h-10 w-10 text-cyanase-primary" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-cyanase-primary to-cyanase-secondary rounded-full flex items-center justify-center shadow-xl animate-pulse">
+                  <Handshake className="h-12 w-12 text-white" />
                 </div>
                 
                 {/* Orbiting Partner Icons */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_20s_linear_infinite]">
-                  <Building className="h-8 w-8 text-cyanase-secondary" />
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-18 h-18 bg-gradient-to-br from-cyanase-secondary to-cyanase-primary rounded-full flex items-center justify-center shadow-lg animate-[spin_20s_linear_infinite] border-2 border-white">
+                  <Building className="h-9 w-9 text-white" />
                 </div>
                 
-                <div className="absolute top-1/4 right-0 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_25s_linear_infinite_reverse]">
-                  <Users className="h-8 w-8 text-cyanase-secondary" />
+                <div className="absolute top-1/4 right-0 w-18 h-18 bg-gradient-to-br from-cyanase-primary to-cyanase-secondary rounded-full flex items-center justify-center shadow-lg animate-[spin_25s_linear_infinite_reverse] border-2 border-white">
+                  <Users className="h-9 w-9 text-white" />
                 </div>
                 
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_20s_linear_infinite]">
-                  <Heart className="h-8 w-8 text-cyanase-secondary" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-18 h-18 bg-gradient-to-br from-cyanase-secondary to-cyanase-primary rounded-full flex items-center justify-center shadow-lg animate-[spin_20s_linear_infinite] border-2 border-white">
+                  <Heart className="h-9 w-9 text-white" />
                 </div>
                 
-                <div className="absolute top-1/4 left-0 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-md animate-[spin_25s_linear_infinite_reverse]">
-                  <Globe className="h-8 w-8 text-cyanase-secondary" />
+                <div className="absolute top-1/4 left-0 w-18 h-18 bg-gradient-to-br from-cyanase-primary to-cyanase-secondary rounded-full flex items-center justify-center shadow-lg animate-[spin_25s_linear_infinite_reverse] border-2 border-white">
+                  <Globe className="h-9 w-9 text-white" />
                 </div>
                 
-                <div className="absolute top-1/2 right-4 w-14 h-14 bg-white/80 rounded-full flex items-center justify-center shadow-md animate-[spin_30s_linear_infinite]">
-                  <GraduationCap className="h-7 w-7 text-cyanase-secondary" />
+                <div className="absolute top-1/2 right-6 w-16 h-16 bg-gradient-to-br from-cyanase-secondary/80 to-cyanase-primary/80 rounded-full flex items-center justify-center shadow-md animate-[spin_30s_linear_infinite] border border-white">
+                  <GraduationCap className="h-8 w-8 text-white" />
                 </div>
                 
-                <div className="absolute top-1/2 left-4 w-14 h-14 bg-white/80 rounded-full flex items-center justify-center shadow-md animate-[spin_30s_linear_infinite_reverse]">
-                  <CheckCircle className="h-7 w-7 text-cyanase-secondary" />
+                <div className="absolute top-1/2 left-6 w-16 h-16 bg-gradient-to-br from-cyanase-primary/80 to-cyanase-secondary/80 rounded-full flex items-center justify-center shadow-md animate-[spin_30s_linear_infinite_reverse] border border-white">
+                  <CheckCircle className="h-8 w-8 text-white" />
                 </div>
                 
                 {/* Connection Lines */}
                 <div className="absolute inset-0">
-                  <svg className="w-full h-full opacity-30" viewBox="0 0 320 320">
-                    <circle cx="160" cy="160" r="120" fill="none" stroke="white" strokeWidth="1" strokeDasharray="5,5" className="animate-[spin_40s_linear_infinite]" />
-                    <circle cx="160" cy="160" r="80" fill="none" stroke="white" strokeWidth="1" strokeDasharray="3,3" className="animate-[spin_30s_linear_infinite_reverse]" />
+                  <svg className="w-full h-full opacity-20" viewBox="0 0 384 384">
+                    <circle cx="192" cy="192" r="140" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="8,8" className="animate-[spin_40s_linear_infinite] text-cyanase-primary" />
+                    <circle cx="192" cy="192" r="100" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4,4" className="animate-[spin_30s_linear_infinite_reverse] text-cyanase-secondary" />
+                    <circle cx="192" cy="192" r="60" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2" className="animate-[spin_20s_linear_infinite] text-cyanase-primary" />
                   </svg>
                 </div>
+                
+                {/* Floating particles */}
+                <div className="absolute top-16 left-16 w-3 h-3 bg-cyanase-secondary rounded-full animate-bounce opacity-60"></div>
+                <div className="absolute bottom-20 right-20 w-2 h-2 bg-cyanase-primary rounded-full animate-ping opacity-40"></div>
+                <div className="absolute top-32 right-12 w-2 h-2 bg-cyanase-secondary rounded-full animate-pulse opacity-50"></div>
+                <div className="absolute bottom-32 left-12 w-3 h-3 bg-cyanase-primary rounded-full animate-bounce opacity-40" style={{animationDelay: '1s'}}></div>
               </div>
             </div>
           </div>
